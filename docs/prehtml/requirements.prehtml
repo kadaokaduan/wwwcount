@@ -1,0 +1,27 @@
+<A NAME="requ"><font size="+1"><b>Requirements</b></font></A>
+<blockquote>
+<!--
+The current version (2.3) works on unix, NT (intel), Win95,OS/2 and VMS.
+The version 2.2 is ported to Mac by someone. It will be available If I can
+obtain the distribution from the person.
+-->
+<li type="square"> A C compiler (ANSI or non-ANSI) if you are installing it
+on Unix.
+<p>
+<li type="square"> You should be familiar with Unix operating system in order to install
+it on Unix. I think if you know what <b>ls</b> command is, you qualify. If your
+site is configured to run CGI programs from users' space, then you will 
+not need root access otherwise root access is needed.
+<p>
+<li> If you  are installing on NT, a self extracting binary is available. 
+Setup Wizard will guide you through the installation.
+<p>
+<li type="square"> You must run a web server. The web server must be 
+capable of running standard <#cgi_spec>
+programs. If you run several web servers in your domain, you can 
+install the counter in one server and allow the users at other servers to 
+access the counter remotely.
+<p>
+<li type="square">The web server must be running on any of the Unix, NT, 
+OS/2, VMS or Amiga Operating System.
+</blockquote>

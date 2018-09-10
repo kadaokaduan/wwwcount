@@ -1,0 +1,650 @@
+#!/bin/sh
+###
+# $Revision: 1.1.1.1 $
+# $Date: 2001/03/19 01:59:50 $
+#
+# Automatically generate  the conter configuration file
+###
+#
+# it was hard coded 2.3, thanks to craig@picasso.ppco.com for reporting.
+# nov-05-1997
+#
+Version=`cat ./VERSION`
+nick=0
+ignc=0
+alfc=0
+strict=0
+rgb=0
+
+(echo "hi there\c" ; echo " ") >.echotest
+if grep c .echotest >/dev/null 2>&1 ; then
+n='-n'
+c=''
+else
+n=''
+c='\c'
+fi
+rm -f .echotest >/dev/null 2>&1
+
+Tmpl="./Config.tmpl"
+if [ ! -f $Tmpl ]
+then
+cat<<EOT
+    
+    The varaible template file "$Tmpl" does not exist! This file
+    is created in the configuration procedure. Apparently your 
+    configuration procedure did not succeed!
+
+    Aborting installation!
+
+EOT
+    exit 1
+fi
+
+CONFIG_FILE="."
+
+. $Tmpl
+
+if [ $CONFIG_FILE = "." ]; then
+cat <<EOCE
+    The variable CONFIG_FILE in the template file $Tmpl is empty.
+    aborting...
+EOCE
+    exit 1
+fi
+
+# if the variable CONFIG_FILE does not specify a existing file, exit
+# mm, dec-07-1998
+
+ConfFile="$CONFIG_FILE"
+
+cat << EOSI
+    Welcome to the conf file generation procedure of Count $Version
+
+    This program creates a workable conf file for your host only, you have
+    to edit it by hand if you want to add other hosts. The file will have
+    enough comments in it to help you out. You also have to hand edit it
+    if you want to use netmasks to mask out a entire network or a specific
+    range of hosts in a network.
+
+    First of all you must know your 
+        1) fully qualified domain name (FQDN), for example,
+            if your hostname is foo and your domain name is bar.com,
+            then your FQDN is
+            foo.bar.com
+
+        2) IP address of your host, for example, 
+            192.165.155.2 
+
+        3) If your host has any nickname defined, for example,
+            www.foo.com. Note, th nick name also has to be a FQDN.
+
+EOSI
+
+echo $n "Continue [y|n]$c? "
+read answer
+
+if [ .$answer = . ]
+then
+    answer=x 
+fi
+    until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ]
+    do
+        echo $n "Continue [y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done   
+    
+    case $answer in
+        y|Y)
+######
+# Enter hostname  --Starts
+#####
+cat<<EOE
+        
+    No Error checking will be done with your hostname, therefore,
+    you better make sure you are entering the fully qualified domain name.
+          
+EOE
+    echo $n "* Enter your fully qualified domain name [no default]:$c "
+    read hostname     
+   host=`echo $hostname|awk -F. '{print $1}'`
+   dom1=`echo $hostname|awk -F. '{print $2}'`
+   dom2=`echo $hostname|awk -F. '{print $3}'`
+    until [ .$hostname != . -a .$host != . -a .$dom1 != . -a .$dom2 != . ]
+    do
+        echo $n "* Enter your fully qualified domain name [no default]:$c "
+        read hostname
+        host=`echo $hostname|awk -F. '{print $1}'`
+        dom1=`echo $hostname|awk -F. '{print $2}'`
+        dom2=`echo $hostname|awk -F. '{print $3}'`
+    done
+
+######
+# Enter hostname  --Ends
+#####
+
+######
+# Enter ip address  --Starts
+#####
+cat<<EOE
+
+    No Error checking will be done with your IP address, therefore,
+    you better make sure you are entering the correct IP address.
+
+EOE
+    echo $n "* Enter your IP address [no default]:$c "
+    read ipaddress
+    oct1=`echo $ipaddress|awk -F. '{print $1}'`
+    oct2=`echo $ipaddress|awk -F. '{print $2}'`
+    oct3=`echo $ipaddress|awk -F. '{print $3}'`
+    oct4=`echo $ipaddress|awk -F. '{print $4}'`
+    until [ .$ipaddress != . -a .$oct1 != . -a .$oct2 != .\
+        -a .oct3 != . -a .$oct4 != . ]
+    do   
+        echo $n "* Enter your IP address [no default]:$c "
+        read ipaddress
+    oct1=`echo $ipaddress|awk -F. '{print $1}'`
+    oct2=`echo $ipaddress|awk -F. '{print $2}'`
+    oct3=`echo $ipaddress|awk -F. '{print $3}'`
+    oct4=`echo $ipaddress|awk -F. '{print $4}'`
+    done
+
+######
+# Enter ip address  --Ends
+#####
+
+######
+# ask for nick --Starts
+#####
+   echo ""
+   echo $n "* Does your host have any nickname [y|n]:$c? "
+   read answer  
+   if [ .$answer = . ]  
+   then
+        answer=x
+   fi
+   until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ]
+   do
+        echo $n "* Does your host have any nickname (FQDN) [y|n]:$c? "
+        read answer
+        if  [ .$answer = . ]
+        then
+            answer=x
+        fi
+   done
+
+    case $answer in
+        y|Y)
+            nick=1
+            echo $n "* Enter your host's nickname (FQDN) [no default]:$c "
+            read nickname
+            nhost=`echo $nickname|awk -F. '{print $1}'`
+            ndom1=`echo $nickname|awk -F. '{print $2}'`
+            ndom2=`echo $nickname|awk -F. '{print $3}'`
+    until [ .$nickname != . -a .$nhost != . -a .$ndom1 != . -a .$ndom2 != . ]
+    do
+        echo $n "* Enter your host's nickname [no default]:$c "
+        read nickname
+        nhost=`echo $nickname|awk -F. '{print $1}'`
+        ndom1=`echo $nickname|awk -F. '{print $2}'`
+        ndom2=`echo $nickname|awk -F. '{print $3}'`
+    done
+        ;;
+        n|N)
+        ;;
+        *)
+            echo "Illegal choice"
+     esac
+    until [ .$hostname != . -a .$host != . -a .$dom1 != . -a .$dom2 != . ]
+    do
+        echo $n "* Enter your fully qualified domain name [no default]:$c "
+        read hostname
+        host=`echo $hostname|awk -F. '{print $1}'`
+        dom1=`echo $hostname|awk -F. '{print $2}'`
+        dom2=`echo $hostname|awk -F. '{print $3}'`
+    done
+######
+# ask for nick --Ends
+#####
+        ;;
+        n|N)
+            echo "Exiting..Better luck next time!"
+            exit 1
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+
+###
+# allow file creation?
+###
+cat<<EOAF
+    
+    Now you need to decide if you will allow the users to create datafiles
+    for them automatically. If you allow, the counter datafile will be
+    created for the user if it does not exist and a pre-determined counter
+    number will be inserted to it. If you do not allow, you have to create
+    the datafile for each user, provided that the data directory has proper
+    write permission.  
+
+    Allowing users to create datafile is very convenient, as you do not
+    have to be asked all the time when someone decides to use the counter.
+    But the dark side of this is, anyone will be able create datafiles in
+    the data directory. The decision is yours.
+
+EOAF
+echo $n "* Do you want to allow automatic file creation [[y|n]$c? "
+read answer
+if [ .$answer = . ]
+then
+    answer=x
+fi
+until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ] 
+do
+    echo $n "* Do you want to allow automatic file creation [[y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+    
+    case $answer in
+        y|Y)
+            alfc=1
+        ;;
+
+        n|N)
+            alfc=0
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+##
+# compile in strict mode or not
+###
+cat <<EOSM
+
+    Now you need to decide if you want to compile the program in strict   
+    mode. If you compile the program in strict mode, the browsers which
+    do not return the environment variable HTTP_REFERER, will not be
+    served, that is no access hit will be recorded, no time or date
+    will be displayed. Instead, a string 888888 will be displayed. 
+    
+    The strict mode ensures that your counter data file can not be messed
+    by accessing the counter remotely from a browser which does not return
+    that variable. Note, good browsers like netscape returns this
+    variable. Other browsers e.g. Mosaic does not return this variable in
+    IMG GET method at this time.  This strict mode is experimental at this
+    time!
+
+EOSM
+echo $n "* Do you want the program to run in strict mode [[y|n]$c? "
+read answer
+if [ .$answer = . ]
+then
+    answer=x
+fi
+until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ] 
+do
+echo $n "* Do you want the program to run in strict mode [[y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+    
+    case $answer in
+        y|Y)
+            strict=1
+        ;;
+
+        n|N)
+            strict=0
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+########
+echo $n "* Do you want to ignore access hits from your own host [y|n]$c? "
+read answer
+        
+if [ .$answer = . ]
+then
+    answer=x
+fi
+    until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ]
+    do
+        echo $n "Do you want to ignore access from your own host [y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+      
+    case $answer in
+        y|Y)
+            ignc=1
+        ;;
+
+        n|N)
+            ignc=0
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+##
+# allow to use color name datase? --starts
+##
+cat<<EORG
+
+    Ok, do you want the users to use the file rgb.txt for color name
+    lookup? It is very inefficient to search this file every time the
+    web page is loaded. If you answer yes, the color name
+    will be looked up and used. If you answer no, the color will be
+    looked up but instead of the counter image, the RGB value will
+    be displayed and the user will be asked to use the RGB value
+    instead. This will prevent users to use this file. However,
+    the convenience of allowing to use rgb.txt file is that color name e.g,
+    red, gold etc.  can be used instead of cryptic red, green and blue
+    components of the color.
+    
+EORG
+echo $n "* Allow using the rgb.txt file [y|n]$c? "
+read answer
+        
+if [ .$answer = . ]
+then
+    answer=x
+fi
+    until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ]
+    do
+        echo $n "*  Allow using the rgb.txt file [y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+      
+    case $answer in
+        y|Y)
+            rgb=1
+        ;;
+
+        n|N)
+            rgb=0
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+##
+# allow to use color name datase? --ends
+##
+##########
+
+# generate Reload block
+# Sep-02-1998
+cat<<EOX
+
+    You can decide if you want to allow reload count in your site.
+    When a visitor reloads a page and if you decided to count reload,
+    the counter will increment with each reload. It is a good idea
+    to ignore reload count as it minimizes remote abuse of the counter.
+    Howerver, there may be situation when you will have to count reload,
+    for example if visitors are coming through a proxy server. If you 
+    decide to count reload, your users will have choice to ignore or
+    count reload for their counters with "reload=T or F" options.
+
+EOX
+
+echo $n "* Do you want to allow the counter to be reloaded [y|n]$c? "
+read answer
+if [ .$answer = . ]
+then
+    answer=x
+fi
+until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ] 
+do
+echo $n "* Do you want to allow the counter to be reloaded [y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+    
+    case $answer in
+        y|Y)
+            ir="Yes"
+        ;;
+
+        n|N)
+            ir="No"
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+##
+## log error messages or not
+##
+cat<<EOLOG
+
+    You can decide if you want to log the counter error messages 
+    or warning messages to the log file. If you are concerned about disk
+    space, answer n to the question. 
+
+EOLOG
+
+echo $n "* Do you want to log error messages [[y|n]$c? "
+read answer
+if [ .$answer = . ]
+then
+    answer=x
+fi
+until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ] 
+do
+echo $n "* Do you want to log error messages [[y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+    
+    case $answer in
+        y|Y)
+            log_error_messages="Yes"
+        ;;
+
+        n|N)
+            log_error_messages="No"
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+#
+# show error messages to browser or not
+
+cat<<SEM
+    You can decide if you want to show error messages to the browsers.
+    The counter error messages are verbose and may reveal information about
+    the system (e.g. full path of the data file or config file) in case of
+    error. If you are concerned with privacy or simply don't care to show
+    error messages to browsers (you are confident that the counter works
+    perfectly), then answer n to the question. If you answer n, then then
+    if there is an error or the access is denied, the visitor will see the
+    broken image (browser default).
+
+SEM
+echo $n "* Do you want to show error messages to browsers [[y|n]$c? "
+read answer
+if [ .$answer = . ]
+then
+    answer=x
+fi
+until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ] 
+do
+echo $n "* Do you want to show error messages to browsers [[y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+    
+    case $answer in
+        y|Y)
+            show_error_messages_to_browsers="Yes"
+        ;;
+
+        n|N)
+            show_error_messages_to_browsers="No"
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+
+
+d=`date`
+hn=`hostname`
+cat<<IGH>$ConfFile
+###-----------------------------------------------------------------------
+### configuration file for Count 2.5
+### Automatically generated from user input by the script Gen-conf
+### created on: $d
+### Note: Configuration file format for Count 2.5 is different than
+###       older versions. -- mm
+### The format of the file is described below:
+###   - Any line starts with # or ; is considered comment and ignored.
+###   - A section in the file is inside left and right bracket.
+###   - Each section has parameters below the section.
+###
+### Please read the Configuration section in the counter webpage for details.
+### The official counter homepage is at URL:
+###     http://www.fccc.edu/users/muquit/Count.html
+###----------------------------------------------------------------------
+
+[version]
+   $Version 
+
+##-- options section
+; If auto_file_creation=Yes, then the users can create data files. It IS
+;  dangerous to set this option to Yes.
+#
+; strict_mode=Yes or No. Run the program in strict mode or not. It's a good
+;  idea to set this option to Yes.
+#
+; allow_rgb_database=Yes or No. Convenient to use because colorname e.g., red,
+;  gold etc can be used instead of rgb components of the color, however it is
+;  very inefficient to lookup. If your site is busy, set this option to No.
+#
+; count_reload=Yes or No. It is a good idea to set this option to No. But
+;  you've to set this option to Yes if you are running a proxy server.
+;  Normally set this option to Yes.
+#
+; log_error_messages=Yes or No. If your site is extremely busy and if the
+;  counter generates lots of logs, set this option to No. Normally set this
+;  option to Yes.
+#
+; show_error_messages_to_browsers=Yes or No. Set this option to No if you're
+;  concerned with privacy and you're sure that the counter works perfectly.
+;  If you set this option to No, you will not see error messages.
+
+[options]
+IGH
+
+if [ $alfc -eq 1 ]
+then
+    echo "  auto_file_creation=Yes" >> $ConfFile
+else
+    echo "  auto_file_creation=No" >> $ConfFile
+fi
+
+if [ $strict -eq 1 ]
+then
+    echo "  strict_mode=Yes" >> $ConfFile
+else
+    echo "  strict_mode=No" >> $ConfFile
+fi
+
+if [ $rgb -eq 1 ]
+then
+    echo "  allow_rgb_database=Yes" >> $ConfFile
+else
+    echo "  allow_rgb_database=No" >> $ConfFile
+fi
+
+echo "  count_reload=$ir" >> $ConfFile
+echo "  log_error_messages=$log_error_messages" >> $ConfFile
+echo "  show_error_messages_to_browsers=$show_error_messages_to_browsers" >> $ConfFile
+
+
+echo "" >> $ConfFile
+echo "
+; You can specify IP address of the hosts you want to ignore from counting.
+; netmasks can be used to ignore a entire network or a specificrange of
+; hosts in the network. Read the counter documentation to know about
+; netmasks. Wild card can be used as well. one item per line.
+;" >> $ConfFile
+
+echo "[ignore IPs]" >> $ConfFile
+if [ $ignc -eq 1 ]; then
+    echo "  $ipaddress" >> $ConfFile
+fi
+
+echo "
+;
+; All possible names and IP addresses by which your host can be referred.
+; These hosts can access the counter remotely or locally. Host running
+; the http server must exist here. Wild card can be used. one item per line.
+;" >> $ConfFile
+
+echo "[authorized]" >> $ConfFile
+echo "  $hostname" >> $ConfFile
+echo "  $host" >>   $ConfFile
+echo "  $ipaddress" >> $ConfFile
+if [ $nick -eq 1 ]
+then
+echo "  $nickname" >> $ConfFile
+echo "  $nhost" >>$ConfFile
+fi
+echo "  test.counter.com" >> $ConfFile
+
+
+cat <<EOCF
+
+    Created conf file "$ConfFile"
+    Please look at it, you might want to edit it!
+
+EOCF

@@ -1,0 +1,121 @@
+<#title> NT version of WWW homepage access counter </#title>
+<h2>Count Release 2.5 for NT (Intel)</h2>
+<table border=0>
+
+    <tr>
+        <td>
+        Last Updated:
+        </td>
+        <td> 
+        <font color=brown><b>Jul 21, 1999</b></font><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        Latest Release: 
+        </td>
+        <td> 
+        <font color=brown><b>Jan 11, 1999</b></font><br>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+        Initial Release:
+        </td>
+        <td> 
+        <font color=brown><b>Mar 10, 1996</b></font><br>
+        </td>
+    </tr>
+</table>
+
+<h2>Introduction</h2>
+<blockquote>
+This is the <b>2.5</b> binary release of the WWW homepage access
+counter for NT (Intel). Please look at the 
+<a href="Count.html">Count 2.5 main page</a> for 
+detail documentation and the source distribution 
+(if you need the source for some reason). This is a port of the Unix 
+version of the counter to Microsoft NT. I compiled it with MS Visual C++ 5.0
+on a NT 4.0 (Intel) workstation. It is a Windows NT console application. 
+Your web server must support Standard <#cgi_spec> (not Windows CGI).
+<p>
+This version has all of the features of the Unix version.
+</blockquote>
+<h2>Download and Install</h2>
+<blockquote>
+The binary distribution for NT is available as a self extracting executable
+(<i>Count25.exe</i>).<br>
+<p>
+<li>
+<A HREF="src/wwwcount2.5/NTport/Count25.exe">
+Download the self extracting binary</a> <b>Count25.exe</b>
+<br>
+<#f2>(updated: <b>Jul-21-1999</b>)<#ef>
+<p>
+<li> Then run the file Count25.exe. <b>Setup Wizard</b> will you guide you 
+through the installation.
+<p>
+<p>
+After installation, the following directories and files will be
+created in the cgi-bin (or whatever directory you chose during installation) 
+directory:
+<pre>
+.
+|-- CountNT.html
+|-- README
+|-- <font color="brown">Count.exe</font>               
+|-- <font color="brown">extdgts.exe</font>              
+|-- <font color="brown">mkstrip.exe</font>
+`-- <b>wcount</b>
+    |-- <b>conf</b>
+    |   `-- count.cfg
+    |-- <b>data</b>
+    |   `-- sample.dat
+    |-- <b>digits</b>
+    |   |-- <b>A</b>
+    |   |   |-- peng.gif
+    |   |   `-- strip.gif
+    |   |-- <b>B</b>
+    |   |   `-- strip.gif
+    |   |-- <b>C</b>
+    |   |   `-- strip.gif
+    |   |-- <b>D</b>
+    |   |   |-- lenna.gif
+    |   |   `-- strip.gif
+    |   `-- <b>E</b>
+    |   |   `-- strip.gif
+    |   `-- <b>cd</b>
+    |   |   `-- strip.gif
+    |   `-- <b>cdr</b>
+    |       `-- strip.gif
+    `-- <b>logs</b>
+
+</pre>
+<p>
+<li> Before asking questions, please read the documentation in the 
+<a href="Count.html">Count 2.5 main page</a>, especially the sections
+<a href="Count_FAQ.html">Frequently asked question</a>,
+<a href="Count.html#opti">Options</a> and
+<a href="Count2_5-ex.html">Examples</a> page.
+<p>
+<li>Edit the file <b>wcount\conf\count.cfg</b> with 
+<b>wordpad</b> and Save As <b>Text Document</b>. Note: keep the filename 
+count.cfg, do not add an .txt extension to it.  
+Never use notepad to edit this file. 
+
+The file count.cfg is heavily commented. Please read the 
+<a href="Count.html#conf">Configuration file</a> section in the
+<a href="Count.html">counter main page</a> for details. 
+
+<p>
+<b>Note:</b></font> In the example page, the
+name of the counter program is <b>Count.cgi</b>, for NT the name will be
+<b>Count.exe</b>.
+</blockquote>
+<HR noshade size=1>
+<center><b>Official Counter Home:</b>
+<a href="<#url::count>"><#url::count></a></center>
+<hr noshade size=1>
+<#my_homepage><br>
+Page last updated: <#date>

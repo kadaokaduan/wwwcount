@@ -1,0 +1,18 @@
+Two utility programs mkstrip.exe and extdgts.exe are also copied
+to your CGI directory. Please move them out of there to somewhere 
+in your path. They do not belong there.
+
+mkstrip.exe - creates strip.gif from individual digit images
+extdgts.exe - extract individual digit images from strip.gif
+
+Please read the documentation and look at the Examples and
+Options section for help. The documentation is available at:
+    http://www.muquit.com/muquit/software/Count/Count.html
+    http://www.muquit.com/muquit/software/Count/CountNT.html
+
+Thank you!
+
+--
+Muhammad A Muquit
+http://www.muquit.com/
+muquit@muquit.com

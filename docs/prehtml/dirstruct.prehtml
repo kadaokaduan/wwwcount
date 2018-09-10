@@ -1,0 +1,70 @@
+<a name="dirs"><font size="+1"><b>Directory Structure (unix)</b></font></a>
+<blockquote>
+Before going to the configuration procedure, please browse through
+the default directory structure below. It will help you answer questions
+about the configuration script. You can change the name of the directories
+as you please, but keep the directory structure same, it will make your
+life much easier. You do not have to create any of these directories, they
+will be created for you by the Count-install program. The only things you 
+probably have to create are the individual datafiles (keep reading).
+<p>
+<pre>
+<b>/usr/local/etc/Counter</b>          &lt;- Base Directory
+    |-- <b>Log</b>                     &lt;- Log Directory
+    |   `-- CountX.X.log        &lt;- Log file
+    |-- <b>conf</b>                    &lt;- Conf Directory
+    |   `-- count.cfg           &lt;- Configuration file
+    |-- <b>data</b>                    &lt;- Data Directory
+    |   |-- sample.dat          &lt;- data files
+    |   |-- joe.dat
+    |   |-- harry.dat
+    |   `--
+    |
+    |-- <b>digits</b>                  &lt;- Digit Directory
+    |   |-- <b>A</b>
+    |   |   `-- strip.gif       
+    |   |-- <b>B</b>
+    |   |   `-- strip.gif
+    |   |-- <b>C</b>                   Digit sub-directories and
+    |   |   `-- strip.gif       image strip of different styles
+    |   |-- <b>D</b>
+    |   |   |-- lenna.gif
+    |   |   `-- strip.gif
+    |   |-- <b>E</b>
+    |   |   `-- strip.gif
+    |   |-- <b>cd</b>
+    |   |   `-- strip.gif
+    |   |-- <b>cdd</b>
+    |   |   `-- strip.gif
+    |   `-- <b>cdr</b>
+    |       `-- strip.gif
+    `-- rgb.txt                 &lt;- color name database
+
+</pre>
+<p>
+<b>Base Directory</b> is the directory where all the sub-directories and
+the files related to counter reside. 
+<p>
+<b>Log Directory</b> is the directory which holds the counter Log file.
+counter error messages and remote access
+warning messages are written to this directory.
+<p>
+<b>conf</b> directory holds the configuration file for the counter. 
+This file is created by the program <b>Gen-conf</b> and can be hand crafted
+later. After creating the file, please read the comments in the file.
+<p>
+<b>data</b> directory holds all the datafiles for the counter. The datafiles
+stores the access counts of web pages. Each page must have a separate
+datafile. The datafile is specified at run-time. You will know about it
+later.
+<p>
+<b>digits</b> directory holds sub-directories with various styles of GIF
+digits. For example, <b>A</b> sub-directory holds the green led digits.
+The sub-directories have GIF digit files named zero.gif, one.gif...nine.gif.
+you will know about it later.
+<p>
+<b>rgb.txt</b> file is used to convert a color name (for example, cyan) to the
+appropriate red, green and blue color component. This file came from 
+X consortium and is supplied with the distribution. You will know about the
+file later.
+</blockquote>

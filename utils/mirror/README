@@ -1,0 +1,21 @@
+The script "mirror_count.sh" can be used to mirror the WWW Homepage Counter
+homepage (http://www.muquit.com/muquit/software/Count/Count.html). It uses 
+the program "wget" to retrive the pages.
+
+The script can be used from command line or as a cron job. To setup a
+cron job to check the coutner pages at 12 midnight US EST, put the
+following line in the crontab file.
+
+0 0 * * * /usr/local/etc/Counter/utils/mirror_count.sh
+
+To edit crontab file, just type: crontab -e
+you'll be in your editor (usually vi by default). Add the line at the
+end of the file. save and quit. :wq
+To check the cron entry, type; crontab -l
+
+--
+Muhammad Muquit
+Feb-28-1999 (first cut)
+
+Feb-13-2000 updated
+

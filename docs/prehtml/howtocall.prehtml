@@ -1,0 +1,53 @@
+<A NAME="refr">
+<font size="+1"><b>How to call the program? (all platforms)</b></font>
+</A>
+<blockquote>
+If your web server is running on On Unix, you can refer to the program 
+from web page like this:
+<P>
+If the web server is running on Unix:
+<pre>
+    &lt;img src="/cgi-bin/Count.cgi?df=sample.dat" align="absmiddle"&gt;
+</pre>
+If the web server is running on NT:
+<pre>
+    &lt;img src="/cgi-bin/Count.exe?df=sample.dat" align="absmiddle"&gt;
+</pre>
+
+Note: in Unix, the .exe extension is not used to determine a executable. 
+You can call your program anything you like. So, if your server is not on Unix,
+the name of the counter program will be Count.exe instead of Count.cgi.
+<P>
+The string after the ? mark is called the QUERY_STRING. Make sure there are
+no newlines in the &lt;img src= line and no space in the QUERY_STRING. 
+In <b>df=sample.dat</b>, <b>df</b> means datafile and <b>sample.dat</b>
+is the counter datafile. The counter stores the hits in this file. This
+datafile is supplied. 
+If you configured the counter to allow automatic datafile creation (look at
+count.cfg file), you can specify a datafile with <b>df</b> like
+<b>df=count.dat</b>. The file count.dat will be created for you if the 
+permission to the data directory is correct. 
+<p>
+If you configured <b>not to allow</b> automatic datafile creation (good thing), 
+you have to create this file in the data directory.
+Change directory (cd) to the data directory and type:
+<pre>
+    echo "1" &gt; count.dat
+</pre>
+In NT, go to Command Prompt from Start-&gt;Programs and do the same.
+<p>
+The counter program has lots of options, you can make it work and look the
+way you desire. In the query string, you can use the options described
+in the table below. The options can be separated by a | or a &amp;. You can
+use either one or combination of both but I prefer to use &amp; as some browser
+may not like |.
+Here is an example:
+<pre>
+&lt;img src="/cgi-bin/Count.cgi?ft=4&frgb=gold&amp;df=sample.dat" align=absmiddle&gt;
+</pre>
+<p>The options can be in any order and not case sensitive.
+<p>
+Anyway, look at this
+<a href="Count2_5-ex.html"> <B>Example Page</B></a>
+you will get the picture.
+</blockquote>

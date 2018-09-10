@@ -1,0 +1,87 @@
+# 
+# Anything starts with a # is considered a comment and ignored. Empty lines
+# are ignored as well.
+#
+# Definition file for testing WWW Homepage access counter version 2.4.
+# Muhammad A Muquit
+# Nov-13-1997
+
+# --- Test Frame attribute ---
+# each line is separated in two parts with a %, the left part is the
+# QUERY_STRING and the right part is the comment
+
+# simple
+df=sample.dat&ft=0%simple,__no_frame,_digit_style_A_(default)
+
+# default frame
+df=sample.dat&ft=4%frame_with_default_frame-color_and_thickness_is_4_(specified)
+
+df=sample.dat&sh=F%A_hidden_counter_is_here
+
+ft=0&df=sample.dat&dd=bang&comma=T%<a_href="http://www.virtualbangladesh.com/bd^bangla.html">Bangla</a>_digits
+
+display=version%show_the_counter_version
+display=countdown&ft=0&dd=cd&negate=T%countdown,Year_2000_implied_from_web_server_time
+display=countdown&sdhms=F%countdown,Year_2000,just_show_the_days_only
+display=countdown&timezone=GMT+0000%countdown_from_GMT_to_Year_2000
+
+cdt=2000;1;1;0;0;0&sfd=T&prgb=0000ff&dd=cd&ft=2&frgb=000000%countdown_to_Year_2000,_show_the_from_date(sfd)_below_<br>prgb_(pen_RGB)_can_be_used_to_change_the_sfd_color
+
+display=countdown&dd=cdr&timezone=GMT-0500&sfd=T&ft=4%countdown_from_New_York_to_Year_2000
+
+cdt=2000;2;1;8;0;0&sfd=T&dd=cdd&ft=2%countdown_to_a_specific_date_,say_8_AM,_Feb_1_2000
+
+cdt=1998;2;1;8;0;0&sfd=T&dd=cd&ft=2&negate=T%countdown_to_past_Feb_1_1998_8_AM
+
+cdf=1999;7;16;22;0;0&cdt=1999;7;17;10;0;0%difference_between_Jul_16,1999_10_PM_and_Jul_17_1999__10AM
+
+cdf=1999;7;17;0;0;0%countdown_to_year_2000_from_Jul_17,_1999
+
+ft=0%No_datafile_specified_with_<i>df</i>_,therefore,_random_digits_will_be_displayed
+df=sample.dat&dd=B%digit_style_B
+df=sample.dat&dd=C&comma=T%digit_style_C,display_comma_if_more_than_3_digits
+ft=3&df=sample.dat&dd=D%digit_style_D
+trgb=ffffff&df=sample.dat&dd=E%digit_style_E,_make_white_transparent
+
+# red frame
+df=sample.dat&frgb=ff0000%red_frame_with_default_thickness
+df=sample.dat&sh=F%Hidden_counter
+
+#
+lit=94032048040320&comma=T&dd=D&ft=2%literal_string_with_comma
+ft=4&lit=0123456&frgb=0;0;255%frame_color_can_be_Red,Green_and_Blue_triplets
+
+
+ft=4&lit=0123456&frgb=0000ff%frame_color_can_be_hex_as_well,using_blue_here
+
+ft=4&lit=0123456&frgb=Gray%frame_color_can_be_a_name_as_well
+
+lit=1234567&chcolor=T%change_green_digit-color_to_default_pen_color
+lit=1234567&srgb=00ff00&prgb=ffff00%change_green_digit-color_to_yellow
+
+
+display=clock%show_time_(12_hr_format)
+display=clock&pad=F%show_time_(12_hr_format)_don't_pad_hr_with_zero
+display=clock&tformat=24%show_time_(24_hr_format)
+display=clock&timezone=GMT+0000%show_GMT_Time
+display=clock&timezone=GMT+0600%show_time_of_Dhaka_(GMT+0600),<a_href="http://www.virtualbangladesh.com">Bangladesh</a>
+display=date&dd=cdr%show_date_(MM-DD-YY)
+display=date&dformat=ddmmyy%show_date_(DD-MM-YY)
+display=date&fy=T&dd=cd&dformat=ddmmyyyy%show_date_(DD-MM-YYYY)_use_YYYY_to_show_full_year
+display=date&fy=T&dd=cd&dformat=ddmmyy%show_date_(DD-MM-YY)_use_fy_to_show_full_year
+
+df=sample.dat&trgb=00ff00%make_the_green_color_transparent,no_frame
+df=sample.dat&trgb=000000%make_the_black_color_transparent
+srgb=00ff00&prgb=101010&df=sample.dat&trgb=000000%make_the_black_color_transparent,change_green_color_to_a_shade_of_gray
+
+display=image&dd=D&image=lenna.gif&df=sample.dat&incr=T&frgb=8B6508&ft=20%display_<a_href="http://www.cs.cmu.edu/~chuck/lennapg/lenna.shtml">Lenna</a>'s_image,_also_increment_counter_silently
+
+image=foo.gif&dd=E&comma=T&df=sample.dat&align=bottomcenter&tr=T&trgb=ffffff%composite_counter_at_the_bottom_center_of_the_image,_make_white_transparent
+
+image=yeehaw.gif&dd=A&df=sample.dat&comma=T&align=topcenter&offset=5&ft=4%composite_counter_at_the_top_center_of_the_image,_offset_is_5_pixels_from_top
+
+image=peng.gif&dd=A&df=sample.dat&comma=T&align=bottomcenter&offset=40&trgb=000000&ft=0%composite_counter_at_the_bottom_center_of_the_image,make_black_transparent
+
+ft=0&df=sample.dat&rotate=T&dd=D%rotate_270_degrees._Note,_degrees_are_implied_here
+ft=0&df=sample.dat&dd=D&degrees=180%rotate_180_degrees
+ft=0&df=sample.dat&degrees=90&dd=D&prgb=ffff00%rotate_90_degrees

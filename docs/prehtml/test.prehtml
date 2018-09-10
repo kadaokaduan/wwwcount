@@ -1,0 +1,19 @@
+<A NAME="test">
+<font size="+1"><b>Test the program from command line (Unix/NT)</b></font>
+</A>
+<blockquote>
+A shell script is provided to test out the various features of counter.
+To test the program, at the shell prompt, type:
+<pre>
+    cd tests
+    ./testcount-sh
+</pre>
+The program will create a file called <b>Count2_5-ex.html</b>. Load this file
+to your web browser to see the result of the tests.
+<p>
+You can test it out in NT as well, provided you installed the tools from
+<a href="http://www.cygnus.com/misc/gnu-win32/">GNU-Win32  project</a>
+by <a href="http://www.cygnus.com/">Cygnus</a>. These tools provide
+a fairly complete Unix-like environment in NT and they're free.
+<p>
+</blockquote>

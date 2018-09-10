@@ -1,0 +1,1192 @@
+<a name="opti">
+<font size="+1"><b>Counter options (all platforms)</b></font> </a>
+<br>
+[Originally written in HTML table by <A href="http://eies.njit.edu/~kevin/">Kevin</a>]
+<p>
+<b>Keywords</b><br>
+<table border=0>
+
+<tr>
+    <td>
+        <a href="#align"> align</a>
+    </td>
+    <td>
+        - align counter image on a base image.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+    <a href="#cache"> cache </a> 
+    </td> 
+    <td>
+    - and <a href="#cache">expires</a> are used to
+        change caching behavior of the browsers.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <a href="#chcolor">chcolor</a>
+    </td>
+    <td>
+        - change one color of the counter image.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#cdt"> cdt</a>  
+    </td>
+    <td>
+- countdown target date.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#cdf"> cdf</a>  
+    </td>
+    <td>
+- countdown from date.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+<a href="#comma"> comma</a> 
+    </td>
+    <td>
+- show comma after 3rd digits from right.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+<a href="#dd"> dd </a> 
+    </td>
+    <td>
+- digit directory.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+<a href="#degrees"> degrees or angle </a> 
+    </td>
+    <td>
+- rotation angle of the image.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#df">df</a> 
+    </td>
+    <td>
+- counter data file.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+
+<a href="#dformat"> dformat</a> 
+    </td>
+    <td>
+- date format.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#display"> display</a> 
+    </td>
+    <td>
+- counter, clock, date, countdown or image.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#frgb"> frgb</a> 
+    </td>
+    <td>
+    - Frame color.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#ft">ft</a>  
+    </td>
+    <td>
+    - Frame thickness
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#fy">fy</a> 
+    </td>
+    <td>
+    - Full year (all digits).
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+<a href="#image"> image</a> 
+    </td>
+    <td>
+    - Display a GIF image.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#incr"> incr</a> 
+    </td>
+    <td>
+    - Increment the counter or not.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#istrip"> istrip</a> 
+    </td>
+    <td>
+    - Use strip.gif or not.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#lit"> lit</a> 
+    </td>
+    <td>
+    - Show literal string.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#md"> md</a> 
+    </td>
+    <td>
+    - Maximum number of digits to display.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#negate"> negate </a> 
+    </td>
+    <td>
+    - Show the negative image of counter.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#offset"> offset </a> 
+    </td>
+    <td>
+    - Offset from the counter image from the edge of the base image while 
+    compositing.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+<a href="#pad"> pad</a> 
+    </td>
+    <td>
+    - Left pad with zeros or not.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#reload"> reload </a> 
+    </td>
+    <td>
+    - Count page reload or not.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#rotate"> rotate</a>
+    </td>
+    <td>
+    - Rotate the counter image.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#sdhms"> sdhms</a> 
+    </td>
+    <td>
+    - Show the day, hr, min, sec in countdown or not.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#sfd"> sfd</a> 
+    </td>
+    <td>
+    - Show "from" date while showing countdown.
+    </td>
+</tr>
+
+<tr>
+    <td>
+    <a href="#sh">sh</a>
+    </td>
+    <td>
+    - Show the counter or keep it hidden.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#srgb"> srgb, prgb</a> 
+    </td>
+    <td>
+    - Change source color to pen color.
+    </td>
+</tr>
+
+<tr>
+    <td>
+<a href="#st"> st</a> 
+    </td>
+    <td>
+    - Start count number.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#timezone"> timezone</a> 
+    </td>
+    <td>
+    - Show time of that time zone.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#tformat"> tformat</a> 
+    </td>
+    <td>
+    - Time format, 12 or 24 hr.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#tr"> tr</a> 
+    </td>
+    <td>
+    - Transparency On or Off.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#trgb"> trgb</a> 
+    </td>
+    <td>
+    - Transparency color.
+    </td>
+</tr>
+<tr>
+    <td>
+<a href="#xy"> xy</a> 
+    </td>
+    <td>
+    - Composite the counter at x,y location of a base image.
+    </td>
+</tr>
+
+
+</table>
+
+
+<table border cellpadding=5>
+    <tr>
+        <th bgcolor="#ddddff">Parameter</th>
+        <th bgcolor="#ddddff">Name</th>
+        <th bgcolor="#ddddff">Description</th>
+        <th bgcolor="#ddddff">Default</th>
+    </tr>
+
+    <tr>
+        <td align="left" valign="top">
+            <a name="cache">cache=B</a><br>
+            <a name="expires">expires=X</a>
+        </td>
+
+        <td align=left valign=top>
+            These parameters can be used to change the image caching
+            behavior of certain web browsers.
+        </td>
+        
+        <td align=left valign=top>
+            The boolean value of <i>cache</i> tells the browser whether to
+            cache the image or not.  
+            The integer value of <i>expires</i> specifies the cache 
+            expiration duration time in seconds. 
+
+            If you specify cache=F, the browser
+            will be hinted to cache the image for the amount of seconds
+            specified with expires parameter. if cache=F and expires=0, then
+            the browser should not cache the image, that is whenever you 
+            come back to the page, the counter or clock will be refreshed.
+            Use this feature with discretion as it may increase load on your
+            system. The <i>expires</i> parameter is meaningless without
+            <i>cache=F</i>, that means,  if cache=T is specified, expires 
+            parameter is ignored and the counter will not generate any 
+            HTTP Expires header. This is the default behavior.
+            The valid values for the boolean parameter cache is Y,N,F,T 1 or 0.
+            The valid integer range of the expires parameter is between 0
+            and 604800 (7 days).
+
+
+            <p>
+
+            Note, these parameters will work with browsers that support the HTTP
+            Expires header as specified in HTTP specification.
+            By default, most web browsers cache the image received from the 
+            counter. That means, if someone visits your page and comes back
+            after a while, the counter or clock does not get refreshed. 
+        </td>
+
+        <td align="left" valign=top>
+            cache=T<br>
+            expires=0<p>
+        </td>
+            
+    </tr>
+    <tr>
+        <td align=left valign=top>
+            <a name="reload">reload=B</a>
+         </td>
+         <td valign=top>
+         Count page reload if the site admin configured the counter to 
+         support it.<br>
+         <font size="-1">(Added on: Dec-05-1998)</font>
+         </td>
+         <td valign=top>
+         If the site admin configured the counter to count reload, users
+         can choose to count reload (default) or ignore reload. The site
+         admin allows count reloading by yes, 1 or true in the [options]
+         section of the 
+         <a href="#conf">configuration file</a> with the keyword
+         count_reload. Note, if the admin 
+         decided to ignore reload count (count_reload=No),
+         user preference is ignored. The valid values for the Boolean parameter
+         reload are Y, N, T, F, 1 or 0. 
+         </td>
+         <td align="left" valign=top>
+         reload=T<br>
+         Count reload if site admin configured to so.
+         </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign="top">
+            <a name="cdt">cdt=year;month;day;hr;min;sec</a>
+         <font size="-1">(Added on: Dec-13-1998)</font>
+        </td>
+
+        <td valign="top">
+            Show the countdown time to this target date.
+        </td>
+
+        <td valign="top">
+            The parameter cdt specifies the countdown target date. The valid
+            values for this parameter is 6 integers separated by semicolon.
+            The first integer specifies the year, for example: 2000.
+            The month starts at 1 (January). The first day is 1. 
+            Note: in Unix systems, the year can not be less than 1970
+            as Unix epoch starts starts at 00:00:00 on January 1, 1970, 
+            Coordinated Universal Time (UTC).
+
+            The range of hr is 0 to 23. The range of min is 0 to 59 and 
+            the range of sec is 0 to 59.
+            To count
+            down to Year 2000, the parameter will be:
+            cdt=2000;1;1;0;0;0. If you do not specify any Timezone
+            with the parameter <a href="#timezone">timezone</a>, the
+            countdown will be calculated from the web server time. For example
+            if you like to show the countdown from GMT, specify timezone as:
+            <a href="#timezone">timezone</a>=GMT+0000.
+            
+        </td>
+
+        <td align="center" valign="top">
+        None
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign="top">
+            <a name="cdf">cdf=year;month;day;hr;min;sec</a>
+         <font size="-1">(Added on: Jul-17-1999)</font>
+        </td>
+
+        <td valign="top">
+            Show the countdown time from this date.
+        </td>
+
+        <td valign="top">
+            The parameter cdf specifies the countdown <b>from</b> date. The
+            default is to calculate from the current local time or local time
+            of a specific timezone if the parameter <a
+            href="#timezone">timezone</a> is specified.
+            The valid
+            values for this parameter is 6 integers separated by semicolon.
+            The first integer specifies the year, for example: 1999.
+            The month starts at 1 (January). The first day is 1. 
+
+            Note: in Unix systems, the year can not be less than 1970
+            as Unix epoch starts starts at 00:00:00 on January 1, 1970, 
+            Coordinated Universal Time (UTC).
+
+            The range of hr is 0 to 23. The range of min is 0 to 59 and 
+            the range of sec is 0 to 59.
+        </td>
+
+        <td align="center" valign="top">
+        The local web server time.
+        </td>
+    </tr>
+
+
+
+    <tr>
+        <td align="left" valign="top">
+            <a name="sdhms">sdhms=B</a>
+        </td>
+
+        <td valign="top">
+            Show the day, hr, min, sec in countdown or not.
+        </td>
+
+        <td valign="top">
+           This parameter affects how the countdown is displayed. 
+            The valid values for the Boolean parameter
+            sdhms are Y, N, T, F, 1 or 0. By defualt, the value for this
+            parameter is True, that means the countdown is shows as Day, Hour,
+            Min and Sec. If you just want to show the countdown days, specify
+            F as the value.
+
+        </td>
+        <td align="center" valign="top">
+        sdhms=T
+        </td>
+    </tr>
+
+
+    <tr>
+        <td align="left" valign="top">
+            <a name="sfd">sfd=B</a>
+        </td>
+
+        <td valign="top">
+            Show from date (sfd) below the countdown.
+        </td>
+
+        <td valign="top">
+           The parameter sfd shows the from date below the countdown.
+           The from date is the time when the program is executed.
+           The time in date is always in 24 hr format. If you use the
+           parameter <a href="#timezone">timezone</a>, the timezone offset will
+           be shown at the end of time.
+           It may be necessary to see this date to make sure that
+           the Counter program actually ran and the browser is not
+           loading the image from cache. Use
+           <a href="#cache">cache=F</a>&amp;<a href="#expires">expires=0</a>
+           to make sure that browser does not cache the image.
+            The valid values for the Boolean parameter
+            sfd are Y, N, T, F, 1 or 0. 
+
+        </td>
+        <td align="center" valign="top">
+        sfd=F
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign=top>
+            <a name="display">display=X</a>
+
+        </td>
+        <td valign=top>
+            Specifies what to display.
+        </td>
+        <td valign=top>
+            The valid values for X is: 
+            <b>counter</b>, <b>clock</b>,
+            <b>date</b>, 
+            <b>countdown</b>, <b>image</b> or </b>version</b>. 
+            If the value is countdown and if the countdown
+            time is not specified with parameter 
+            <a href="#cdt">cdt</a>, the countdown to
+            year 2000 is assumed. See also: <a href="#cdt">cdt</a>.
+            
+            Note: If you specify display=image and if you specify a 
+            datafile with <a href="#df">df</a>
+            parameter and if <a href="#incr">incr</a> is true, then 
+            counter will be incremented in the datafile. This will help
+            some people who do not like to show the counter, instead they
+            can show an image. You can use <a href="#incr">incr</a>=F from
+            another page to monitor the counter.
+
+        </td>
+        <td align="left" valign=top>
+            display=counter
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="timezone">timezone=X</a>
+        </td>
+        <td valign=top>
+            Display time/date of the specified timezone.
+        </td>
+        <td valign=top>
+        The parameter timezone= is only significant with
+        <a href="#display">display</a>=clock,
+        <a href="#display">display</a>=date or
+        <a href="#display">display</a>=countdown
+        Use this parameter
+        if you want to display time or date of another timezone or calculate
+        countdown in reference to a timezone to a target date.
+        The timezone must be specified with a negative or positive
+        four digit offset from GMT, for example: timezone=GMT-0500 or
+        timezone=GMT+0000 or timezone=GMT+0530.
+        The routine to display time of various timezones are written in a
+        generic way. Therefore, the unix machines will not be aware of
+        daylight saving time because of the way the routine is written. For
+        example, if daylight saving time is on, to display time of NY, the
+        timezone will be timezone=GMT-0500 instead of
+        timezone=GMT-0400.  <p>
+        If the clock displays your local time wrong, specify 
+        your timezone with that parameter in order to display the correct time.
+        </td>
+        <td align="left" valign=top>
+            None.
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="tformat">tformat=X</a>
+            <p>
+        </td>
+        <td valign=top>
+            Time format in 12 or 24 hour.
+        </td>
+        <td valign=top>
+            This parameter can be used to display time in 12 or 24 hour
+            format. The valid values for the parameter X is 12 or 24.
+        </td>
+        <td align="left" valign=top>
+            tformat=12
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="dformat">dformat=X</a>
+        </td>
+        <td valign=top>
+            Specifies date format.
+        </td>
+        <td valign=top>
+            This parameter is only significant with display=date.
+            The valid value for the string parameter X is any 
+            combination of MMDDYY (Month-Day-Year). For example,
+            dformat=ddmmyy, dformat=YYMMDD. To show the full year in the 
+            display instead of two digit year specify YYYY instead of YY, for
+            example dformat=MMDDYYYY. To show full year you can also use the
+            parameter <a href="#fy">fy</a>.
+        </td>
+        <td valign=top>
+            dformat=MMDDYY
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign=top>
+            <a name="fy">fy=B</a>
+        </td>
+        <td valign=top>
+            Show the full year (fy) in the date instead of only two digit year.
+        </td>
+        <td valign=top>
+            This boolean parameter indicates whether to show all the year
+            digits instead of default two digits in the date. By the way 
+            the program will display all the year digits by default from 
+            Year 2000.
+            The valid values for the boolean parameter
+            fy are Y,N,T,F,1 or 0. See also: 
+            <a href="#dformat"> dformat</a>.
+        </td>
+        <td valign=top>
+            fy=F
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign=top>
+            <a name="istrip">istrip=B</a>
+        </td>
+        <td valign=top>
+            Use of image strip On/Off
+        </td>
+        <td valign=top>
+            The boolean value of istrip specifies whether to use
+            image strip or not. If you specify istrip=F, the program
+            will look for the individual digit image files in the
+            digits/style directory.
+            The valid values for the Boolean parameter
+            istrip are Y, N, T, F, 1 or 0.
+        </td>
+        <td align="left" valign=top>
+            istrip=T 
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="ft">ft=X</a>
+        </td>
+        <td valign=top>
+            Frame Thickness
+        </td>
+        <td valign=top> 
+            You can wrap the counter in an ornamental frame of X pixels
+            thick.  Use 0 for no frame. Values over 5 make a nice 3-D effect.
+        </td>
+        <td align="left" valign=top>
+            ft=4
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="frgb">frgb=R;G;B</a><br>
+            or<br>
+            frgb=RRGGBB (in hex)
+
+        </td>
+        <td valign=top>
+            Frame Color
+        </td> 
+        <td valign=top>
+            Specifies the color of the frame in RGB (red/green/blue)
+            format. Each color component, R, G, and B is specified as a
+            value between 0 and 255. If you use ft= without a frgb=
+            param, the default color is used. 
+        <P>
+            If you specify a frgb= without a ft=, then the frame
+            thickness defaults to 5. All the examples show ft=5. 
+            The color can be specified as hex string or a name.
+            Do not use a # before the hex string as Netscape.
+            For example, if you want to specify white in hex, use
+            frgb=ffffff. You also can use a color name (e.g. frgb=blue)
+            if the counter is configured to do so (look at the cfg file).
+            Look at the
+            <a href="http://eies.njit.edu/~kevin/rgb.txt.html">
+            color name mapping database</a> for
+            some hints about color name database.
+        </td>
+        <td align="left" valign=top>
+            frgb=100;139;216
+            or<br>
+            frgb=648bd8
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="tr">tr=B</a>
+        </td>
+        <td valign=top>
+            Transparency On/Off
+        </td>
+        <td valign=top>
+             You can specify if your counter image will have a transparent
+             color with the Boolean B. So tr=Y means there will be a
+             transparent color. It does not matter if the GIF files used
+             for the digits are "transparent"; you must specify explicitly
+             which color to make transparent. If you specify a trgb=, then
+             you do not need to specify tr=Y. If you specify tr=Y and
+             do not specify trgb=, then the default color black will
+             be transparent.  The valid values for B are Y, N, T, F, 1, or
+             0. 
+        </td>
+        <td align="left" valign=top>
+            tr=F
+            <br>
+            <i>No Transparency</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="trgb">trgb=R;G;B</a><br>
+            or<br>
+            trgb=RRGGBB (in hex)
+
+        </td>
+        <td valign=top>
+            Transparency Color
+        </td> 
+        <td valign=top>
+            Specifies the color to be made transparent in RGB (red/green/blue)
+            format. Each color component, R, G, and B is specified as a
+            value between 0 and 255. If you use tr= without a trgb=
+            param, the default color is used.
+            The color can be specified as hex string or a name.
+            Do not use a # before the hex string as Netscape.
+            For example, if you want to specify white in hex, use
+            trgb=ffffff. You also can use a color name (e.g. trgb=blue)
+            if the counter is configured to do so (look at the cfg file).
+            Look at the
+            <a href="http://eies.njit.edu/~kevin/rgb.txt.html">
+            color name mapping database</a> for
+            some hints about color name database.
+            If you use trgb= then tr=Y is not needed.
+        </td>
+        <td align="left" valign=top>
+            trgb=0;0;0
+            or<br>
+            trgb=000000
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="md">md=X</a>
+        </td>
+        <td valign=top>
+            Max Digits
+        </td>
+        <td valign=top>
+            Defines maximum number of digits to display. Any value between
+            5 and 80 inclusive are permitted. Padding with leading zeros is
+            automatically done for you; longer counts are truncated to the
+            given X. 
+        </td>
+        <td align="left" valign=top>
+            md=6
+            <br>
+            <i>Without padding</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="pad">pad=B</a>
+        </td>
+        <td valign=top>
+            Left padding with 0s
+        </td>
+        <td valign=top>
+            Turn padding on/off in conjunction with md= setting. It also
+            affects padding hour in clock.
+            Valid
+            values for the Boolean parameter B are Y, N, T, F, 1, or 0.
+        </td>
+        <td align="left" valign=top>
+            pad=N
+            <br>
+            <i>Without specification of a md=value</i>
+            <p>
+            pad=Y<br>
+            <i>With specification of a md=value</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="dd">dd=A</a>
+        </td>
+        <td valign=top>
+            Digit Directory
+        </td>
+        <td valign=top>
+            Denotes directory of a specific styles of digits. Four styles
+            of digits are supplied. They are kept at the directories A,B,C
+            and D respectively. Visit the 
+<A HREF="http://www.digitmania.holowww.com">digit mania
+page</a> for other styles of digits.
+        </td>
+        <td align="left" valign=top>
+            dd=A
+            <br>
+            <i>My green LED digits</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="image">image=gif_file</a>
+        </td>
+        <td valign=top>
+            Display this GIF file
+        </td>
+        <td valign=top>
+            You can display any GIF image specified with this parameter.
+            The location of this file is determined by the dd= 
+            parameter. Note that no path in the GIF file is allowed.
+            All attributes of the counter apply to the image. 
+            This parameter is used for compositing counter image with
+            the GIF image. The default alignment is top-center and the default
+            offset is 2 pixels from the top of the GIF image. If you want
+            to composite clock, date or contdown, specify so with the
+            <a href="#display">display</a> paramter.
+            
+        </td>
+        <td align="left" valign=top>
+            None
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="comma">comma=B</a>
+        </td>
+        <td valign=top>
+            Display comma after every 3rd digit from right.
+        </td>
+        <td valign=top>
+            The boolean value of parameter comma specifies whether
+            to display comma after every 3rd digit from right. If you use
+            this parameter as true, the left padding with zeros will be
+            turned off.
+        </td>
+        <td align="left" valign=top>
+            comma=F
+        </td>
+    </tr>
+    <tr>
+        <td align="srgb" valign=top>
+            <a name="srgb">srgb=R;G;B</a><br>
+            or<br>
+            srgb=RRGGBB (in hex)<br><br>
+             prgb=R;G;B<br>
+             or<br>
+             prgb=RRGGBB (in hex)
+
+        </td>
+        <td valign=top>
+            Change a color of the image to a target color on the fly.
+        </td>
+
+        <td valign=top>
+            Any one color of the image can be changed to a different color
+            on the fly. srgb stands for source color, that is the
+            color to change. prgb stands for pen color, that is the
+            target color. The values for srgb and prgb can be
+            colon separated color components (e.g, srgb=255;0;0), a hex
+            value (e.g. srgb=ff0000) or a color name (e.g. srgb=red). The
+            color name can be used if you configured the counter to do 
+            so (look at the cfg file).
+        </td>
+        
+        <td align="left" valign=top>
+            srgb=00ff00 <br>(0;255;0 green)
+            <p>
+            prgb=00ffff <br>(0;255;255 cyan)
+            <p>
+            <i>With chcolor=T</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="chcolor">chcolor=B</a>
+        </td>
+        <td valign=top>
+            Change a color of the image.
+        </td>
+        <td valign=top>
+            This parameter is usually used to change the default green 
+            color to cyan. That is if you specify chcolor=T, and
+            you want to change green to cyan, then you do not need to
+            specify srgb and prgb parameters. 
+            1x1 GIF is displayed. The valid values for the Boolean parameter B
+            are Y, N, T, F, 1, or 0
+        </td>
+        <td align="left" valign=top>
+            chcolor=F
+        </td>
+
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="st">st=X</a>
+        </td>
+        <td valign=top>
+            Start Count
+        </td>
+        <td valign=top>
+            This parameter is used to set the initial value of the counter
+            to some number X.
+            This is only valid if you decided to allow automatic datafile
+            creation.  
+            It is a bad practice to allow automatic datafile creation,
+            however it makes site maintaining easier. The automatic datafile
+            creation option is specified in configuration file and can be
+            changed at run time.
+            Note that this parameter has no effect if the datafile already
+            exists. If you want to change the counter value in a existing
+            datafile, hand edit the file. The minimum value for st is 1.
+        </td>
+        <td align="left" valign=top>
+            st=1<br>
+            <i>Count starts at 1</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="sh">sh=B</a>
+        </td>
+        <td valign=top>
+            Show digits
+        </td>
+        <td valign=top>
+            Used to turn display of digits on or off according to the
+            Boolean B.  When sh=T, counter will be displayed and incremented,
+            this is the default behavior.
+           <p> 
+            If sh=F no digits will show, but the
+            counter will still increment; instead of digits a transparent
+            1x1 GIF is displayed. The valid values for the Boolean parameter B
+            are Y, N, T, F, 1, or 0
+        </td>
+        <td align="left" valign=top>
+            sh=Y
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="df">df=data_file</a>
+        </td>
+        <td valign=top>
+            Datafile to store count
+        </td>
+        <td valign=top>
+            Specifies the name of the file for storing the count in. The
+            file must be allocated to you as was mentioned in the
+            "Authorizations" section above.  You can use df=random
+            to display a random number.
+            <p>
+            One special use of the parameter is df=RANDOM.  This returns a
+            random number using the fractional portion of the host's time
+            of day clock as a seed for the generator. Unlike all other
+            WWWcounter parameters, the file name provided is
+            case-sensitive, except for the value random. Or Random, or
+            rANDOM, etc. 
+        </td>
+        <td align="left" valign=top>
+            df=random
+            <br>
+            <i>if no datafile is specified</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="incr">incr=B</a>
+        </td>
+        <td valign=top>
+            Increment Count
+        </td>
+        <td valign=top>
+            Makes it possible to display the current count without
+            incrementing the count. This can be used to examine the count
+            for reporting or other purposes without adding to the count.
+            Valid values for the Boolean parameter B are Y, N, T, F, 1, or 0. 
+            <p>
+        </td>
+        <td align="left" valign=top>
+            incr=T
+            <br>
+            <i>Increment the counter</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="lit">lit=X</a>
+        </td>
+        <td valign=top>
+            Display literal
+        </td>
+        <td valign=top>
+            Makes it possible to display a given, predetermined string.
+            The valid values for the string X are digits, a,p,: and -
+        </td>
+        <td align="left" valign=top>
+            <i>None</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="negate">negate=B</a>
+        </td>
+        <td valign=top>
+            Negate the color
+        </td>
+        <td valign=top>
+            Makes it possible to negate the color of the counter digits.
+            Note that the Frame is exempted from negating.
+            Valid values for the Boolean parameter B are Y, N, T, F, 1, or 0. 
+        </td>
+        <td align="left" valign=top>
+            negate=F
+            <br>
+            <i>Do not negate</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign=top>
+            <a name="degrees">degrees=X</a><br>
+            or<br>
+            angle=X
+        </td>
+        <td valign=top>
+           Rotate X degrees 
+        </td>
+        <td valign=top>
+            Makes it possible to rotate the counter image X degrees. The
+            possible values of X are 90, 180, 270 and 360. Note 360 is
+            meaningless as the counter will come back to the original 0
+            degrees. 
+            <font color="#ff0000">Note:</font> Microsoft MS Explorer 
+            interprets &amp;degrees as the degree character (it's gotta be 
+            a bug in IE), so use angle to be safe.
+        </td>
+        <td align="left" valign=top>
+            degrees=270
+            <br>
+            With rotate=Y and without degrees=X
+            <br>
+            <i>rotate 270 degrees clockwise</i>
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign=top>
+            <a name="rotate">rotate=B</a>
+        </td>
+        <td valign=top>
+            Rotate On/Off
+        </td>
+        <td valign=top>
+            The Boolean value B turns on or off rotating. If you use
+            degrees=  setting, rotate is not needed.
+            Valid values for the Boolean parameter B are Y, N, T, F, 1, or 0. 
+        </td>
+        <td align="left" valign=top>
+            rotate=F
+            <br>
+            <i>Do not rotate</i>
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign=top>
+            <a name="xy">xy=x;y</a>
+        </td>
+        <td valign=top>
+            composite the counter image to a base image at the location 
+            x,y
+        </td>
+        <td valign=top>
+            When a base image is specified with <a href="#image">image</a>
+            parameter, the parameter xy can be used to composite the 
+            counter image on the 
+            base image at location x,y. x is positive towards right and y
+            is positive downward. The co-ordinate of the upper left corner
+            of the base image is 0,0). See also: <a href="#align">align</a>.
+        </td>
+        <td align="left" valign=top>
+            xy=1;1
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign=top>
+            <a name="align">align=X</a>
+        </td>
+        <td valign=top>
+            composite the counter/clock/countdown image with a base image 
+            and align the counter image.
+        </td>
+        <td valign=top>
+            This option can be used to composite the counter on a base 
+            image (specified with <a href="#image">image</a> with known 
+            width and height.
+            This way, you will be able specify the width and height of 
+            the counter image in the &lt;img src= tag while calling the 
+            counter. The implication is, if the counter is the first thing 
+            in a large table, the browser will not have to wait to 
+            calculate the width and height of the counter image before 
+            loading the rest. The valid value for the parameter align is
+            <b>topleft</b>, 
+            <b>topcenter</b>, 
+            <b>topright</b>, 
+            <b>midleft</b>, 
+            <b>midright</b>, 
+            <b>midcenter</b>,
+            <b>bottomleft</b>, 
+            <b>bottomcenter</b> and 
+            <b>bottomright</b>. The parameter
+            <a href="#offset">offset</a> can be used to specify the offset
+            in pixels from the edge of the base image.
+            
+            <b>Note</b>: <a href="#xy">xy</a>
+            parameter has higher precedence than align. Therefore, if both
+            xy and align is specified xy will take the precedence.
+            See also: <a href="#xy">xy</a>.
+        </td>
+        <td align="left" valign=top>
+            align=bottomcenter
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" valign=top>
+            <a name="offset">offset=N</a>
+        </td>
+        <td valign=top>
+            Offset of the counter image in pixels from the edge of the
+            base image while compositing the counter with an image.
+        </td>
+        <td valign=top>
+            The parameter offset is used with  parameter
+            <a href="#align">align</a> to specify the offset of the
+            counter image in pixels from the edge of the base image while
+            compositing the counter/clock image with an base image.
+            If align=topleft, the the offset is counted from the top and
+            left edge of the base image. If align=topcenter, the offset is
+            counted from the top edge of the base image. If align=topright,
+            the offset is counted from the top and right edge of the
+            base image. If align=midleft, offset is counted from the
+            left edge of the base image. If align=midcenter, offset is
+            ignored. If align=midright, offset is counted from the right
+            edge of the base image. If align=bottomleft, offset is counted
+            from the left and bottom edge of the base image. If
+            align=bottomcenter, offset is counted from bottom edge of the
+            base image. If align=bottomright, offset is counted from the
+            right and bottom edge of the base image.
+            The valid value for the paramter N is a positive integer.
+            See also: <a href="#xy">xy</a>.
+        </td>
+        <td align="left" valign=top>
+            offset=2
+        </td>
+    </tr>
+
+
+
+
+
+
+</table>
+<p>

@@ -1,0 +1,82 @@
+<#title>WWW Homepage Access Counter and Clock</#title>
+<center>
+<H3>WWW Homepage Access Counter and Clock!</H3>
+<!-- the page moved to www.fccc.edu on August-08-1996 -->
+        <table border=0 bgcolor="#000000" cellpadding=0 cellspacing=0>
+        <tr>
+            <td>
+                <table border=0 width="100%" cellpadding=3 cellspacing=1>
+                    <tr align="center">
+                        <td bgcolor="#99ccff" width="100%">
+                        <font color="#000000">
+For Unix, <a href="CountNT.html">NT/Win98</a>, OS/2, VAX VMS and Amiga
+                        </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </table>
+</center>
+
+
+<#include file="release.prehtml">
+
+<#include file="exec.prehtml">
+
+<#include file="toc.prehtml">
+
+<#include file="mirror.prehtml">
+
+<#include file="whatsnew.prehtml">
+
+<#include file="requirements.prehtml">
+
+
+<#include file="platforms.prehtml">
+
+<#include file="intro.prehtml">
+
+<#include file="features.prehtml">
+
+<#include file="dirstruct.prehtml">
+
+<#include file="digitstyles.prehtml">
+
+<#include file="download_link.prehtml">
+
+<#include file="compile_unix.prehtml">
+
+<#include file="compile_NT.prehtml">
+
+<#include file="test.prehtml">
+
+<#include file="howtocall.prehtml">
+
+<#include file="options.prehtml">
+
+<#include file="otherstyles.prehtml">
+
+<#include file="imagestrip.prehtml">
+
+<#include file="config.prehtml">
+
+<#include file="composite.prehtml">
+
+<#include file="examples.prehtml">
+
+<#include file="errorm.prehtml">
+
+<#include file="counterfaq_link.prehtml">
+
+<#include file="copyright.prehtml">
+
+<#include file="ack.prehtml">
+
+<#include file="hear.prehtml">
+
+<#include file="help.prehtml">
+
+<#include file="changelog_link.prehtml">
+
+<#include file="footer.prehtml">

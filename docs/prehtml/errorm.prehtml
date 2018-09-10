@@ -1,0 +1,18 @@
+<p>
+<A NAME="errm">
+<font size="+1"><b>Error Messages</b></font>
+</A>
+<blockquote>
+Count will try to return an image in any event. That is, even if it
+fails for some reason, it will write the error messages in GIF format.
+The text error messages also will be written to the counter log file defined
+with <B>LOG_FILE</B> in the directory defined with <B>LOG_DIR</B> in the
+config.h file. The program <b>Count-config</b> asked about these if you
+remember.
+<P>
+If you see any of these images, please check the Counter log file
+you defined with <B>LOG_DIR</B> and <B>LOG_FILE</B>. If the program could not
+create the log file, it will write the error messages to stderr. In that case
+if you configured your httpd server to write the log to a file, the error
+messages will be written to this file.
+</blockquote>

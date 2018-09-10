@@ -1,0 +1,109 @@
+$ make cfg
+(sh Gen-conf)
+    Welcome to the conf file generation procedure of Count 2.5
+
+    This program creates a workable conf file for your host only, you have
+    to edit it by hand if you want to add other hosts. The file will have
+    enough comments in it to help you out. You also have to hand edit it
+    if you want to use netmasks to mask out a entire network or a specific
+    range of hosts in a network.
+
+    First of all you must know your 
+        1) fully qualified domain name (FQDN), for example,
+            if your hostname is foo and your domain name is bar.com,
+            then your FQDN is
+            foo.bar.com
+
+        2) IP address of your host, for example, 
+            192.165.155.2 
+
+        3) If your host has any nickname defined, for example,
+            www.foo.com. Note, th nick name also has to be a FQDN.
+
+Continue [y|n]? y
+        
+    No Error checking will be done with your hostname, therefore,
+    you better make sure you are entering the fully qualified domain name.
+          
+* Enter your fully qualified domain name [no default]: abcd.foo.com
+
+    No Error checking will be done with your IP address, therefore,
+    you better make sure you are entering the correct IP address.
+
+* Enter your IP address [no default]: 131.249.1.100
+
+* Does your host have any nickname [y|n]:? y
+* Enter your host's nickname (FQDN) [no default]: www.foo.com
+    
+    Now you need to decide if you will allow the users to create datafiles
+    for them automatically. If you allow, the counter datafile will be
+    created for the user if it does not exist and a pre-determined counter
+    number will be inserted to it. If you do not allow, you have to create
+    the datafile for each user, provided that the data directory has proper
+    write permission.  
+
+    Allowing users to create datafile is very convenient, as you do not
+    have to be asked all the time when someone decides to use the counter.
+    But the dark side of this is, anyone will be able create datafiles in
+    the data directory. The decision is yours.
+
+* Do you want to allow automatic file creation [[y|n]? n
+
+    Now you need to decide if you want to compile the program in strict   
+    mode. If you compile the program in strict mode, the browsers which
+    do not return the environment variable HTTP_REFERER, will not be
+    served, that is no access hit will be recorded, no time or date
+    will be displayed. Instead, a string 888888 will be displayed. 
+    
+    The strict mode ensures that your counter data file can not be messed
+    by accessing the counter remotely from a browser which does not return
+    that variable. Note, good browsers like netscape returns this
+    variable. Other browsers e.g. Mosaic does not return this variable in
+    IMG GET method at this time.  This strict mode is experimental at this
+    time!
+
+* Do you want the program to run in strict mode [[y|n]? y
+* Do you want to ignore access hits from your own host [y|n]? n
+
+    Ok, do you want the users to use the file rgb.txt for color name
+    lookup? It is very inefficient to search this file every time the
+    web page is loaded. If you answer yes, the color name
+    will be looked up and used. If you answer no, the color will be
+    looked up but instead of the counter image, the RGB value will
+    be displayed and the user will be asked to use the RGB value
+    instead. This will prevent users to use this file. However,
+    the convenience of allowing to use rgb.txt file is that color name e.g,
+    red, gold etc.  can be used instead of cryptic red, green and blue
+    components of the color.
+    
+* Allow using the rgb.txt file [y|n]? y
+
+    You can decide if you want to allow reload count in your site.
+    When a visitor reloads a page and if you decided to count reload,
+    the counter will increment with each reload. It is a good idea
+    to ignore reload count as it minimizes remote abuse of the coutner.
+    Howerver, there may be situation when you will have to count reload,
+    for example if visitors are coming through a proxy server. If you 
+    decide to count reload, your users will have choice to ignore or
+    count reload for their counters with "reload=T or F" options.
+
+* Do you want to count reload [[y|n]? n
+
+    You can decide if you want to log the counter error messages 
+    or warning messages to the log file. If you are concerned about disk
+    space, answer n to the question. 
+
+* Do you want to log error messages [[y|n]? y
+    You can decide if you want to show error messages to the browsers.
+    The counter error messages are verbose and may reveal information about
+    the system (e.g. full path of the data file or config file) in case of
+    error. If you are concerned with privacy or simply don't care to show
+    error messages to browsers (you are confident that the coutner works
+    perfectly), then answer n to the question. If you answer n, then then
+    if there is an error or the access is denied, the visitor will see the
+    broken image (browser default).
+
+* Do you want to show error messages to browsers [[y|n]? y
+
+    Created conf file "count.cfg"
+    Please look at it, you might want to edit it!

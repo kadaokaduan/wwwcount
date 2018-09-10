@@ -1,0 +1,563 @@
+#!/bin/sh
+###
+# $Revision: 1.1.1.1 $
+# $Date: 2001/03/19 01:59:50 $
+#
+# Configure script for Count 1.2
+# muquit@semcor.com
+# November 23, 1995
+#
+# This script generates the following files from user input
+#   config.h
+#   Makefile
+#   combine/Makefile
+#
+# wrote this script with bash functions, then realized it will  not be very
+# portable.. rewrote: Nov 25, 1995
+#
+###
+
+trap 'echo '';echo "Interrupt detected..exiting";rm -f "./Config.tmpl" 2>/dev/null;rm -f "./.alfcf" ;rm -f "./strict" 2>/dev/null;echo '';exit 1' 1 2 3 15
+
+Tmpl="./Config.tmpl"
+CgiBinDir="/usr/local/etc/httpd/cgi-bin"
+
+if [ ! -f "./VERSION" ] 
+then
+cat << EOV
+
+        The file ./VERSION does not exist!
+        aborting!
+
+EOV
+        exit 1
+fi
+
+AUTHOR="ma_muquit@fccc.edu"
+Version=`cat ./VERSION`
+Basedir="wwwcount$Version"
+ConfigH="src/config.h"
+BaseDir="/usr/local/etc/Counter"
+ConfigDir="$BaseDir/conf"
+ConfFile="count.cfg"
+DigitDir="$BaseDir/digits"
+DataDir="$BaseDir/data"
+LogDir="$BaseDir/logs"
+ext=`echo $Version | sed 's/\./_/g'`
+LogFile="Count$ext.log"
+RgbFile="./data/rgb.txt"
+
+#
+# from php/fis install script
+#
+if echo '\c' | grep -s c >/dev/null 2>&1
+then
+    n='-n'
+    c=''
+else
+    n=''
+    c='\c'
+fi
+
+Pwd=`pwd`
+checkbd=`basename $Pwd`
+
+###
+# check if we'r inside valid directory
+#    if [ $checkbd != $Basedir ]
+#    then
+#cat<<EOR2
+#
+#************************************************************************
+#    Your current working directory must be $Basedir 
+#    in order configure the counter!
+#    Wrong current working directory: $checkbd
+#************************************************************************
+#
+#EOR2
+#    exit 2
+#    fi
+
+
+##
+# cleanup
+###
+if [ -f "./config.h" ]
+then
+    rm -f "./config.h"
+fi
+
+##
+# initial screeen
+###
+cat << EOSI
+    Welcome to the configuration procedure of Count $Version
+    ---------------------------------------------------
+
+    o You must know where your system keeps CGI programs (cgi-bin directory)
+      It is necessary to generate the install program.
+      This directory must exist. If this directory does not exist, the
+      configuration procedure will Abort!
+
+    o You have to decide a directory, where you will keep all counter related
+      stuff. This directory will have other directories inside. Default
+      values will be supplied, press Return key to accept the default value.
+      
+      Try to Accept the default value, it will make your life much easier, 
+      because not much error checking is done to verify input.
+
+    During installation, the directories will be created for you
+    if they do not exist and if you have the permission to do so.
+    ++
+EOSI
+
+
+###
+echo $n "Continue [y|n]$c? "
+read answer
+
+if [ .$answer = . ]
+then
+    answer=x
+fi
+    until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ]
+    do
+        echo $n "Continue [y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+
+    case $answer in
+        y|Y)
+####################
+# Ask for cgi-bin     --starts
+###
+cat <<EOB
+
+    You need to enter the full path of the directory where you system
+    keeps the CGI programs. 
+
+EOB
+# it used to be dierctory as you see :)
+# thanks to ashley@photocraftlab.com 
+#echo $n "*cgi-bin dierctory [$CgiBinDir]:$c "
+
+echo $n "*cgi-bin directory [$CgiBinDir]:$c "
+read newpath
+if [ .$newpath != . ]
+then
+    CgiBinDir=$newpath
+fi
+# check if the directory exist
+
+if [ ! -d $CgiBinDir ]
+then
+cat <<EOCG  
+
+    WARNING:
+    Directory "$CgiBinDir" does not exist! If you do not know where your
+    system keeps CGI programs, find it out first. If you did not configure
+    your http server yet, please do so and come back!
+
+    Presss Control-C to exit, any key to continue
+
+EOCG
+    read foo
+fi
+
+####################
+# Ask for cgi-bin     --ends
+###
+####################
+# Ask for basedir     --starts
+###
+cat <<EOB
+
+    You need to enter the base directory of the counter related stuff.
+    It must be a absolute path.
+
+EOB
+echo $n "*Base directory [$BaseDir]:$c "
+read newpath
+if [ .$newpath != . ]
+then
+    BaseDir=$newpath
+    ConfigDir=$BaseDir/conf
+    DigitDir=$BaseDir/digits
+    DataDir=$BaseDir/data
+    LogDir=$BaseDir/logs
+fi
+
+#
+# base directory must start with /
+#
+if echo "$BaseDir" | grep -s "^/" >/dev/null 2>&1
+then
+    x="ok"
+else
+    echo 
+    echo "Base directory must be a absolute path ...exiting"
+    echo "please try again"
+    echo 
+    exit 0
+fi
+
+####################
+# Ask for basedir     --ends
+###
+####################
+# Ask for configdir     --starts
+###
+cat <<EOB
+
+    You need to enter the name directory of the configuration file.
+
+EOB
+echo $n "* Config directory [$ConfigDir]:$c "
+read newpath
+if [ .$newpath != . ]
+then
+    ConfigDir=$newpath
+fi
+
+####################
+# Ask for configdir     --ends
+###
+####################
+# Ask for configfile     --starts
+###
+cat <<EOB
+
+    You need to enter the name of the configuration file. Note, it
+    is not the path of the file, just the name. No / is allowed in the
+    name.
+    This file contains the information about
+
+        o if you want to ignore access from certain hosts
+        o host access authentication
+
+    You will create this file later by running the program "Gen_conf".
+
+EOB
+echo $n "* Name of the configuration file [$ConfFile]:$c "
+read newpath
+if [ .$newpath != . ]
+then
+    ConfFile=$newpath
+fi
+if echo "$ConfFile" | grep -s "^/" >/dev/null 2>&1
+then
+    echo 
+    echo "ConfFile name can not have / in it"
+    echo "exiting.. please try again"
+    echo 
+    exit 0
+fi
+
+####################
+# Ask for configfile     --end
+###
+####################
+# Ask for datadir     --starts
+###
+cat <<EOB
+              
+    You need to enter the directory of the counter data file.
+    
+EOB
+echo $n "*Data directory [$DataDir]:$c "
+read newpath
+if [ .$newpath != . ]
+then
+    DataDir=$newpath
+fi  
+####################
+# Ask for datadir     --ends
+###
+
+
+
+
+
+
+####################
+# Ask for digitdir     --starts
+###
+cat <<EOB   
+
+    You need to enter the directory of digits
+
+EOB
+echo $n "*Digits directory [$DigitDir]:$c "
+read newpath
+if [ .$newpath != . ]
+then
+    DigitDir=$newpath
+fi
+
+####################
+# Ask for digitdir     --ends
+###
+
+####################
+# Ask for logdir     --starts
+###
+cat <<EOB   
+
+    You need to enter the directory of the Log file.
+
+EOB
+echo $n "*Log directory [$LogDir]:$c "
+read newpath
+if [ .$newpath != . ]
+then
+    LogDir=$newpath
+fi
+####################
+# Ask for logdir     --ends
+###
+####################
+# Ask for logfile     --starts
+###
+cat <<EOB
+
+    You need to enter the name of the Log file. Note, it just a name, not
+    the path. No / is allowed in the name.
+    This file hold the error messages of the counter. It also
+    logs if someone tried to access your counter remotely.
+
+EOB
+echo $n "* Name of the log file [$LogFile]:$c "
+read newpath
+if [ .$newpath != . ]
+then
+    LogFile=$newpath
+fi
+if echo "$LogFile" | grep -s "^/" >/dev/null 2>&1
+then
+    echo 
+    echo "LogFile can not have a / in the name"
+    echo "exiting.. please try again"
+    echo 
+    exit 0
+fi
+
+####################
+# Ask for logfile     --ends
+###
+        ;;
+        n|N)
+            echo "Exiting..Better luck next time!"
+            exit 1
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+echo ""
+echo "Your configuration:"
+echo "----------------------------------------------------------------"
+    echo "CgiBinDir=$CgiBinDir"
+    echo "BaseDir= $BaseDir"
+    echo "DigitDir=$DigitDir"
+    echo "ConfDir= $ConfigDir"
+    echo "ConfFile=$ConfFile"
+    echo "DataDir=$DataDir"
+    echo "LogDir=$LogDir"
+    echo "LogFile=$LogFile"
+echo "----------------------------------------------------------------"
+
+echo $n "Everything looks OK [y|n]$c? "
+read answer
+
+if [ .$answer = . ]
+then
+    answer=x
+fi
+    until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ]
+    do
+        echo $n "Everything looks ok [y|n]$c? "
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+
+    case $answer in
+        y|Y)
+        echo "Great! creating header file $ConfigH"
+###
+# create header file --starts
+###
+d=`date`
+cat <<EOH>$ConfigH
+#ifndef COUNT_CONFIG_H
+#define COUNT_CONFIG_H 1
+
+/*
+** This file is automatically generated by the Count-config script 
+** Count-config
+** Counter Version: $Version by $AUTHOR
+** created on: $d
+**
+**  If you edit this file, you better make sure you know what your are doing 
+*/
+EOH
+echo "#define CONFIG_DIR  \"$ConfigDir\"" >> $ConfigH
+echo "#define CONFIG_FILE \"$ConfFile\"" >> $ConfigH
+echo "#define DATA_DIR    \"$DataDir\"" >> $ConfigH
+echo "#define DIGIT_DIR   \"$DigitDir\"" >> $ConfigH
+echo "#define LOG_DIR     \"$LogDir\"" >> $ConfigH
+echo "#define LOG_FILE    \"$LogFile\"" >> $ConfigH
+
+cat<<EOX>>$ConfigH
+
+/*****************************************************************************
+* Defaults parameters not supplied in calling.
+* Change em here if you insist...
+*****************************************************************************/
+/*
+** Max digitis in output 
+*/
+#define DEFAULT_MAXDIGITS           6
+
+/*
+** left padding with zeros, 0 indicates no left padding
+*/
+#define DEFAULT_LEFTPAD             True
+
+/*
+** Default frame thickness, 0 indicates no frame
+*/
+#define DEFAULT_FRAME_THICKNESS     5
+
+/*
+** default frame color is #a7c2ed
+*/
+#define DEFAULT_FRAME_RED           100
+#define DEFAULT_FRAME_GREEN         139
+#define DEFAULT_FRAME_BLUE          216
+
+/*
+** default opaque color. Do not change this.
+*/
+#define DEFAULT_OPAQUE_RED          0
+#define DEFAULT_OPAQUE_GREEN        255
+#define DEFAULT_OPAQUE_BLUE         0
+
+/*
+** default pen color
+*/
+#define DEFAULT_PEN_RED             255
+#define DEFAULT_PEN_GREEN           119
+#define DEFAULT_PEN_BLUE            0
+/*
+** use this ft if we get frgb only
+*/
+#define FRGB_IMPLIED_FT             4
+
+/*
+** default transpareny
+*/
+#define DEFAULT_TRANSPARENCY        False
+
+/*
+** default transparent color is black
+*/
+#define DEFAULT_TRANSPARENT_RED     0
+#define DEFAULT_TRANSPARENT_GREEN   0
+#define DEFAULT_TRANSPARENT_BLUE    0
+
+/*
+** use this tr, if we get trgb only
+*/
+#define TRGB_IMPLIED_TR             1
+
+/*
+** default initial counter value
+*/
+#define DEFAULT_STARTCOUNT          1
+
+/*
+** show count or not
+*/
+#define DEFAULT_SHOWCOUNT           1
+
+/*
+** this df means, use rand 
+*/
+#define DF_FOR_RANDOM               "RANDOM"
+
+/*
+** make rand the default too
+*/
+#define DEFAULT_DATAFILE            "RANDOM"
+
+/*
+** default digit style, my green LED, digits/A
+*/
+#define DEFAULT_DIGITS_STYLE        "A"
+
+/*
+** & or | separate params
+*/
+#define PARAM_DELIMITERS            "|&"
+
+/*
+** This specifies a file listing RGB values mapped to names.
+** If not defined, no attempt to use RGB names is made.  If you are not sure,   
+** just leave this be--it is okay if the file does not exist.
+**
+** When RGB_MAPPING_ISERROR is set to 1, an error is returned when RGB name
+** value is used, but it shows the corresponding RGB triplet.  This is done
+** so RGB names can be looked up, but yet not allow users to make constant
+** use of this very ineffiecient lookup.
+*/
+#define RGB_MAPPING_DICT            "$BaseDir/rgb.txt"
+EOX
+
+cat<<EOXXX>>$ConfigH
+/*
+** End of parameter defaults
+*/
+#endif /* COUNT_CONFIG_H*/
+EOXXX
+
+###
+# create header file --ends
+###
+##
+# create template for install program --starts
+##
+echo "creating variables template file $Tmpl for the install program.."
+
+echo "CGIBIN_DIR=\"$CgiBinDir\"" > $Tmpl
+
+echo "BASE_DIR=\"$BaseDir\"" >> $Tmpl
+echo "CONFIG_FILE=\"$ConfFile\"" >> $Tmpl
+echo "CONFIG_DIR=\"$ConfigDir\"" >> $Tmpl
+echo "DIGIT_DIR=\"$DigitDir\"" >> $Tmpl
+echo "DATA_DIR=\"$DataDir\"" >> $Tmpl
+echo "LOG_DIR=\"$LogDir\"" >> $Tmpl
+echo "LOG_FILE=\"$LogFile\"" >> $Tmpl
+echo "RGB_FILE=\"$RgbFile\"" >> $Tmpl
+echo "RGB_DIR=\"$BaseDir\"" >> $Tmpl
+##
+# create template for install program --ends
+##
+        ;;
+        n|N)
+            echo "Exiting..Better luck next time!"
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+# End of configuration script

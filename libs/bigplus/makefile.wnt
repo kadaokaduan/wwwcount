@@ -1,0 +1,34 @@
+#
+# Makefile for MS Visual C++
+# ma_muquit@fccc.edu
+# Nov-02-1997
+#
+
+CC= cl
+DEFS=  -DSYS_WIN32 -DSTRICT_MODE=1 -DHAVE_STRING_H=1 -DHAVE_FCNTL_H=1
+AR= ar cq
+RANLIB= ranlib
+
+INCLUDES=  -I. -I..
+
+# replace -O with -g in order to debug
+
+DEFINES= $(INCLUDES) $(DEFS) 
+CFLAGS=  $(cvars) $(cdebug) -nologo -G4 $(DEFINES)
+#CFLAGS=  $(cvars) $(cdebug) -nologo /W4 $(DEFINES)
+
+SRCS = bigplus.c
+OBJS = bigplus.obj
+
+.c.obj:
+	$(CC) $(CFLAGS) -c $< -Fo$@
+
+all: bigplus.lib
+
+bigplus.lib: $(OBJS)
+	link /lib /OUT:bigplus.lib $(OBJS) 
+
+bigplus.obj: bigplus.h
+
+clean:
+	del $(OBJS) bigplus.lib *.bak

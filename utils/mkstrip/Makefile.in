@@ -1,0 +1,32 @@
+#######
+# for unix
+# Makefile template for mkstrip, program which makes a strip of image from
+# combining several images
+#######
+#
+# ../libs was missing in 2.4, reported by Heicher" <hexular@concentric.net>
+# Oct-21-1997
+#
+INCLUDES= -I. -I../../libs/combine -I../../src
+CC= @CC@
+DEFS= @DEFS@
+DEFINES= $(INCLUDES) $(DEFS) -D__USE_FIXED_PROTOTYPES_
+CFLAGS= -O $(DEFINES) 
+PROGNAME=mkstrip
+
+LIBS= ../../libs/combine/libCombine.a
+
+OBJS= mkstrip.o
+
+.c.o:
+	rm -f $@
+	$(CC) $(CFLAGS) -c $*.c
+
+all: $(PROGNAME)
+
+$(PROGNAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(PROGNAME) $(OBJS) $(LIBS)
+	cp $(PROGNAME) ../../bin
+
+clean:
+	rm -f *.o $(PROGNAME) core

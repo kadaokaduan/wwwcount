@@ -1,0 +1,22 @@
+<A NAME="ackn">
+<font size="+1"><b>Acknowledgments</b></font>
+</A>
+<blockquote>
+Thanks to John Cristy for <A
+HREF="http://www.wizards.dupont.com/cristy/ImageMagick.html">ImageMagick</A>.
+I took many routines from ImageMagick for the GIF image combining library.
+I borrowed the font array and some code from 
+<a href="http://www.boutell.com/gd/gd.html">gd library</a>. Thanks to 
+<a href="http://sunsite.unc.edu/boutell/index.html">Tom Boutell</a>.
+Thanks to Philip A. Nelson (phil@cs.wwu.edu) for writing GNU bc. I took a 
+portion of the library to add two big numbers. Thanks to
+<a href="http://www.digicron.com/jordanr/">Jordan Russell</a> for Inno Setup.
+I used it to create the self extracting Counter binary for NT.
+
+Special thanks to 
+<A href="http://eies.njit.edu/~kevin/">Kevin J. Walsh</a>. Without
+Kevin, the counter won't be in the current stage. Kevin did the major
+code overhauling in Count version 2.0.
+Thanks to all of you who showed interest in the counter program. I had fun
+writing it.
+</blockquote>

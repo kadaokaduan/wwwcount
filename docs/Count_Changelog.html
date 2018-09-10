@@ -1,0 +1,518 @@
+<html>
+<!-- Document: ../Count_Changelog.html, automatically preformated by
+     htmlpp version 3.99905: http://www.eleves.ens.fr/home/nthiery/htmlpp/
+     from changelog.prehtml on Wed Jan 12 14:39:04 2000.
+     Do not edit ! -->
+<head>
+</head>
+<body bgcolor="#ffffff">
+<A NAME="chl">
+<font size="+1"><b>ChangeLog</b></font>
+</A>
+<br>
+If you contributed or suggested something and if your name is not
+here, please drop me a line and get the credit.
+<p>
+<b>Count 2.5</b>
+<p>
+<li> LZW compression in GIF is off by default.<br>
+(Nov-11-1999)
+<p>
+<li> For proxy servers, REMOTE_ADDR is always the same. So if
+<a href="Count.html#conf">count_reload=No</a> in the config file, the
+counter would never inrement. Juha Ojaniemi, tiedot@daous.fi suggested that
+some proxy servers set a variable HTTP_X_FORWARDED_FOR. So I check for this
+var first before REMOTE_ADDR.<br>
+(Aug-18-1999)
+
+<li> Added a new parameter
+<a href="Count.html#cdf">cdf</a> to specify a countdown from date. That is
+difference between two dates can be calculated if you specify the target
+date as well with the paramter <a href="Count.html#cdt">cdt</a>
+Requested by  droid, droid@one.net.<br>
+(Jul-17-1999)
+<p>
+<li>
+<a href="http://cad.zju.edu.cn/home/zhaoyb/muquit_counter.htm">
+  Documentation in Chinese</a>
+ (Thanks to <a href="http://cad.zju.edu.cn/home/zhaoyb">Zhao YouBing</a>)<br>
+(Jul-09-1999)
+
+<p>
+<li> mystrncasecmp() function was mistakenly had ANSI definition.<br>
+(Apr-26-1999)
+<p>
+<li>Count 2.5 final release on Mar-01-1999.
+<p>
+<li> If configuration file was not readable or if there's an error found
+while reading the config file, no error message was displayed telling that.
+Thanks to <i>Darren_WONG@ura.gov.sg</i> for reporting it.
+(Feb-08-1999)
+<p>
+<li>There was a bug in assertSegarray(). If the image strip had only digits
+(0-9), and if 
+<a href="Count.html#display">display</a>=clock was specified, the program 
+was core dumping due to accessing an un-initialized array for the colon image
+segment. Reported by
+Daisuke Aoyama, <i>jack@st.rim.or.jp</i> and Andy Machan, 
+<i>hostmaster@unitedbank.net</i> (almost at the same time, very interesting!).
+<br>
+(Feb-08-1999)
+<p>
+<li>If hour in clock is &lt; 10, left pad it with zero. This is the default
+behavior now.  To turn off zero padding use <a href="Count.html#pad">pad</a>=F. 
+Suggested by <a href ="http://vikki.oz.net/ktkasara">Kira Anastasia</a>.<br>
+(Feb-08-1999)
+<p>
+<li> There was a bug in implied Year 2000 countdown code. Thanks to
+Craig Brockmeier, <i>craig@seurat.ppco.com</i>.<br>
+(Feb-08-1999)
+<p>
+<li><a href="Count.html#conf">strict_mode</a> was getting ignored from 
+the count.cfg file. It was always ON.  Thanks to  Sergey Drazhnikov, 
+<i>swd @parad.ru</i>.<br>
+(Feb-01-1999)
+<p>
+<li> some "make" commands were not working on systems with no "." in path.
+Thanks to  <A href="http://eies.njit.edu/~kevin/">Kevin J. Walsh</a>.
+<br>
+(Jan-29-1999).
+<p>
+<li> added a new <a href="Count.html#digs">digit style</a> cdr (countdown
+red). Contributed by <a href="http://www.tetrahedron.net/">Mike Casper</a>.
+<br>
+(Jan-29-1999).
+<p>
+<li> Date format was not working, fixed. Thanks to Peter Worboys
+<i>pworboys@awa.com.au</i>.<br>
+(Jan-27-1999, 5:30 PM)
+<p>
+<li> To show full year in the date, in addition to the option 
+<a href="Count.html#fy">fy</a>, you can specify YYYY with the option
+<a href="Count.html#dformat">dformat</a>. For example,
+dformat=MMDDYYYY is equivalent to dformat=MMDDYY&amp;fy=T. Suggested by
+Peter Worboys <i>pworboys@awa.com.au</i><br>
+(Jan-27-1999)
+<p>
+<li> Countdown can be calculated in reference to any timezone with the
+parameter <a href="Count.html#timezone">timezone</a>. It will allow you to 
+show the 
+<a href="Count.html#display">countdown</a> to Year 2000 from GMT instead 
+of local web server time for example. Suggested by
+Eileen Wharmby, <i>ewharmby@amdragon.com</i>.<br>
+(Jan-24-1999)
+<p>
+<li> Wrote a new mystrncasecmp() routine, using in parsing the QUERY_STRING
+parsing.<br>
+(Jan-21-1999)
+<p>
+<li> I specified some dates as 1998 instead of 1999. Thanks to
+Pete Tedder, <i>tedder@umds.ac.uk</i>.<br>
+(Jan-21-1999)
+<p>
+<li> Added a new option <a href="Count.html#align">align</a> to align the 
+counter image on the base image. This option can be used to composite the
+counter on a base image with known width and height (may be with align=right).
+This way, you will be able specifiy the width and height of the counter image
+in the &lt;img src= tag while calling the counter. The implecation is, if the
+counter is the first thing in a large table, the browser will not have to wait 
+to calculate the width and height of the counter image before loading the
+rest. Suggested by 
+    <a href="http://www.interlog.com/~sarwat">Sarwat Khan</a>.<br>
+(Jan-17-1999)
+<p>
+<li> some security fix.<br>
+(Jan-21-1999)
+<p>
+<li> Binary release for NT is done.  There was no need for a single line 
+of source code change. So, if you are on Unix, do not need to update.
+<br>
+(Jan-11-1999)
+<p>
+<li> The counter option show_error_messages_to_browsers in 
+<a href="Count.html#conf">count.cfg</a> was not working, fixed.<br>
+(Jan-06-1999, 7:11 PM)
+<p>
+<li> 
+A debug routine which prints the contents of count.cfg to stderr was not
+taken out, by accident. So if you ran the counter on an apache web server,
+you would have seen the content of the count.cfg file in the error_log with
+each invocation of the counter. If you ran a netscape web server, you would
+have seen a broken image as netscape server merges
+stderr with stdout resulting invalid MIME header. Thanks to
+<a href="http://www.lisp.com.au/">Andrew Chung</a>.<br>
+(Jan-06-1999)
+
+<p>
+<li> Compilation instruction was wrong. Thanks to 
+     <a href="http://www.lisp.com.au/">Andrew Chung</a>.<br>
+     (Jan-04-1999).
+    
+<p>
+<li> Released on Jan-03-1999.
+<p>
+<li> The format of the <a href="Count.html#conf"> configuration</a>
+file is changed. The file format is similar to MS INI files.
+<br>
+(Dec-27-1998).
+<p>
+<li> The site admin can decide if she/he wants to show the counter error 
+messages to the visitors by specifying a keyword and value 
+(show_error_messages_to_browsers=Yes or No) in the <a href="Count.html#conf"> 
+configuration file</a> in the [options] section.
+<br>
+(Dec-27-1998)
+
+<p>
+<li> Full year can displayed in date if the parameter 
+<a href="Count.html#fy">fy</a> is used. This feature was requested by
+Dave Low, davel@suppdb.bt.co.uk.
+By the way, the program was year 2000 safe
+even before that.<br>
+(Dec-20-1998)
+
+<p>
+    <li> Option to show the "from" date and time of the countdown.<br>
+    (Dec-19-1998)
+<p>
+    <li> The counter can be composited to a image to a specific x,y location.
+    <br>
+    (Dec-19-1998)
+<p>
+    <li> Reload ignore/count is a configurable option in 
+    <a href="Count.html#conf">count.cfg</a> file.<br>
+    (Dec-13-1998)
+<p>
+<li>
+Data file format is changed. Now the data ends with $
+and the data is significant upto the first $ sign. No need to use
+ftruncate() anymore. It was kind of risky, if the system was out of 
+diskspace, data file was zero'd out. It will also help with systems where
+ftruncate() is not available. Please read 
+<a href="Count_FAQ.html#q11">FAQ Question# 11</a> for details.
+<br>
+(Dec-13-1998)
+
+<p>
+    <li> Added more information to the documentation.
+    (Dec-13-1998)
+<p>
+    <li> Countdown to a specific date from current time.<br>
+    (Dec-13-1998)
+<p>
+<b>Count 2.4</b>
+<br> 
+    <li> Thanks to <a href="http://avoca.vicnet.net.au/~gallifrey/">
+    Daniel Klein</a> for correcting lots of mistakes in the documentation.
+    <br>
+     (Sep-14-1998).
+<p>
+    <LI> wwwcount mailing list created.  Send a request message to
+    <code>wwwcount-request@pcraft.com</code> with '<code>SUBSCRIBE
+    your@email.address.com</code>' in the body of your message
+    (no subject is needed). Thanks to Ashley M. Kirchner,
+    <i>ashley@photocraftlab.com</i>.<br>(July-14-1998).
+
+<p>
+    <li> Count-install is changed. If you're installing as root and specify the
+    user and group the web server runs as, the install program will change
+    the ownership and group of the datafile and the log directory to that user
+    and group only. Before everything was owned by the user, which is not
+    necessary.<br>
+    (May-09-1998).
+
+<p>
+    <li> bigplus library was called without initializing properly. I got some
+reports that on certain platforms, counter increments by 1000 sometimes.
+This should fix it. <br>(Apr-26-1998).
+<p>
+    <li> Thanks to <a href="http://edmonds.home.ml.org">Robert Edmonds </a>
+    and Muhammad Riza <i>cadmandu@cbn.net.id</i>
+    for explaining the mystery of IE 4.01 and gzip compressed files with .gz
+    extension.<br>
+    (Mar-25-1998).
+<p>
+    <li> Added <b>valign=top</b> to the options table, it looks nicer now.
+    Suggested by  m.c. schraefel<i>mschrae@uvvm.uvic.ca</i>.<br>
+    (Jan-03-1998)
+<p>
+    <li> Added the FAQ about virtual servers.<br>
+    (Jan-03-1998).
+<p>
+    <li> The source distribution has VMS support now, that means, the source
+    can be compiled on Unix, NT and VMS. VMS port is done
+    by Phil Ottewell <i>phil@pottsoft.demon.co.uk</i>.<br>
+    (Nov-30-1997).
+<p> 
+    <li> People running virtual hosts can list only there IP addresses 
+    instead of having to add each virtual domain name to cfg file. Can be
+    activated the code at compile time with the flag -DUSE_DNS at
+    src/Makefile.in. Patch sent by Sean Reifschneider,
+    <i>jafo@tummy.com</i>.<br>
+    (Nov-22-1997).
+
+<p>
+    <li> Count-config was not working properly. Thanks to 
+    Ashley M. Kirchner, <i>ashley@photocraftlab.com</i>.<br>
+    (Nov-22-1997).
+
+<p>
+    <li> It was reported that counter sometime leaves  zero size datafiles.
+    Now, before calling ftrucate(), check if there's anything to write.
+    truncate only if there's something to write. Thanks to
+    xsw@ornl.gov, <i>Brian S. Wallace</i>.<br>
+    (Nov-21-1997).
+
+<p>
+    <li> mkstrip directory is moved from utils to utils/mkstrip.<br>
+    (Nov-15-1997).
+
+<p>
+    <li> The colon digit in digit style D was not black. Thanks to
+    Engler, Eric, <i>englere@smtps.saia.af.mil</i>.<br>
+    (Nov-13-1997).
+
+<p>
+    <li> A bug in Count-install script showed up due to the change in source
+    directory structure. The location of Count.cgi was hard coded at the
+    current working directory. Thanks to Chris Bowlby 
+    <i>015940b@dragon.acadiau.ca</i>.<br>
+    (Nov-11-1997).
+
+<p>
+    <li> to_str in safeStrcpy() was not getting NULL terminated all the
+    time. <i>mhpower@mit.edu</i><br>
+    (Nov-10-1997).
+
+<p>
+    <li> More security patches by Matt Power, <i>mhpower@mit.edu</i>. It 
+    was possible to overflow some static buffers used in <code>sprintf</code>.
+    <br>
+    (Nov-09-1997).
+
+<p>
+    <li> Changes in source code structure. The main source has been moved
+    to <code>src</code> directory. A toplevel Makefile is provided.<br>
+    (Nov-07-1997).
+
+<p>
+    <li> The users who are getting "Source buffer is NULL in safeStrcat()"
+    should be fixed now. Thanks to Wincom Administrator,
+    <i>admin@wcis.com</i>.<br>
+    (Nov-07-1997, 11:25 PM EST)
+
+<p> 
+    <li> Some security patches by  Matt Power, <i>mhpower@mit.edu</i>.
+    It was possible to overflow some static buffers.<br>
+    (Nov-07-1997).
+
+<p> 
+    <li> There were some typos in Gen-conf and parse.c. Thanks to
+    Craig Brockmeier, <i>craig@picasso.ppco.com</i>.<br>
+    (Nov-05-1997).
+
+<p>
+    <li> A malloc bug was in utils.c. Thanks to Steven D. Chen,
+    <i>steven.d.chen@boeing.com</i>.<br>
+    (Nov-05-1997).
+
+<p>
+    <li> Implementation of safeStrcat() was incorrect. patch sent by 
+    Matt Power, <i>mhpower@mit.edu</i>.<br>
+    (Nov-03-1997).
+
+<p>
+    <li> If "image" parameter is used and no datafile is specified, ignore
+    counting silently.<br>
+    (Nov-02-1997).
+
+<p>
+    <li> "Reload Ignore" feature can be turned off at compile time by
+    defining the directive COUNT_IGNORE in src/Makefile.<br>
+    (Nov-01-1997).
+
+<p>
+    <li> If the content of the datafile was 0, IP as not getting added to 
+    the content at all. <br>
+    (Oct-30-1997).
+
+<p>
+    <li> If QUERY_STRING is empty, it was not showing the proper error
+    message. Thanks to Mark Gilmore, <i>mark@smtek.com</i>.<br>
+    (Oct-30-1997).
+
+<p>
+    <li> Hostnames in auth block were case sensitive. Patch sent by
+    Takeshi OKURA, <i>okura@osa.ncs.co.jp</i>.<br>
+    (Oct-30-1997).
+
+<p>
+    <li> There was a bug in date display in 24 hr format with "tformat=24". 
+    I don't remember who reported it.
+    <br>(Oct-28-1997).
+
+<p>
+    <li> Some unnecessary include headers were left in bigplus.c. 
+     Compilation was
+    failing on FreeBSD. Thanks to Greg King ,<i>king@c-com.net</i>.<br>
+    (Oct-25-1997)
+
+<p>
+    <li> It was possible to go up directories with dd= parameter. Thanks to
+    Pauli Ojanpera, <i>ojapa@japo.fi</i>.
+    <br>
+    (Oct-21-1997)
+
+<p>
+    <li> Gen-conf was creating wrong count.cfg file about rgb.txt.
+    Thanks to Bill O'Neill, <i>woneill@pobox.com</i>.
+    <br>
+    (oct-21-1997)
+
+<p>
+    <li> Makefile.in in utils directory was wrong. Thanks to
+    Heicher, <i>hexular@concentric.net</i>.
+    <br>
+    (Oct-21-1997)
+<p>
+    <li> comma=T used to core dump on Solaris 2.5. patch sent by
+    James Burton, <i>jamesb@aone.com.au</i>
+    <br>
+    (Oct-21-1997)
+<p>
+    <li> Meaning of BLOCK 3 of the count.cfg file differers with that of
+    Count 2.3. So if you're using an older config file, change the boolean
+    in this block.
+<p>
+<b>Count 2.3</b>
+<br>
+    <li>Buffer overflow vulnerabilities are fixed. They are very quick fix
+    and I might have overlooked something. Please let me know. There was a
+    bug with image= parameter related to relative path. It's fixed as well
+    . These fixes only apply to the source distribution. The binary
+    distributions of other platforms still have these bugs. (Oct-17-1997)
+<p>
+<b>Count 2.2</b> (<i>January 16, 1996</i>)
+<br>
+<li> There was a logic problem in determining AM and PM. Thanks to
+(<i>stephen@txdirect.net</i>). 01/18/96
+<p>
+<li> Strict mode (detect if browser returns HTTP_REFERER) is a configurable
+option.
+<p>
+<li> An error was in the code related to ACCESS_AUTH directive. Reported
+by <i>c2dhanle@CompApp.DCU.IE</i>
+<p>
+<b>Count 2.1</b> (<i>January 15, 1996</i>)
+<br>
+<li> The bug related to st parameter is fixed.
+<p>
+<li> The same program an be used to display time or date.
+<P>
+<b>Count 2.0</b> (<i>December 27, 1995)</i>
+<br>
+<LI> Configuration scripts. You should not to need to hand edit any file in
+order to compile and install the counter.
+<p>
+<LI>Reasonable defaults for all QUERY_STRING parameters.
+Implemented by <A href="http://eies.njit.edu/~kevin/">Kevin J. Walsh</a>
+<p>
+<LI>QUERY_STRING parameters can be in any order and not case sensitive.
+Implemented by <A href="http://eies.njit.edu/~kevin/">Kevin J. Walsh</a>
+<p>
+<LI>Counter can be displayed without incrementing.
+Implemented by <A href="http://eies.njit.edu/~kevin/">Kevin J. Walsh</a>
+<p>
+<LI>A literal digit string can be displayed.
+Implemented by <A href="http://eies.njit.edu/~kevin/">Kevin J. Walsh</a>
+<p>
+<LI>A random digit string can be displayed as counter.
+Implemented by <A href="http://eies.njit.edu/~kevin/">Kevin J. Walsh</a>
+<p>
+<LI>Colors can be negated, that is counter can be displayed as a negative
+copy.
+<p>
+<LI>The counter can be rotated (integral of 90 degrees, 90,180,270 degrees).
+<p>
+<LI>No need to specify width and height of digit images.
+<p>
+<LI>The frame and transparent color can be a name (e.g. red, violet etc),
+a hex string (e.g. ffffff, ff00ff, dddddd etc.)
+as well as RGB triplets (e.g. 160;255;0, 0;0;0 etc)  as before. 
+Implemented by <A href="http://eies.njit.edu/~kevin/">Kevin J. Walsh</a>
+<p>
+<LI> The counter can be called as simply as:
+<PRE>
+    &lt;img src="/cgi-bin/Count.cgi?df=count.dat"&gt;
+</PRE>
+or as complex as before. or any attribute can be set independently.
+<P>
+<b>Count 2.0b</b>
+<li> Log directory was not created by the Count-install script.
+    (Thanks to <i>robertg@zoom.com</i>). (12/07/95).
+<br>
+Thanks to <A HREF="http://www.microserve.net/~john/">John Anthony Ruchak</a>
+for beta testing Count 1.5.
+<P>
+    <B>Count 1.5</B>
+<br>
+    <I>(September 11, 1995, 9:00 PM EDT)</I>
+<LI>can be compiled with -DALLOW_FILE_CREATION option. if compiled with
+      this option, the data file will be created if it does not exist in
+      the directory defined with DataDir and the value defined with st in
+      QUERY_STRING will be written to it.
+      (suggested by
+      <A HREF="http://www.microserve.net/~john/">John Anthony Ruchak</a>.
+<br>
+    <I>(September 10, 1995)</I>
+<p>
+<LI>Advisory data file locking. Datafile will not get messed up by
+      simultaneous Count.cgi processes.
+<P>
+<LI>Error messages are converted directly from string to image. No
+      included GIF images are needed, will be beneficial for system with
+      low memory. I borrowed the font array and some code from 
+      <A HREF="http://siva.cshl.org/gd/gd.html">gd library</a>.
+      Thanks to 
+      <A HREF="http://www.boutell.com/">Tom Boutell</a>
+<P>
+<LI>Authorized host names can be in configuration file. 
+<P>
+<LI>The hits on the web page can be counted without displaying the digits.
+suggested by <A HREf="http://macul.ciencias.uchile.cl/~andress">Andres
+Sepulveda</A>.
+<P>
+    <B>Count 1.4</B>
+    <I>(August 27, 1995)</I>
+<br>
+<LI>wigingto@umr.edu suggested to use HTTP_REFERER for checking remote
+      access to the counter.
+<P>
+<LI>randerso@bite.db.uth.tmc.edu sent some code segment to account for
+      port numbers at the end of a referrer URL.
+<P>
+<LI>Ornamental frame with user defined color and thickness on the fly.
+<P>
+<LI>maximum number of digits can be &gt;= 5 or &lt;= 10 (if you use md)
+      (on the fly).
+<P>
+<LI>if pad=0, the exact number of digits will be displayed without left
+      padding with zeros (on the fly).
+<P>
+<LI>Any color of the digits can be made transparent on the fly.
+<P>
+<LI>Digit style can be provided on the fly.
+<P>
+<LI>sdw@iadfw.net suggested to keep configuration file, data file, digits,
+      log file in separate directories. It will fix a security hole.
+<P>
+<LI>datafile can be edited.
+<P>
+<B>Count 1.3</B>
+<br>
+<LI>Hardcoded the base directory of the counter data files.  This will fix
+      a security hole. Thanks to carsten@group.com
+<hr noshade size="1">
+<a href="Count.html"><i>Back</i></a>
+</body>
+</html>

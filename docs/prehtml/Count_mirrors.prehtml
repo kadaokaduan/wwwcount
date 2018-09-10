@@ -1,0 +1,28 @@
+<#title>Official Count mirror sites</#title>
+
+<font size="+1"><b>Official Count mirrors sites</b></font>
+<p>
+<#include file="us_mirrors.prehtml">
+
+<p>
+<#include file="south_am.prehtml">
+
+<p>
+<#include file="europe_mirrors.prehtml">
+
+<p>
+<#include file="asia_mirrors.prehtml">
+
+<p>
+<#include file="australia_mirrors.prehtml">
+
+<p>
+
+<li><b> Africa</b>
+
+<p>
+<hr noshade size="1">
+<strong>Counter home</strong>:
+<a href="http://www.fccc.edu/users/muquit/Count.html">
+http://www.fccc.edu/users/muquit/Count.html</a>
+

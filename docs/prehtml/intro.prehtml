@@ -1,0 +1,21 @@
+<P>
+<A NAME="intr"><font size="+1"><b> Introduction</b></font> </A>
+<blockquote>
+This is a 
+<#cgi_spec>
+program to keep record of the raw hits of a web page. It
+generates a GIF image of the number of hits and returns to the browser as
+an in-lined image.  The program also has a run-time option not to show the digit
+images, this way the hits can be kept without displaying it. The hits can be
+be monitored without incrementing from a separate page as well.
+The program can also can display time and date of any timezone. It has a
+option to countdown to a specific date (past or future).
+Almost all of the
+<A HREF="#feat">features</A> are run-time options.
+This program started as a fun-to-play-with
+CGI program but due to enormous interest, feature request, input
+from thousands of you, it has
+turned in to the most configurable hit counter on the whole <b>World Wide
+Web</b> and it's free. The program runs on almost all Known Unix platforms,
+Windows NT, OS/2, VMS and Amiga.
+</blockquote>

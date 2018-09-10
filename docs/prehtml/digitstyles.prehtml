@@ -1,0 +1,166 @@
+<a NAME="digs"><font size="+1"><b> Digit Styles (all platforms)</b></font> </a>
+<blockquote>
+The digits used in this program can be individual GIF files or all the
+digits can be in a single image strip. This gives you the
+flexibility of using digits of your choice. If you have individual 
+digit images, they are named as
+zero.gif, one.gif,.... nine.gif, colon.gif, am.gif, pm.gif, comma.gif, dash.gif,
+ d.gif, h.gif, m.gif and s.gif.If you have an image strip, the strip is
+named as strip.gif. At run-time, the directory of the
+images is simply used to specify a different style. 
+Therefore, a single program can display digits of various styles.
+Here are the supplied digit styles. I will not supply individual digit images
+anymore. All the styles of digits are supplied as a single image strip.
+Note the order of the digits (you will know about it later).
+<P>
+<table border cellpadding=5 cellspacing=0>
+<tr>
+    <th>
+        Style A
+     </th>
+     <td>
+        <img src="Count2.5/images/styleA.gif" align=absmiddle alt=styleA>
+     </td>
+     <td>
+     designed by the author. D, H, M, S segment added by
+     <a href="http://www.escati.com/">Andrew Taylor</a>
+
+<br>(digits/A/strip.gif)
+     </td>
+</tr>
+<tr>
+    <th>
+        Style B
+    </th>
+    <td>
+        <img src="Count2.5/images/styleB.gif" align=absmiddle alt=styleB>
+    </td>
+    <td>
+    Borrowed from
+<a HREF="http://www.eeb.ele.tue.nl/software/counter.html">HTML-access counter</A>.
+(digits/B/strip.gif)
+    </td>
+</tr>
+<tr>
+    <th>
+        Style C
+    </th>
+    <td>
+        <img src="Count2.5/images/styleC.gif" align=absmiddle alt=styleC>
+    </td>
+    <td>
+    designed by <I>benjamin@pop3.oro.net</i><br>
+    (digits/C/strip.gif)
+    </td>
+</tr>
+<tr>
+    <th>
+        Style D
+    </th>
+    <td>
+        <img src="Count2.5/images/styleD.gif" align=absmiddle alt=styleD>
+    </td>
+    <td>
+    designed by the author <br>(digits/D/strip.gif)
+    </td>
+</tr>
+<tr>
+    <th>
+        Style E
+    </th>
+    <td>
+        <img src="Count2.5/images/styleE.gif" align=absmiddle alt=styleE>
+    </td>
+    <td>
+    designed by the author<br>(digits/E/strip.gif)
+    </td>
+</tr>
+
+<tr>
+    <th>
+        Style cd
+    </th>
+    <td>
+        <img src="Count2.5/images/stylecd.gif" align=absmiddle alt="stylecd">
+    </td>
+    <td>
+    made by the author on SGI with <a href="http://www.gimp.org/">GIMP</a>
+    running on <a href="http://www.linux.org/">Linux</a>. D,H,M and S are
+    needed for <a href="#display">countdown</a> option.
+    <br>
+    (digits/cd/strip.gif)
+    </td>
+</tr>
+
+<tr>
+    <th>
+        Style cdr
+    </th>
+    <td>
+        <img src="Count2.5/images/stylecdr.gif" align=absmiddle alt="stylecdr">
+    </td>
+    <td>
+    Contributed by 
+    <a href="http://www.tetrahedron.net/">Mike Casper</a>.
+    <br>
+    (digits/cdr/strip.gif)
+    </td>
+</tr>
+
+<tr>
+    <th>
+        Style cdd
+    </th>
+    <td>
+        <img src="Count2.5/images/stylecdd.gif" align=absmiddle alt="stylecdd">
+    </td>
+    <td>
+    Contributed by 
+    <a href="http://hartman.hypermart.net/">Sebastian Hartman</a>
+    <br>
+    (digits/cdd/strip.gif)
+    </td>
+</tr>
+
+<!-- may-15-1999, mm -->
+<tr>
+    <th>
+        Style bang
+    </th>
+    <td>
+        <img src="Count2.5/images/stylebang.gif" align=absmiddle alt="stylebang">
+    </td>
+    <td>
+    <#bangla_link> digits.
+    Made with <a href="http://www.gimp.org/">GIMP</a> by the author.
+    <br>
+    (digits/bang/strip.gif)
+    </td>
+</tr>
+
+
+
+
+</table>
+<p>
+For a huge collection of GIF digits, check out the 
+<A HREF="http://www.digitmania.holowww.com">Digit Mania</A> page. 
+If you design some cool digits and like to share with others try sending
+them to Digit Mania instead of me.
+
+<P>
+Some other sites:
+<ul type=square>
+<li><a href="http://www.webdigits.com/">http://www.webdigits.com/</a>
+</ul>
+<p>
+This program will work with any digits from the Digit Mania page.
+To use those digits, create subdirectories say, F, G, H, foo etc. inside the
+digits directory and rename the images to zero.gif, one.gif..nine.gif.
+I suggest you create an image strip out of these digits and use it instead of
+using individual images.
+<p>
+Before using these digits, please read the sections
+<a href="#digit">How to use other styles of digits</a> and
+<a href="#strip">How to create an image strip</a>.
+</blockquote>

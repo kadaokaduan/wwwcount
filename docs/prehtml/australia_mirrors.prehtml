@@ -1,0 +1,35 @@
+<table border cellpadding="6" cellspacing="0">
+<tr>
+<td align="center" bgcolor="#c8c8ff"><b>URL</b></td>
+<td align="center" bgcolor="#c8c8ff"><b>Australia</b></td>
+<td align="center" bgcolor="#c8c8ff"><b>Since</b></td>
+</tr>
+
+<tr>
+    <td nowrap>
+<!-- added Apr-11-1999 -->
+<a href="http://www.tcc-comp.com.au/count/Count.html">http://www.tcc-comp.com.au/count/Count.html</a>
+    <br>
+<#f_1>
+    Thanks to 
+    <a href="http://www.tcc-comp.com.au">Stephen Walsh</a>
+<#ef>
+    </td>
+    <td>?</td>
+    <td>Apr-11-1999</td>
+</tr>
+
+<!-- added Nov-10-1999 -->
+<tr>
+    <td nowrap> <a href="http://www.2000cn.com.au/Count/">http://www.2000cn.com.au/Count/</a>
+    <br>
+<#f_1>
+    Thanks to <a href="http://www.2000cn.com.au">Shane Chrisp</a>
+<#ef>
+    </td>
+    <td>Perth, Western Australia</td>
+    <td>Nov-10-1999</td>
+</tr>
+
+</table>
+

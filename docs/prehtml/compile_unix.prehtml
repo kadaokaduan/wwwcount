@@ -1,0 +1,94 @@
+<A NAME="steps"><font size="+1"><b>Steps to compile and install (Unix)
+</b></font> </A>
+<blockquote>
+You can compile with default settings or you can specify your own settings.
+To compile with the default settings (very simple), please go to the sub-section
+<a href="#default"><b>Compilation with default settings.</b></a> or
+if you want the ability to change the default settings,
+at the shell prompt (shell prompt is where you type ls, read your mails
+etc.), type the following commands in the described order and press Return
+key:
+<p>
+<font color="red" size="+1"><b>Step 1</b></font><br>
+<blockquote>
+<code><b>make config.h</b></code>
+<blockquote>
+<font size="-1">
+The script Count-config will be executed. 
+The script will ask questions with brief description.
+The script will generate the header file src/config.h.
+Look at the directory structure image to better understand the questions.
+<br>
+<a href="Count2.5/c-c.txt"><B>Look at a sample session</B></a>
+</font>
+</blockquote>
+</blockquote>
+<p>
+<font color="red" size="+1"><b>Step 2</b></font><br>
+<blockquote>
+<code><b>make all</b></code>
+<blockquote>
+<font size="-1">
+The configured script will be executed first to 
+create the Makefiles 
+    (<b>libs/mcfg/Makefile,
+        libs/combine/Makefile, 
+        libs/bigplus/Makefile, 
+        utils/mkstrip/Makefile,
+        utils/extdgts/Makefile and
+        src/Makefile</b>) for your system. Then the programs Count.cgi,
+    mkstrip and extdgts will be compiled and copied to the bin directory.
+</font>
+</blockquote>
+</blockquote>
+<font color="red" size="+1"><b>Step 3</b></font><br>
+<blockquote>
+<code><b>make cfg</b></code>
+<blockquote>
+<font size="-1">
+The script Gen-conf will be executed to create the counter run-time
+configuration file <a href="#conf">count.cfg</a>.
+This script will ask you questions about your system. Answer them.
+This process will create the configuration file for the counter. 
+Note: if your hostname has more than 3 parts, like foo.bar.x.com, than the
+script will not take it. Just enter a 3 part name and then go back and 
+edit the file by hand with your favorite text editor.
+<a href="Count2.5/gen-c.txt"><B>Look at a sample session</B></a>
+</font>
+</blockquote>
+</blockquote>
+<p>
+<font color="red" size="+1"><b>Step 4</b></font><br>
+<blockquote>
+<code><b>make install</b></code>
+<blockquote>
+<font size="-1">
+This is the final step. The script Count-install will install the 
+necessary things for the counter in your system. You will need root 
+access if you are installing it an area where root access is needed. This 
+program will ask you some questions.
+</font>
+</blockquote>
+<p>
+If you finished all the above steps successfully, you are ready to 
+<a href="#test">test the counter</a>.
+</blockquote>
+<p>
+<a name="default"><b>Compilation with default settings</b></a>
+<br>
+Look at the <a href="#dirs">Directory Structure</a> section for the
+default directory structure of the counter. Please follow the steps below
+if this directory structure is OK with you:
+<p>
+<font color="red" size="+1"><b>Step 1</b></font><br>
+<dd><code><b>make all</b></code>
+<p>
+<font color="red" size="+1"><b>Step 2</b></font><br>
+<dd>First edit Config.tmpl, modify CGIBIN_DIR to specify the correct path of
+the cgi-bin directory. Do not change anything else in this file. Then, at
+the shell prompt, type:
+<br>
+    <dd><code><b>make install</b></code>
+<p> Look at the <a href="#conf">Configuration file</a> section. Authorize your
+host by adding it in at [authorized] section.
+</blockquote>

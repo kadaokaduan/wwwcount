@@ -1,0 +1,96 @@
+<a name="mirror">
+<font size="+1"><b>Counter needs mirror homes</b></font>
+</a>
+<blockquote>
+The counter needs mirror homes. 
+You can only become an official mirror site, If you are an ISP or owner of 
+the domain or authorized by your employer to do so. 
+The counter page gets about 1500 (Fifteen hundred) hits/day on average. 
+<#rf>I appreciate your help on this<#ef>.
+<p><b>How to mirror the counter pages:</b>
+<br>
+<font color="#ff0000"><b>Step 1</b></font> -
+Install GNU <b>wget</b>. GNU wget is a nice web mirroring and 
+retrieval software. 
+It runs on Unix as well as MS NT/95.  The program wget is available from:
+<ul>
+<li> The main <a href="ftp://prep.ai.mit.edu/pub/gnu/">GNU Archive</a> or
+<br>
+<li> by <a href="ftp://gnjilux.cc.fer.hr/pub/unix/util/wget/wget.tar.gz">
+ftp</a> from the author <a href="mailto:hniksic@srce.hr"> Hrvoje Niksic</a>.
+</ul>
+<p>
+<font color="#ff0000"><b>Step 2</b></font> - 
+Decide the name of the directory you're going to mirror the counter pages. 
+This directory must be a valid web server document directory. For example, 
+if your web server document root is /usr/local/apache/htdocs and you want 
+to keep the counter pages in the directory /usr/local/apache/htdocs/Count, 
+then the wget command will look like below:
+<pre><b>
+    /usr/local/bin/wget -nH -r -np -N  -R index.html -L -X cgi-bin \
+        -P /usr/local/apache/htdocs/Count \
+        -o /usr/local/apache/htdocs/Count_mirror.log \
+        --cut-dirs=2  \
+        http://www.fccc.edu/users/muquit/Count.html
+</b></pre>
+Explanation of the wget options used:
+<pre>
+<b>
+    -nH             don't create host directories
+    -r              recursive web-suck
+    -np             don't ascend to the parent directory
+    -N              don't retrieve files if older than local
+    -R index.html   don't bring index.html
+    -L              follow relative links only
+    -X cg-bin       exclude cgi-bin directoyr
+    --cut-dirs=2    ignore 2 remote directory components (/users/muquit)
+    -P /foo         save files to directory /foo
+    -o /file.log    The log will be written to this file.
+    http://xyz/     mirror this URL
+</b>
+</pre>
+<p>
+Alternatively, if you installed the counter, a helper script is supplied
+to help you in mirroring. The script <b>mirror_count.sh</b> is intalled in the
+base directory of the counter. Edit the script first, modify the variables
+<strong>wget</strong>, <strong>dir</strong> and <strong>log</strong>.
+<br>
+Try the first transfer from command line and then when you're sure it works
+properly, setup a cron job.  Again, carefully check the argument to -P and -o.
+<p>
+<font color="#ff0000"><b>Step 3</b></font> -
+Setup a cron job so that wget will check periodically if anything changed
+in the counter pages. If I change anything I usually upload around 11 PM
+US Eastern Standard Time (GMT-5). So, I would suggest to setup the cron job
+at your localtime corresponding to GMT-5.
+For example, if you're in the US east coast, setup the cron job to run
+at 12 midnight everyday:
+<pre>
+<b>
+0 0 * * * /usr/local/bin/wget -nH -r -np -N  -R index.html -L -X cgi-bin 
+    -P /usr/local/apache/htdocs/Count 
+    -o /usr/local/apache/htdocs/Count_mirror.log 
+    --cut-dirs=2  
+    http://www.fccc.edu/users/muquit/Count.html &gt; /dev/null 2&gt;&amp;1
+</b>
+</pre>
+<#rf>Make sure there is no line break in the above command in the crontab
+file. I broke it up just to fit it in the page<#ef>.
+<br>
+Again, if you installed the counter, just call the script
+<b>mirror_count.sh</b>, example:
+<pre><b>
+0 0 * * * /usr/local/etc/Counter/mirror_count.sh
+</b></pre>
+The 0 0 indicates 0 minutes and 0 hours (that is midnight). If you do
+not live in the US, adjust this time to GMT-5. For example if you live in UK,
+it will be 0 5.  Note, wget will only transfer the pages modified since the last
+transfer, so the transfer traffic will be minimal.
+<p>
+<font color="#ff0000"><b>Step 4</b></font> - Let me know by
+<a href="mailto:ma_muquit@fccc.edu">dropping me a line</a>, so that I can
+list your site and URL. Please specify the geographic location of your site.
+Provide a URL if you like it to be mentioned in the credit below the mirror
+link. Also let me know if it is ok to mention your email address.
+<p>
+</blockquote>

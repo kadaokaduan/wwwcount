@@ -1,0 +1,484 @@
+#!/bin/sh
+##
+# $Revision: 1.1.1.1 $
+# $Date: 2001/03/19 01:59:50 $
+#
+# creates the directories related to Count 2.1 and install the binary
+# Count.cgi to the cgi-bin directory, copy the digit directories to 
+# the digit directory
+# this program uses the variable template created by the Count_config
+# program
+#
+# muquit@semcor.com
+# Nov 24, 1995
+##
+ver=`cat ./VERSION`
+Basedir="wwwcount$ver"
+INSTALL_PROG="./install-sh"
+Tmpl="./Config.tmpl"
+Binary="./bin/Count.cgi"
+DigitA="./data/digits/A"
+DigitB="./data/digits/B"
+DigitC="./data/digits/C"
+DigitD="./data/digits/D"
+DigitE="./data/digits/E"
+Digit_cd="./data/digits/cd"
+Digit_cdr="./data/digits/cdr"
+Digit_cdd="./data/digits/cdd"
+Digit_bang="./data/digits/bang"
+Rgbfile="./data/rgb.txt"
+SAMPLE_DAT="./data/data/sample.dat"
+mirror_file="mirror_count.sh"
+mirror_script="./utils/mirror/$mirror_file"
+
+UserId="nobody"
+userid_flag=0
+GroupId="nobody"
+groupid_flag=0
+Digits="zero.gif one.gif two.gif three.gif four.gif five.gif\
+ six.gif seven.gif eight.gif nine.gif"
+
+
+Pwd=`pwd`
+checkbd=`basename $Pwd`
+
+###
+# check if we'r inside wwwcount2.2 directory
+#    if [ $checkbd != $Basedir ]
+#    then
+#cat << EOR2
+#   
+#************************************************************************
+#    You must be at the base directory of the counter source distribution
+#    in order to install Count.cgi
+#    Wrong directory: $checkbd
+#************************************************************************
+#    
+#EOR2
+#    exit 2
+#    fi
+
+if [ ! -f $Tmpl ]
+then
+cat<<EOT
+    
+    The varaible template file "$Tmpl" does not exist! This file
+    is created in the configuration procedure. Apparently your 
+    configuration procedure did not succeed!
+
+    Aborting installation!
+
+EOT
+    exit 1
+fi
+
+if [ ! -f $Binary ]
+then
+cat<<EOB
+    
+    Counter binary "$Binary" does not exist!
+    Apparently your compilation did not succeed or you did not compile
+    the program!
+
+    Aborting installation!
+EOB
+    exit 1
+fi
+
+if [ ! -d $DigitA  -o ! -d $DigitB -o ! -d $DigitC -o ! -d $DigitD ]
+then
+cat<<EOD
+
+    Suppiled digit directories not found in ./digits direcory!
+
+    Aborting installation!
+
+EOD
+exit 1
+fi
+
+if [ ! -f $Rgbfile ]
+then
+cat<<EOB
+    
+    Rgb file "$Rgbfile" does not exist!
+    Apparently your removed it mistakenly!
+
+    Aborting installation!
+EOB
+    exit 1
+fi
+
+##
+# get the vars
+##
+
+. $Tmpl
+
+if [ ! -f ./$CONFIG_FILE ]
+then
+
+cat <<EOC
+
+    The configuration file $CONFIG_FILR is not created!
+    please create it first by running the script ./Gen-conf
+
+    Aborting installation!
+EOC
+
+    exit 1
+fi
+
+tdir="./tmp"
+
+if [ ! -d $tdir ]; then
+    echo "making directory $tdir"
+    mkdir $tdir
+fi
+
+# check if root
+/bin/rm -f $tdir/Count*
+uidfile="$tdir/Count$$"
+touch $uidfile
+user=`/bin/ls -al $uidfile | awk '{print $3}'`
+
+if [ "$user" != "root" ]
+then
+cat << EOR
+
+    WARNING: You are not root! To install the package in the system,
+    you may need root access! However, if you are installing in your own 
+    directory space, you do not need root access.
+
+EOR
+else
+cat <<EOJ
+    
+    *** You are installing Counter as root ***
+
+EOJ
+rm -f $uidfile
+
+fi
+#   if [ "`whoami`x" != "root"x ]; then
+#cat << EOR
+
+#    WARNING: You are not root! To install the package in the system,
+#    you will need root access!
+
+#EOR
+#    else
+#cat <<EOJ
+    
+#    *** You are installing Counter as root ***
+
+#EOJ
+#    fi
+
+(echo "hi there\c" ; echo " ") >./.echotest
+if grep c ./.echotest >/dev/null 2>&1 ; then
+n='-n'
+c=''
+else
+n=''
+c='\c'
+fi
+rm -f ./.echotest >/dev/null 2>&1
+
+
+# debug
+cat<<DUM
+
+-------------------------------------------------------------------------
+Your configuration is shown below. You are only allowed to change the
+cgi-bin directory. If you want to change it, edit the file Config.tmpl
+and change the variable CGIBIN_DIR to the appropriate directory. Do not change
+anything else.
+
+cgi-bin directory   = $CGIBIN_DIR
+conf directory      = $CONFIG_DIR
+conf file to install= $CONFIG_FILE
+digit directory     = $DIGIT_DIR
+data directory      = $DATA_DIR
+log directory       = $LOG_DIR
+log file            = $LOG_FILE
+RGB file to install = $RGB_FILE
+-------------------------------------------------------------------------
+DUM
+
+echo "Press Control-C to abort"
+echo $n "Continue [y|n]$c? "
+read answer
+
+if [ .$answer = . ]
+then
+    answer=x
+fi
+    until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ]
+    do
+        echo "Press Control-C to abort"
+        echo $n "Continue [y|n]$c? " 
+        read answer
+            if [ .$answer = . ]
+            then
+                answer=x
+            fi
+    done
+
+    case $answer in
+        y|Y)
+            echo "proceeding..."
+        ;;
+        n|N)
+            echo "OK.. aborting installation!"
+            exit 0
+        ;;
+
+        *)
+            echo ""
+            echo "Illegal choice"
+     esac
+
+
+cat <<EOU
+    
+    Now if you know what user and group id child processes of http
+    server use, I can change the ownership and access permission
+    accordigly. If you do not know, they are usually defined in the
+    file httpd.conf with User and Group. I suggest create a unique
+    user and group say httpd and set the User and Group to httpd.
+
+EOU
+echo $n "*Do you know the user and group id of httpd' child process [y|n]:$c? "
+   read answer
+   if [ .$answer = . ]
+   then
+        answer=x
+   fi   
+   until [ $answer = "y" -o $answer = "Y" -o $answer = "n" -o $answer = "N" ]
+   do
+echo $n "*Do you know the user and group id of httpd' child process [y|n]:$c? "
+   read answer
+   if [ .$answer = . ]
+   then
+        answer=x
+   fi   
+   done
+
+   case $answer in
+        y|Y)
+            userid_flag=1
+            groupid_flag=1
+###
+# enter user id -starts
+###
+   echo $n "*Enter user id of httpd's child process [no default]:$c? "
+   read answer
+   if [ .$answer = . ]
+   then 
+        answer=x
+   fi
+   until [ $answer != "x" ]
+   do
+   echo $n "*Enter user id of httpd's child process [no default]:$c? "
+   read answer
+   if [ .$answer = . ]
+   then
+        answer=x
+   fi
+   done
+
+    UserId=$answer
+###
+# enter user id -ends
+###
+
+##
+# enter groud id -starts
+##
+   echo $n "*Enter group id of httpd's child process [no default]:$c? "
+   read answer
+   if [ .$answer = . ]
+   then 
+        answer=x
+   fi
+   until [ $answer != "x" ]
+   do
+   echo $n "*Enter group id of httpd's child process [no default]:$c? "
+   read answer
+   if [ .$answer = . ]
+   then
+        answer=x
+   fi
+   done
+
+    GroupId=$answer
+
+##
+# enter groud id -ends
+##
+echo "installing Count.cgi->$CGIBIN_DIR"
+$INSTALL_PROG -c -o $UserId -g $GroupId -m 700 $Binary $CGIBIN_DIR/Count.cgi
+echo "installing $CONFIG_FILE->$CONFIG_DIR"
+
+#
+# check if the file exist or not
+#
+
+if [ ! -f $CONFIG_DIR/$CONFIG_FILE ]; then
+
+    $INSTALL_PROG -c -m 664 $CONFIG_FILE $CONFIG_DIR/$CONFIG_FILE
+else
+    echo "  ===> ****** File exists!"
+    echo "  ===> skipping... Will not overwrite $CONFIG_DIR/$CONFIG_FILE"
+    echo "  ===> install it manually if you want to overwrite"
+	echo "  ===> To install manually, at the shell prompt type: "
+    echo " $INSTALL_PROG -c -m 664 $CONFIG_FILE $CONFIG_DIR/$CONFIG_FILE"
+	echo ""
+fi
+
+echo "installing sample datafile $SAMPLE_DAT->$DATA_DIR"
+
+if [ ! -f $DATA_DIR/sample.dat ]; then
+    $INSTALL_PROG -c -o $UserId -g $GroupId -m 664 $SAMPLE_DAT $DATA_DIR/sample.dat
+chmod 775 $DATA_DIR
+else
+    echo "  ===> File exists!"
+    echo "  ===> skipping... Will not overwrite $DATA_DIR/sample.dat"
+    echo "  ===> copy it manually if you want to overwrite"
+    echo "  ===>  To install manually, at the shell prompt type: "
+	echo " $INSTALL_PROG -c -o $UserId -g $GroupId -m 664 $SAMPLE_DAT $DATA_DIR/sample.dat"
+	echo ""
+fi
+
+echo "installing rgb.txt->$BASE_DIR"
+$INSTALL_PROG -c -m 644 $Rgbfile $BASE_DIR/rgb.txt
+
+echo "creating Log directory $LOG_DIR"
+./mkdirhier $LOG_DIR
+chown $UserId $LOG_DIR
+chgrp $GroupId $LOG_DIR
+chmod 775 $LOG_DIR
+
+echo "installing image strip for digit style A->$DIGIT_DIR/A"
+$INSTALL_PROG -c -m 644 $DigitA/strip.gif $DIGIT_DIR/A/strip.gif
+
+echo "installing sample image peng.gif->$DIGIT_DIR/A"
+$INSTALL_PROG -c -m 644 $DigitA/peng.gif $DIGIT_DIR/A/peng.gif
+
+
+echo "installing image strip for digit style B->$DIGIT_DIR/B"
+$INSTALL_PROG -c -m 644 $DigitB/strip.gif $DIGIT_DIR/B/strip.gif
+
+echo "installing strip image for digit style C->$DIGIT_DIR/C"
+$INSTALL_PROG -c -m 644 $DigitC/strip.gif $DIGIT_DIR/C/strip.gif
+
+echo "installing strip image for digit style D->$DIGIT_DIR/D"
+$INSTALL_PROG -c -m 644 $DigitD/strip.gif $DIGIT_DIR/D/strip.gif
+
+echo "installing sample image lenna.gif->$DIGIT_DIR/D"
+$INSTALL_PROG -c -m 644 $DigitD/lenna.gif $DIGIT_DIR/D/lenna.gif
+
+echo "installing strip image for digit style E->$DIGIT_DIR/E"
+$INSTALL_PROG -c -m 644 $DigitE/strip.gif $DIGIT_DIR/E/strip.gif
+
+echo "installing image foo.gif in  E->$DIGIT_DIR/E"
+$INSTALL_PROG -c -m 644 $DigitE/foo.gif $DIGIT_DIR/E/foo.gif
+
+echo "installing image yeehaw.gif in  A->$DIGIT_DIR/A"
+$INSTALL_PROG -c -m 644 $DigitA/yeehaw.gif $DIGIT_DIR/A/yeehaw.gif
+
+echo "installing strip image for digit style cd->$DIGIT_DIR/cd"
+$INSTALL_PROG -c -m 644 $Digit_cd/strip.gif $DIGIT_DIR/cd/strip.gif
+
+echo "installing strip image for digit style cdr->$DIGIT_DIR/cdr"
+$INSTALL_PROG -c -m 644 $Digit_cdr/strip.gif $DIGIT_DIR/cdr/strip.gif
+
+echo "installing strip image for digit style cdd->$DIGIT_DIR/cdd"
+$INSTALL_PROG -c -m 644 $Digit_cdd/strip.gif $DIGIT_DIR/cdd/strip.gif
+
+echo "installing strip image for digit style bang->$DIGIT_DIR/bang"
+$INSTALL_PROG -c -m 644 $Digit_bang/strip.gif $DIGIT_DIR/bang/strip.gif
+
+echo "installing the mirroring script"
+$INSTALL_PROG -c $mirror_script -m 755 $BASE_DIR/$mirror_file
+
+##
+# change ownership
+# -R is not portable, reported by Geoff Scully <gws@dis.on.ca> and suggested
+# the alternative (01/15/96)
+#chown -R $UserId.$GroupId $BASE_DIR
+#find $BASE_DIR -exec chown $UserId {} \;
+#find $BASE_DIR -exec chgrp $GroupId {} \;
+#            echo "UserId=$UserId"
+#            echo "GroupId=$GroupId"
+        ;;
+        n|N)
+cat <<EOM
+    
+    I am not changing any ownership or access permissions.
+    You are on your own. If the counter program can not access digit
+    images or can not write to datafile, you have to set permisson 
+    manually.
+    good luck!
+
+EOM
+echo "installing Count.cgi->$CGIBIN_DIR"
+$INSTALL_PROG -c -m 755 $Binary $CGIBIN_DIR/Count.cgi
+echo "installing $CONFIG_FILE->$CONFIG_DIR"
+$INSTALL_PROG -c $CONFIG_FILE $CONFIG_DIR/$CONFIG_FILE
+echo "installing sample datafile $SAMPLE_DAT->$DATA_DIR"
+$INSTALL_PROG -c $SAMPLE_DAT $DATA_DIR/sample.dat
+
+echo "installing rgb.txt->$BASE_DIR"
+$INSTALL_PROG -c $Rgbfile $BASE_DIR/rgb.txt
+
+echo "creating Log directory $LOG_DIR"
+./mkdirhier $LOG_DIR
+
+echo "installing image strip for digit style A->$DIGIT_DIR/A"
+$INSTALL_PROG -c $DigitA/strip.gif $DIGIT_DIR/A/strip.gif
+
+echo "installing sample image peng.gif->$DIGIT_DIR/A"
+$INSTALL_PROG -c $DigitA/peng.gif $DIGIT_DIR/A/peng.gif
+
+echo "installing image strip for digit style B->$DIGIT_DIR/B"
+$INSTALL_PROG -c $DigitB/strip.gif $DIGIT_DIR/B/strip.gif
+
+echo "installing image strip for digit style C->$DIGIT_DIR/C"
+$INSTALL_PROG -c $DigitC/strip.gif $DIGIT_DIR/C/strip.gif
+
+echo "installing image strip for digit style D->$DIGIT_DIR/D"
+$INSTALL_PROG -c $DigitD/strip.gif $DIGIT_DIR/D/strip.gif
+
+echo "installing sample image lenna.gif->$DIGIT_DIR/D"
+$INSTALL_PROG -c $DigitD/lenna.gif $DIGIT_DIR/D/lenna.gif
+
+echo "installing image strip for digit style E->$DIGIT_DIR/E"
+$INSTALL_PROG -c $DigitE/strip.gif $DIGIT_DIR/E/strip.gif
+
+echo "installing image foo.gif in  E->$DIGIT_DIR/E"
+$INSTALL_PROG -c $DigitE/foo.gif $DIGIT_DIR/E/foo.gif
+
+echo "installing image yeehaw.gif in  A->$DIGIT_DIR/A"
+$INSTALL_PROG -c $DigitA/yeehaw.gif $DIGIT_DIR/A/yeehaw.gif
+
+echo "installing image strip for digit style cd->$DIGIT_DIR/cd"
+$INSTALL_PROG -c $Digit_cd/strip.gif $DIGIT_DIR/cd/strip.gif
+
+echo "installing image strip for digit style cdr->$DIGIT_DIR/cdr"
+$INSTALL_PROG -c $Digit_cdr/strip.gif $DIGIT_DIR/cdr/strip.gif
+
+echo "installing image strip for digit style cdd->$DIGIT_DIR/cdd"
+$INSTALL_PROG -c $Digit_cdd/strip.gif $DIGIT_DIR/cdd/strip.gif
+
+echo "installing strip image for digit style bang->$DIGIT_DIR/bang"
+$INSTALL_PROG -c $Digit_bang/strip.gif $DIGIT_DIR/bang/strip.gif
+
+echo "installing the mirroring script"
+$INSTALL_PROG -c $mirror_script $BASE_DIR/$mirror_file
+
+    ;;
+        *)
+   esac
+

@@ -1,0 +1,73 @@
+# Makefile for WWW Homepage Access Counter
+#
+# Muhammad A Muquit
+# Date: Nov-15-1997, first cut for NT 4.0
+#       Jan-9-1998, Sat, updatd for Count 2.5. muquit-
+#
+
+COPY=copy
+CD=cd
+MAKE=nmake /nologo -f makefile.wnt
+MKDIR=mkdir
+RM=del
+
+
+MCFG_DIR=libs\mcfg
+COMBINE_DIR=libs\combine
+BIGPLUS_DIR=libs\bigplus
+COUNTER_DIR=src
+MKSTRIP_DIR=utils\mkstrip
+EXTDGTS_DIR=utils\extdgts
+
+#
+all: mcfg_lib combine_lib bigplus_lib counter mkstrip extdgts
+
+mcfg_lib:
+	$(CD) $(MCFG_DIR)
+	$(MAKE)
+	$(CD) ..\..
+
+combine_lib:
+	$(CD) $(COMBINE_DIR)
+	$(MAKE)
+	$(CD) ..\..
+
+bigplus_lib:
+	pwd
+	$(CD) $(BIGPLUS_DIR)
+	$(MAKE)
+	$(CD) ..\..
+
+counter:
+	$(CD) $(COUNTER_DIR)
+	$(MAKE)
+	$(CD) ..
+
+mkstrip:
+	$(CD) $(MKSTRIP_DIR)
+	$(MAKE)
+	$(CD) ..\..
+
+extdgts:
+	$(CD) $(EXTDGTS_DIR)
+	$(MAKE)
+	$(CD) ..\..
+
+clean:
+	$(CD) $(MCFG_DIR)
+	$(MAKE) clean
+	$(CD) ..\..
+	$(CD) $(COMBINE_DIR)
+	$(MAKE) clean
+	$(CD) ..\..
+	$(CD) $(BIGPLUS_DIR)
+	$(MAKE) clean
+	$(CD) ..\..
+	$(CD) $(COUNTER_DIR)
+	$(MAKE) clean
+	$(CD) ..
+	$(CD) $(MKSTRIP_DIR)
+	$(MAKE) clean
+	$(CD) ..\..
+	$(CD) $(EXTDGTS_DIR)
+	$(MAKE) clean

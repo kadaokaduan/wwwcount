@@ -1,0 +1,4 @@
+# muquit, Jul-02-1999
+
+export PATH=/usr3/local/bin:$PATH
+export LD_LIBRARY_PATH=/usr3/local/lib:/usr3/local/lib/xmms/General:$LD_LIBRARY_PATH

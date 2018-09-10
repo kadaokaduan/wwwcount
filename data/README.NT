@@ -1,0 +1,8 @@
+WWW Count 2.5, About the cgi-bin directory in MS NT
+====================================================
+You wil be prompted to specify a directory to copy the counter (Count.exe)
+and the related files. Note, this is not just any directory, this directory 
+must be configured as a designated directory to keep CGI programs in your
+web server. If you do not know the name of the directory, you can easily 
+find it out from your web server documentation.
+

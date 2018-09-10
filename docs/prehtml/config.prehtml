@@ -1,0 +1,405 @@
+<a name="conf">
+<font size="+1"><b>Configuration file (all platforms)</b></font>
+</a>
+<blockquote>
+The count.cfg file contains the runtime configuration information for
+the Count program. The file consists of sections and parameters. A section
+begins with the name of the section in square brackets and continues until
+the next section begins. The sections contain parameters of the form
+keyword=value or just keyword one in each line. 
+
+The file is line-based, that is, each newline-terminated line represents
+either a comment, a section name or a parameter. The section and the parameter
+names are not case sensitive.
+
+A sample configuration file is shown below:
+<pre>
+<font size=-1 color="#a52b2b">
+###-----------------------------------------------------------------------
+### configuration file for Count 2.5
+### Automatically generated from user input by the script Gen-conf
+### created on: Sun Jan  3 18:15:01 EST 1999
+### Note: Configuration file format for Count 2.5 is different than
+###       older versions. -- mm
+### The format of the file is described below:
+###   - Any line starts with # or ; is considered comment and ignored.
+###   - A section in the file is inside left and right bracket.
+###   - Each section has parameters below the section.
+###
+### Please read the Configuration section in the counter webpage for details.
+### The official counter homepage is at URL:
+###     http://www.fccc.edu/users/muquit/Count.html
+###----------------------------------------------------------------------
+
+[version]
+   2.5 
+
+##-- options section
+; If auto_file_creation=Yes, then the users can create data files. It IS
+;  dangerous to set this option to Yes.
+#
+; strict_mode=Yes or No. Run the program in strict mode or not. It's a good
+;  idea to set this option to Yes.
+#
+; allow_rgb_database=Yes or No. Convenient to use because colorname e.g., red,
+;  gold etc can be used instead of rgb components of the color, however it is
+;  very inefficient to lookup. If your site is busy, set this option to No.
+#
+; count_reload=Yes or No. It is a good idea to set this option to No. But
+;  you've to set this option to Yes if you are running a proxy server.
+;  Normally set this to Yes.
+#
+; log_error_messages=Yes or No. If your site is extremely busy and if the
+;  counter generates lots of logs, set this option to No. Normally set this
+;  option to Yes.
+#
+; show_error_messages_to_browsers=Yes or No. Set this option to No if you're
+;  concerned with privacy and you're sure that the counter works perfectly.
+;  If you set this option to No, you will not see error messages.
+
+[options]
+  auto_file_creation=No
+  strict_mode=Yes
+  allow_rgb_database=Yes
+  count_reload=No
+  log_error_messages=Yes
+  show_error_messages_to_browsers=Yes
+
+; You can specify IP address of the hosts you want to ignore from counting.
+; netmasks can be used to ignore a entire network or a specificrange of
+; hosts in the network. Read the counter documentation to know about
+; netmasks. Wild card can be used as well. one item per line.
+;
+[ignore IPs]
+
+;
+; All possible names and IP addresses by which your host can be referred.
+; These hosts can access the counter remotely or locally. Host running
+; the http server must exist here. Wild card can be used. one item per line.
+;
+[authorized]
+  *.bar.com
+  abcd.foo.com
+  abcd
+  131.249.1.100
+  www.foo.com
+  www
+  test.counter.com
+</font>
+</pre>
+The config file is parsed each time the counter program gets accessed. 
+Therefore, smaller the file, the better the performance. If you have thousands 
+of entries in [ignore IPs] or [authorized] section, you'll notice 
+performance degradation.  Try using wild cards if possible.
+<p>
+As of version Count version 2.4, referrer host names will be looked up
+in DNS if the program is compiled with the USE_DNS macro defined in
+src/Makefile.  This allows you to list wild-card IP address ranges in 
+[authorized] section of the config file.  This feature can reduce a 200 
+line [authorized] 
+section down to a single line.  Without USE_DNS, the host name as sent by 
+the browser's HTTP_REFERER header must be listed EXACTLY.
+<p>
+
+You can take an existing config file and modify it or use the program <code
+>Gen-conf</code> to create 
+one.  Try to keep comments in the file to a minimum. Note, [ignore ips]
+section only contains IP addresses, IP address and netmask or wild carded 
+IP addresses.  Never use host names in this section, they will be ignored. 
+Netmasks can be used to
+get finer control to ignore a very specific range of hosts. Read the
+section <a href="#hign">How to use netmasks at [ignore IPs] section</a> if 
+you have 
+specific need to
+ignore a range of hosts. Otherwise, use wild cards and be happy.
+The [authorized] section  contains all the names and IP addresses of the 
+hosts allowed to execute the counter remotely or locally. The name and IP 
+of the host running the web server must be at this section.
+<p>
+<blockquote>
+<a name="hign">
+<font size="+1"><b>How to use netmasks at [ignore IPs] section</b></font>
+</a>
+<br>
+This section of the document and the code to use netmasks is written by
+<b>Davorin Bengez,</b> <a
+href="mailto:dbengez@znanost.hr"><i>(dbengez@znanost.hr)</i></a>
+<p>
+<b>1. Summary of changes</b>
+<p>
+`Host ignore' block contains one or more lines with IP addresses
+of hosts that will be ignored for counter updates.
+<p>
+New feature in this release is possibility to mask off groups of hosts
+(subnetworks) defined by corresponding network / netmask pairs.
+This can be useful if we wish to exclude accesses from the hosts on
+our campus or hosts of people developing the pages.
+<p>
+To accomplish this, each line in host ignore block can take two arguments.
+If second argument is present, first is assumed to be network address and
+second the netmask. If only one argument is present, it is taken as a
+host address or a host address with wild card.
+<p>
+If this concept with "network address / netmask" sounds unfamiliar,
+you should consult your friendly network administrator.
+<p>
+<b>2. How to determine ignore hosts parameters</b>
+<p>
+To configure `ignore hosts' block in configuration file, you should
+know at least how the network / netmask concept works.
+Here is a brief description.
+<p>
+<b>2.1. IP Addresses and netmasks concept</b>
+<p>
+IP address is a 32 bit value (four octets) that is for readability
+purposes written as four decimal values separated by a dot
+(so called dotted quad).
+For example, network address - in dotted quad notation
+<pre>
+ 161.53.4.28
+</pre>
+is - in binary notation
+<pre>
+ 10100001 00110101 00000100 00011100
+</pre>
+Binary representation is what we will need to determine network
+addresses and netmasks.
+<p>
+Each network IP address is contained of network and host part.
+<p>
+Generally speaking, networks are split into several classes.
+Here are three primary forms [1]:
+<p>
+- class A network has first octet in range from 0 to 127.
+  First octet is network address while other three octets specify
+  the host part.
+  In binary notation it is something like (n - network, h - host)
+<pre>
+ 0nnnnnnn hhhhhhhh hhhhhhhh hhhhhhhh
+</pre>
+There are 2<sup>7</sup> such possible networks, each with 
+(2<sup>24</sup> - 2) hosts.
+<p>
+- class B network has first octet in range from 128 to 191.
+  First two octets are the network address, and third and fourth
+  are host address.
+  In binary notation it is something like (n - network, h - host)
+<pre>
+ 10nnnnnn nnnnnnnn hhhhhhhh hhhhhhhh
+</pre>
+  There are 2<sup>14</sup> such possible networks, each with 
+(2<sup>16</sup> - 2) hosts.
+<p>
+- class C network has first octet in range from 192 to 223.
+  First three octets are the network address, and fourth is 
+  host address.
+  In binary notation it is something like (n - network, h - host)
+<pre>
+ 110nnnnn nnnnnnnn nnnnnnnn hhhhhhhh
+</pre>
+  There are 2<sup>21</sup> such possible networks, each with 
+(2<sup>8</sup> - 2) hosts.
+<p>
+Note: "-2" is because 0 is reserved for "this host", and 255 means
+broadcast, or "all hosts on this network".
+<p>
+Nothing stops us to divide the network given to us by a service
+provider into a several smaller networks. This is often done in
+real life.
+<p>
+Network is being partitioned by setting the 32-bit subnet mask
+in which 1's represent the network part, and 0's represent the host
+part if IP address. As of now, we may correctly assume that a default
+netmask for class B network is 11111111 11111111 00000000 00000000
+(in binary, or 255.255.0.0 in dotted quad notation).
+<p>
+For example, if we are given one class C network (maximum of 254 hosts),
+and we want to partition it into 8 networks of 32 hosts per each
+subnetwork, we can do it as in the following example:
+<p>
+<b>Example:</b>
+<p>
+Let us assume that we are given class C network with address
+220.105.101.0.
+Initial netmask is set to 255.255.255.0.
+To partition this network into 8 subnetworks, we need to take
+3 bits from host part of the address (2<sup>3</sup> = 8).
+Let's write it in binary:
+<p>
+Network address 220.105.101.0:
+<pre>
+ 11011100 01101001 01100101 00000000
+</pre>
+Netmask was 255.255.255.0:
+<pre>
+ 11111111 11111111 11111111 00000000
+</pre>
+As we want to have 8 subnetworks (this needs 3 bits from the host part),
+netmask will be:
+ 11111111 11111111 11111111 11100000
+or 255.255.255.224 in dotted quad notation.
+<p>
+Host part of address has shrunk to 5 bits, and we will have new network
+address based on 2<sup>5</sup> intervals. Therefore, our new subnetworks will be:
+<pre>
+ 220.105.101.0     220.105.101.32    220.105.101.64    220.105.101.96
+ 220.105.101.128   220.105.101.160   220.105.101.192   220.105.101.224
+</pre>
+n.b. The same netmask (255.255.255.224) applies to each of the 8 networks.
+<p>
+From previous example can be seen that netmask cannot be set on arbitrary
+boundary, but rather on addresses that are powers of 2.
+<p>
+<b>2.2. Configuration guidelines</b>
+<p>
+As a matter of fact, it doesn't matter whether your network is
+class A, B or C. What matters is which subnetwork or part of the
+network you want to mask off.
+<p>
+To determine whether a certain host is within a certain
+network, the host's address AND netmask are compared to the
+network address.  If they are identical, host is within the
+given network.
+<p>
+<b>Example 1:</b>
+Determine whether host 161.53.4.4 is located within the network
+161.53.4.0 with netmask 255.255.255.0:
+<table cellpadding=2 cellspacing=0 border=2 width="50%">
+<tr>
+<td>
+<pre>
+                decimal          binary
+
+host address    161.53.4.4       10100001 00110101 00000100 00000100
+netmask         255.255.255.0    11111111 11111111 11111111 00000000
+ANDed           161.53.4.0       10100001 00110101 00000100 00000000
+
+network address 161.53.4.0       10100001 00110101 00000100 00000000
+</pre>
+</td>
+</tr>
+</table>
+since 161.53.4.0 = 161.53.4.0, host is contained within the network.
+<p>
+<b>Example 2:</b>
+<p>
+Determine whether the host 161.53.91.7 is located within the network
+161.53.91.0 with netmask set to 255.255.255.224
+<table cellpadding=2 cellspacing=0 border=2 width="50%">
+<tr>
+<td>
+<pre>
+                decimal          binary
+
+host address    161.53.91.7      10100001 00110101 01011011 00000111
+netmask         255.255.255.224  11111111 11111111 11111111 11100000
+ANDed           161.53.91.0      10100001 00110101 01011011 00000000
+
+network address 161.53.91.0      10100001 00110101 01011011 00000000
+</pre>
+</td>
+</tr>
+</table>
+since 161.53.91.0 = 161.53.91.0, host is located within the network.
+<p>
+<b>Example 3:</b>
+<p>
+Determine whether the host 161.53.91.99 is located within the network
+161.53.91.0 with netmask set to 255.255.255.224
+<table cellpadding=2 cellspacing=0 border=2 width="50%">
+<tr>
+<td>
+<pre>
+                decimal          binary
+
+host address    161.53.91.99     10100001 00110101 01011011 01100011
+netmask         255.255.255.224  11111111 11111111 11111111 11100000
+ANDed           161.53.91.96     10100001 00110101 01011011 01100000
+
+network address 161.53.91.0      10100001 00110101 01011011 00000000
+<!-- a typo was pointed out by shangill@hood.hctc.com -->
+</pre>
+</td>
+</tr>
+</table>
+since 161.53.91.96 != 161.53.91.0, host is NOT located within the network.
+<p>
+To set the netmask properly, and to check the configuration, you must
+know what addresses are being covered with certain network address / netmask
+combination.
+<p>
+<b>Example 4:</b>
+<P>
+Which host are located within the network 161.53.91.0 with netmask set
+to 255.255.255.224?
+<table cellpadding=2 cellspacing=0 border=2 width="50%">
+<tr>
+<td>
+<pre>
+                decimal          binary
+
+network address 161.53.91.0      10100001 00110101 01011011 00000000
+netmask         255.255.255.224  11111111 11111111 11111111 11100000
+</pre>
+</td>
+</tr>
+</table>
+It is obvious that only last 5 bits are host address, since netmask
+will mask off upper 3 bits in last octet. Possible host addresses are
+from 0 (which cannot be used) up to 00011111 binary, or 31 in decimal.
+Therefore, hosts within given network are 161.53.91.1 to 161.53.91.31.
+(n.b. with above configuration, we have possible networks:
+<table cellpadding=2 cellspacing=0 border=2 width="50%">
+<tr>
+<td>
+<pre>
+ 161.53.91.0    161.53.91.32   161.53.91.64   161.53.91.96,
+ 161.53.91.128  161.53.91.160  161.53.91.192  161.53.91.224
+</pre>
+</td>
+</tr>
+</table>
+<p>
+<b>Example 5:</b>
+<p>
+How can I select hosts with addresses in range 161.53.5.16 to
+161.53.5.31?
+<table cellpadding=2 cellspacing=0 border=2 width="50%">
+<tr>
+<td>
+<pre>
+first host      161.53.5.16      10100001 00110101 00000101 00010000
+last host       161.53.5.31      10100001 00110101 00000101 00011111
+
+(all selected hosts)             10100001 00110101 00000101 0001xxxx
+</pre>
+</td>
+</tr>
+</table>
+It can be observed that host part is last four bits of the address,
+which leads to the netmask of 255.255.255.240.
+Network address is address of any of the hosts ANDed with netmask:
+<table cellpadding=2 cellspacing=0 border=2 width="50%">
+<tr>
+<td>
+<pre>
+any host                         10100001 00110101 00000101 0001xxxx
+netmask         255.255.255.240  11111111 11111111 11111111 11110000
+
+network         161.53.5.16      10100001 00110101 00000101 00010000
+</pre>
+</td>
+</tr>
+</table>
+<b>References:</b>
+<pre>
+[1] Douglas E. Comer
+    "Internetworking With TCP/IP - Principles,
+     Protocols, and Architecture"
+
+[2] Uyless Black
+    "TCP/IP and Related Protocols"
+</pre>
+</blockquote>
+</blockquote>
+

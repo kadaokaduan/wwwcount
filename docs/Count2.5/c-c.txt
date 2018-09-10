@@ -1,0 +1,81 @@
+$ make config.h
+(sh Count-config)
+    Welcome to the configuration procedure of Count 2.5
+    ---------------------------------------------------
+
+    o You must know where your system keeps CGI programs (cgi-bin directory)
+      It is necessary to generate the install program.
+      This directory must exist. If this directory does not exist, the
+      configuration procedure will Abort!
+
+    o You have to decide a directory, where you will keep all counter related
+      stuff. This directory will have other directories inside. Default
+      values will be supplied, press Return key to accept the default value.
+      
+      Try to Accept the default value, it will make your life much easier, 
+      because not much error checking is done to verify input.
+
+    During installation, the directories will be created for you
+    if they do not exist and if you have the permission to do so.
+    ++
+Continue [y|n]? y
+
+    You need to enter the full path of the directory where you system
+    keeps the CGI programs. 
+
+*cgi-bin directory [/usr/local/etc/httpd/cgi-bin]: 
+
+    You need to enter the base directory of the counter related stuff.
+    It must be a absolute path.
+
+*Base directory [/usr/local/etc/Counter]: 
+
+    You need to enter the name directory of the configuration file.
+
+* Config directory [/usr/local/etc/Counter/conf]: 
+
+    You need to enter the name of the configuration file. Note, it
+    is not the path of the file, just the name. No / is allowed in the
+    name.
+    This file contains the information about
+
+        o if you want to ignore access from certain hosts
+        o host access authentication
+
+    You will create this file later by running the program "Gen_conf".
+
+* Name of the configuration file [count.cfg]: 
+              
+    You need to enter the directory of the counter data file.
+    
+*Data directory [/usr/local/etc/Counter/data]: 
+
+    You need to enter the directory of digits
+
+*Digits directory [/usr/local/etc/Counter/digits]: 
+
+    You need to enter the directory of the Log file.
+
+*Log directory [/usr/local/etc/Counter/logs]: 
+
+    You need to enter the name of the Log file. Note, it just a name, not
+    the path. No / is allowed in the name.
+    This file hold the error messages of the counter. It also
+    logs if someone tried to access your counter remotely.
+
+* Name of the log file [Count2_5.log]: 
+
+Your configuration:
+----------------------------------------------------------------
+CgiBinDir=/usr/local/etc/httpd/cgi-bin
+BaseDir= /usr/local/etc/Counter
+DigitDir=/usr/local/etc/Counter/digits
+ConfDir= /usr/local/etc/Counter/conf
+ConfFile=count.cfg
+DataDir=/usr/local/etc/Counter/data
+LogDir=/usr/local/etc/Counter/logs
+LogFile=Count2_5.log
+----------------------------------------------------------------
+Everything looks OK [y|n]? y
+Great! creating header file src/config.h
+creating variables template file ./Config.tmpl for the install program..

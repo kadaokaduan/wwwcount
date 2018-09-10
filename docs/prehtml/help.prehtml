@@ -1,0 +1,25 @@
+<a name="help">
+<font size="+1"><b>How you can help</b></font>
+</a>
+<blockquote>
+I volunteer my time to develop and maintain this program. Here is a list of
+tasks you can do to contribute to this effort:
+<ul>
+    <li> If you improve the code some way, send me the 
+    context sensitive diffs or whatever convenient for you. 
+    If you port it to a new platform, encapsulate the platform specific 
+    code with ifdef.  Please try to stick to my coding style if possible.
+    <p>
+    <li> If you've a wish list for the future releases,
+    <a href="mailto:ma_muquit@fccc.edu">drop me a line</a> and I'll try my
+    best to implement it.
+    If you have some cool ideas, let me know as well.
+    <p>
+    <li> Make this documentation better. Check for typos, 
+    grammatical mistakes and inconsistencies.
+    <p>
+    <li> Subscribe to the mailing list and help others.
+    <p>
+    <li> Report bugs.
+</ul>
+</blockquote>

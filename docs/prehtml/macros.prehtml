@@ -1,0 +1,59 @@
+<#> various macros </#>
+<#> Muhammad A Muquit </#>
+<#> Dec-20-1998 </#>
+
+<#def name="htmlpp::body::start" redef
+    ><body bgcolor="#ffffff"></#def>
+
+<#def name="cver">2.6</#def>
+<#def name=mailto><a href="mailto:ma_muquit@fccc.edu"><i>ma_muquit@fccc.edu</i></a></#def>
+
+<#> various URLs </#>
+
+<#def name=url::fccc    >http://www.fccc.edu/</#def>
+<#def name=url::muquit  ><#url::fccc>users/muquit/</#def>
+<#def name=url::count   ><#url::muquit>Count.html</#def>
+<#def name=url::src     ><#url::muquit>src/</#def>
+
+<#def name=count_dir    >wwwcount<#cver>/</#def>
+<#def name=count_tgz    >wwwcount<#cver>.tar.gz</#def>
+<#def name=count_src    >src/<#count_tgz></#def>
+
+
+<#> /* red font */ </#>
+<#def name=rf><font color="#ff0000"></#def>
+
+<#> /* green font */ </#>
+<#def name=gf><font color="#006500"></#def>
+
+<#> /* brown font */ </#>
+<#def name=brownf><font color="#a52b2b"></#def>
+
+<#> /* 2 size font */</#>
+<#def name=f2><font size="2"></#def>
+
+<#> /* -1 size font */ </#>
+<#def name=f_1><font size="-1"></#def>
+
+<#> /* new in this release */ </#>
+<#def name=newh><#f_1>(new in this release)<#ef></#def>
+
+<#> end font </#>
+<#def name=ef></font></#def>
+
+<#> list of type square</#>
+<#def name=lisq><li type="square"></#def>
+
+
+<#def name=my_homepage><a href="<#url::muquit>">Muhammad A Muquit</a></#def>
+
+<#def name=cgi_spec><a href="http://hoohoo.ncsa.uiuc.edu/cgi/overview.html">CGI</a></#def>
+
+<#def name=bangla_link><a href="http://www.virtualbangladesh.com/bd_bangla.html">Bangla</a></#def>
+<#def name=apple_link><a href="http://www.apple.com/">Apple</a></#def>
+
+<#def name=ms_link><a href="http://www.microsoft.com/">Microsoft</a></#def>
+
+<#def name=FreeType_link><a href="http://www.freetype.org/">FreeType</a></#def>
+
+<#def name=TrueType_link><a href="http://www.truetype.demon.co.uk/">TrueType</a></#def>

@@ -1,0 +1,188 @@
+<A NAME="feat"><font size="+1"><b> Features</b></font> </A>
+
+<blockquote>
+<li type="square"> Does not require server-side includes.
+<p>
+<#lisq>
+<#brownf>
+Countdown to a specific date (past or future). Countdown
+can be done in reference to local server time or any timezone with the
+parameter <a href="#timezone">timezone</a>. 
+Two new keywords are added: <a href="#display">display</a>=countdown and
+<a href="#cdt">cdt</a>=year;month;day;hr;min;sec.  If display=countdown is 
+used and no cdt is specified, the default countdown to Year 2000 is assumed. 
+The current time and date can be displayed below the countdown if the 
+<a href="#sfd">sfd</a>=T is used.  Please look at the 
+<a href="#opti">Options</a> section and 
+<a href="Count_FAQ.html#q28">FAQ Question# 28</a> for details.
+Also look at the <a href="Count2_5-ex.html">Examples</a> section to see how it
+looks. 
+<#ef>
+<br>
+<#newh>
+<p>
+<#lisq>
+<#brownf>
+Site admin can decide to count or ignore page reload via a keyword (
+count_reload) in <a href="#conf">configuration file</a>.  If the site 
+admin decides to count reload (count_reload=Yes), then a user can choose 
+to count or ignore reload with parameter <a href="#reload">reload</a>=T or F. 
+Note, if the side admin decided to ignore reload, then the user preference 
+is ignored. 
+<#ef>
+<br>
+<#newh>
+<p>
+
+<#lisq>
+<#brownf>
+The counter image can be composited with a base image to a specific 
+location. New keyword: <a href="#xy">xy</a>=x;y (Sub-image x and y co-ordinate).
+The parameter <a href="#align">align</a> can be used to specify the width 
+and height of the counter image in the &lt;img src= tag while calling the 
+counter. The implication is, if the counter is the first thing in a large 
+table, the browser will not have to wait to calculate the width and height 
+of the counter image before loading the rest.
+Please look at the <a href="Count2_5-ex.html">Examples</a> section to see how it
+works.
+<#ef>
+<br>
+<#newh>
+<p>
+
+<#lisq>
+<#brownf>
+The site admin can log the counter messages in the log file or ignore the 
+messages by specifying a keyword and value (log_error_messages=Yes or No) 
+in the <a href="#conf"> configuration file</a>
+in section [options].
+<#ef>
+<br>
+<#newh>
+<p>
+
+
+
+
+<li type="square">
+    The maximum number of digits the counter can count and display can be very
+    high. By default the maximum number of hits can be (10^80)-1, which is 
+    a very large number
+(99999999999999999999999999999999999999999999999999999999999999999999999999999999), that is if data is not edited by hand, 
+    practically it is impossible to overflow the counter. 
+<p>
+    <li type="square">
+    Wild card can be used in the IPs in ignore host block in the 
+    config file.  There is no limit for number of IPs (as long as memory 
+    is not exhausted).
+<p>
+    <li type="square"> 
+    Wild card can be used in the hosts/IPs in the auth block of the 
+    config file.  There is no limit for number of hosts/IPs (as long as memory 
+    is not exhausted).
+<p>
+    <li type="square">
+    The counter can count with image= parameter if df= parameter is
+    specified.
+<p>
+<!-- added, Oct-25-1997 -->
+    <li type="square">
+Count or ignore Consecutive reloading a page from the same host a configurable
+option in the count.cfg file (used to be a compile-time option).
+(Added on: Dec-13-1998).
+<p>
+<!-- added, Oct-26-1997 -->
+    <li type="square">
+    "cache" and expires" parameters can be used to change the
+     caching behavior of certain browsers.
+<p>
+    <li type="square">
+    Date in clock is Year 2000 safe. Note, you will not see full year
+    in the counter until the year 2000 arrives unless you use the
+    parameter <a href="#fy">fy</a>, or specify YYYY with the option
+    <a href="#dformat">dformat</a>. 
+<p>
+<li type="square"> Uses image strip as well as individual digit images. Using an image
+strip reduces disk i/o significantly, therefore, it's faster. A program
+(mkstrip) is supplied to create an image strip from individual digit images. 
+<p>
+<li type="square"> Comma can be displayed after every 3rd digit from right.
+<p>
+<li type="square"> Any one color of the image can be changed on the fly. 
+<p>
+<li type="square"> Uses netmasks to mask out a range of hosts in the network or the entire
+network. 
+<p>
+<li type="square"> Automatic datafile creation, strict mode, use of rgb color database
+can be controlled from the cfg file at run time. 
+<p>
+<li type="square"> Any arbitrary GIF file can be displayed. Frame and other attributes of
+the counter can be applied to the GIF file. 
+<P>
+<li type="square"> Count 2.0 is backward compatible with Count1.5's URL. One thing to
+note, the keyword <b>wxh</b> has no meaning in Count 2.0. It was used in
+Count 1.5 to specify digit dimensions. In Count 2.0 it is not required,
+because the digit dimensions are determined automatically. Therefore, you
+can use variable width digit images in this version.
+<P>
+<li type="square"> Reasonable default for all <b>QUERY_STRING</b> parameters.
+<p>
+<li type="square"> The same program can be used to display time or date.
+<p>
+<li type="square"> The time and date of any timezone in the world can be displayed. The
+time can be displayed in 12 or in 24 hour format.
+<p>
+<li type="square"> Supports digit images with variable width.
+<p>
+<li type="square"> Counter can be displayed without incrementing (for monitoring etc.)
+<p>
+<li type="square"> A literal digit string can be displayed.
+<p>
+<li type="square"> A random digit string can be displayed.
+<p>
+<li type="square"> The color of the digits can be negated.
+<p>
+<li type="square"> The counter can be rotated (only integral of 90 degrees, 90,180,270).
+The default rotation is 270 degrees.
+<p>
+<li type="square"> An <B>ornamental 3D frame</B> can be wrapped around the counter image
+with user defined thickness and color at <I>run time</I>.
+<p>
+<li type="square"> The frame and transparent color can be a name (e.g. red,green,pink
+etc.). The color can be specified as a hex string, e.g. ffffff, ff0000 etc.
+as well as RGB triplets as before.
+<P>
+<li type="square"> Single program for any number of users for any number of web pages. 
+<P>
+<li type="square"> Any color of the counter image can be made <B>transparent</B> at
+<I>run time</I>.
+<P>
+<li type="square"> Style of digits can be specified at <I>run time</I>.
+<P>
+<li type="square"> Authorized host names can be in the configuration file.  Authorized
+hosts are those which can run the counter remotely. Do not confuse this with
+visitors from certain hosts.
+<P>
+<li type="square"> IP filtering through a configuration file at <I>run time</I>. Any number of
+hosts can be ignored from counting. A netmask can be used to filter out a
+specific range of hosts in a network or to filter out the entire network.
+It's a good idea to ignore your own host or entire domain. Gen-conf program
+will let you create the configuration file interactively.
+<P>
+<li type="square">Data file locking. Data file will not get clobbered by simultaneous 
+Count.cgi processes.  NOTE, locking may not work if the counter's datafile is
+on a NFS partition.
+<P>
+<li type="square"> Maximum number of digits can be set or counter can be 
+displayed with exact number of digits at <I>run time</I>.
+<P>
+<li type="square"> User will be able to specify a start-up counter value 
+at <I>run time</I>. This will take effect if the data file does not exist. 
+You will be prompted by the configuration program if you want this feature 
+or not.
+<P>
+<li type="square"> If you <b>do not want to display the counter</b> but like to keep the
+hits on your page, sh=0 can be defined in the QUERY_STRING at <I>run time</I>.
+It will write a 1x1 transparent GIF image to the browser but the counter in the
+data file will be incremented properly. 
+</blockquote>

@@ -1,0 +1,67 @@
+<a name="strip">
+<font size="+1"><b>How to create an image strip</b></font>
+</a>
+<blockquote>
+If you have individual digit images, you can create an image strip out of
+them. Image strip reduces disk i/o significantly, because the counter will
+need to read only one image instead of many and the size of the image
+in most cases will be less than the combined size of the individual images. 
+<p>
+A program called <b>mkstrip</b> is supplied to create the image strip from
+individual digit images. Another program called <b>extdgts</b> is supplied
+to extract individual GIF images from the strip.gif (made with mkstrip).
+extdgts is there to help you out if you need to extract the digit images for
+some reason.
+<p>
+To compile the programs, go to the <code>utils</code> directory and at the shell
+prompt, type:
+<pre>
+    make
+</pre>
+Before using them, <b>copy mkstrip and extdgts somewhere in your path,</b>
+otherwise you'll get error "command not found."
+<p>
+Now, go to the directory where all the individual digit images are and type:
+<pre>
+<font size=-1>
+mkstrip zero.gif one.gif two.gif .... nine.gif colon.gif am.gif pm.gif &gt; strip.gif
+</font>
+</pre>
+Note, the file names are not important but the order is very important. For
+example, the file names may be 0x.gif, 1x.gif etc.
+<p>
+Create a directory say <b>F</b> inside the <b>digits</b> directory and copy
+or move the file <i>strip.gif</i> to <b>F</b>. You can use this strip with
+<b>dd=F</b>.
+<p>
+The above strip can be used for counter and clock but not date. It also can
+NOT be used if you want to display comma. If you want to use date and comma,
+you must have the image for comma and dash. For example, the strip of digit
+style A is created with the command:
+<pre>
+mkstrip zero.gif one.gif ... nine.gif colon.gif am.gif pm.gif comma.gif \
+    dash.gif &gt; strip.gif
+</pre>
+Please note the order of the images used in arguments carefully. 
+<font color="#a52b2b">The program
+<i>mkstrip</i> puts the necessary information in the GIF comment extension
+about the strip.  The counter program parses the comment extension to 
+determine the width of the individual digits in the strip. Therefore,
+the strip can have digit segments of variable width.
+</font>
+<p>
+For example, the comment of the image strip of digit style A is:
+<pre>
+15:0:15:30:45:60:75:90:105:120:135:150:165:180:195:210:225
+</pre>
+The leftmost integer 15 indicates there are 15 individual digits in the
+image and the next colon separated pairs are the location of 
+left and right side of the segment
+of the individual images from the leftmost edge. If you look carefully you
+will see that the individual segment of the strip is 15 pixel wide. The
+height is determined by reading the image. If you use the program
+<i>mkstrip</i>, you do not need to know anything about the comment, it will
+be created correctly for you.  It is mentioned here because it is possible
+you obtained a strip from somewhere and you want to add the comment to the
+image.  
+</blockquote>

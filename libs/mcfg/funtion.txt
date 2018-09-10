@@ -1,0 +1,1 @@
+int paramProcess(filename,style,sfunc,pfunc);

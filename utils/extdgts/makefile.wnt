@@ -1,0 +1,36 @@
+#######
+#######
+# for NT, VC++ 4.0
+# Makefiel for extdgts.exe, extract individual images from strip.gif made with
+# mkstrip.exe
+# 03/24/96
+#######
+
+COMBINE_DIR= ../../libs/combine
+COMBINE_LIB= $(COMBINE_DIR)/combine.lib
+
+INCLUDES= -I. -I../../src -I$(COMBINE_DIR)
+CC= cl
+DEFS=  -DSTDC_HEADERS=1 -DHAVE_STRING_H=1 -DHAVE_FCNTL_H=1 -DHAVE_MALLOC_H=1
+LIBS=
+##
+# do not undefine ACESS_AUTH
+##
+DEFINES= $(INCLUDES) $(DEFS) 
+CFLAGS= $(cvars) $(cdebug) -nologo -G4  -DSYS_WIN32 $(DEFINES)
+#CFLAGS= $(cvars) $(cdebug) -nologo /W4  $(DEFINES)
+
+SRCS= extdgts.c
+OBJS= extdgts.obj 
+
+all: extdgts.exe 
+
+.c.obj:
+	cl $(CFLAGS) -c $< -Fo$@
+
+extdgts.exe: $(OBJS)
+	link $(OBJS) $(ldebug) $(conlflags) $(conlibs) /OUT:extdgts.exe \
+    $(COMBINE_LIB)
+    
+clean:
+	del *.obj *.exe

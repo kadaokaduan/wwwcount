@@ -1,0 +1,35 @@
+<a NAME="stepsn"><font size="+1"><b>Steps to compile and install (NT) - optional
+</b></font></a>
+<blockquote>
+<p>
+<font color="#ff0000">First ask yourself if you really need to compile</font>.
+<a href="CountNT.html">A compiled version</a> is already supplied for you
+convenience.
+You 
+will only need to compile if you want to change some default 
+characteristics of the counter.  I compiled the program on NT 4.0
+(Intel) with MS Visual C++ 5.0. The makefiles supplied are also for MS Visual
+C++ 5.0. If you use some other kind of compiler, you are on your
+own.
+<p>
+Assuming you've already downloaded and extracted the sources from the archive.
+Open a command shell window and perform the following steps:
+<pre>
+    1. cd wwwcount2.5
+    2. Edit the file src/configNT.h and see if anything needs to be changed
+    3. nmake -f makefile.wnt
+</pre>
+The above procedure will create the executable <b>src/Count.exe</b>. Copy the
+file <b>Count.exe</b> to your <b>cgi-bin</b> or <b>scripts</b> directory 
+or wherever you keep the CGI programs. copy or
+move the directory <b>data</b> as <b>wcount</b>to the same directory where you 
+copied the program Count.exe (if you edited the file
+configNT.h and changed the location, copy it there). Read the section
+<a href="#refr">How to call the program?</a>
+<p>
+The utility programs utils/mkstrip/mkstrip.exe and 
+utils/extdgts/extdgts.exe will also be compiled. 
+Please read the section <a href="#strip">How to create an image strip</a> 
+to know how the programs mkstrip.exe and extdgts.exe work.
+
+</blockquote>

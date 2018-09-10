@@ -1,0 +1,72 @@
+<hr size=1 noshade width="70%">
+<center>
+<b><#rf><u>Announcement</u><#ef></b><br>
+Count 2.6 is available for beta testing. It has <#TrueType_link> Font support.<br>
+Count 2.6 page is at: <a href="Count2.6/Count.html"><i>Count2.6/Count.html</i></a>
+    <br>
+-- <a href="mailto:ma_muquit@fccc.edu">mm</a>, (May-24-1999)
+</center>
+<hr size=1 noshade width="70%">
+<font size="+1"><b>Table of Contents</b></font>
+<li><a href="#mirror">Counter needs mirror homes</a>
+<#rf><b>(Please read)</b><#ef>
+<br>
+<li><a href="Count_mirrors.html">Official Count mirror sites</a> (If this site
+                is slow try the mirror sites)
+<li><a href="http://cad.zju.edu.cn/home/zhaoyb/muquit_counter.htm">
+  Documentation in <font color="#ff0000"><b>Chinese</b></font></a>
+ (Thanks to <a href="http://cad.zju.edu.cn/home/zhaoyb">Zhao YouBing</a>)
+<br>
+<LI><a href="#what">News</a>
+<br>
+<LI><A HREF="#requ">Requirements</a>
+<br>
+<LI><A HREF="#plat">Supported Platforms</a>
+<br>
+<LI><A HREF="#intr">Introduction</A>
+<br>
+<LI><A HREF="#feat">Features</A>
+<br>
+<LI><A HREF="#dirs">Directory Structure (Unix)</A>
+<br>
+<LI><A HREF="#digs">Digit styles (all platforms)</a>
+<br>
+<font color="#ff0000"><LI></font><A HREF="Count_download.html"><b>Download</b> source/binary archive for Unix, NT,OS/2, VMS and Amiga </A>
+<br>
+<font color="#ff0000"><LI></font><A HREF="#steps">Steps to compile and install (unix)</A>
+<br>
+<LI><A HREF="#stepsn">Steps to compile and install (NT)</A>
+<br>
+<LI><A HREF="#test">Test the program from command line (Unix/NT)</A>
+<br>
+<LI><A HREF="#refr">How to call the program from web page (all platforms)</A>
+<br>
+<font color="#ff0000"><li></font><a href="#opti">Counter options (all platforms)</a>
+<br>
+<LI><A href="#digit">How to use other styles of digits (all platforms)</a>
+<br>
+<LI><A HREF="#strip">How to create an image strip (all platforms)</A>
+<br>
+<li><A href="#conf">Configuration file</a>
+<br>
+<li><a href="#compo">Compositing with an image</a>
+<br>
+<LI><a href="Count2_5-ex.html">Examples (all platforms)</a>
+<br>
+<LI><A HREF="#errm">Error messages (all platforms)</A>
+<br>
+<font color="#ff0000"><LI></font>
+    <A HREF="Count_FAQ.html">Frequently asked questions (all platforms)</A>
+<font color="#ff0000"><b>(Please READ</b> before asking questions)</font>
+<br>
+<LI><A HREF="#copyr">Copyright (all platforms)</A>
+<br>
+<LI><A HREF="#ackn">Acknowledgments</A>
+<br>
+<LI><A HREF="#hear">I like to hear from you</A>
+<br>
+<LI><A HREF="#help">How you can help</a>
+<br>
+<LI><A HREF="Count_Changelog.html">ChangeLog (if you contributed, your name is there)</A>
+<p>
+

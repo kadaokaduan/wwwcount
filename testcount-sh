@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "changing directory to \"tests\""
+cd ./tests
+echo "running \"testcount-sh\" in \"tests\""
+exec ./testcount-sh

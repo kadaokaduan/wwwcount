@@ -1,0 +1,42 @@
+<p>
+<a name="digit">
+<font size="+1"><b>How to use other styles of digits</b></font>
+</a>
+<blockquote>
+There are several sites including
+<A HREF="http://www.digitmania.holowww.com">Digit Mania
+</a>
+which maintains a array of collection of GIF digits which can be used with
+the counter. The counter program can use these digits in 2 ways. 
+<ol>
+<li>Use a single image strip for digits. This is the default behavior,
+that is the counter program looks for a image file called <b>strip.gif</b>
+in <a href="#dirs">digits/style</a> directory by default. Using an image
+strip is much more efficient than using individual digits, because 
+    <ul>
+    <li> the
+size of an image strip is almost always less than the combined size of
+individual images.
+<br>
+    <li> Disk i/o is significantly reduced, because only one file needs to
+    be opened instead of many.
+    </ul>
+<p>
+<li> use a individual digit image for each digit, for example, zero.gif,
+one.gif...nine.gif. These digit images reside in the 
+<a href="#dirs">digits/style</a> directory. If you like to use the counter for
+<b>clock</b>, 3 additional digit images are required, e.g., colon.gif,
+am.gif and pm.gif. If you want to use <b>comma</b> in your counter digits,
+another image is required, e.g., comma.gif. If you want to use the counter
+to display <b>date</b>, one more image is required, e.g., dash.gif. If
+you collect digits from external source, do not forget to rename the images
+to <code>zero.gif, one.gif, two.gif, ... nine.gif, colon.gif, am.gif, 
+pm.gif, comma.gif and dash.gif</code>
+</ol>
+<p>
+The section <a href="#strip">How to create an image strip</a>
+describes how to create an image strip from individual digit images.
+If you like to use the individual digits instead, you <b>must</b> use
+the option <b>istrip=F</b> when you call the counter from web page, because
+by default <b>istrip=T</b>.
+</blockquote>

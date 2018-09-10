@@ -1,0 +1,41 @@
+<a name="compo">
+<font size="+1"><b>Compositing with an image</b></font>
+</a>
+<blockquote>
+Compositing the counter image with a base image is an interesting
+feature of the counter.  It allows you to composite the counter, clock or
+countdown image with a base image of your choice. You can position the counter
+image anywhere on the base image using the parameter
+<a href="#xy">xy</a> or you can use <a href="#align">align</a> to align
+at top, middle and bottom of the base image. The valid keyword for 
+<a href="#align">align</a> is
+            <b>topleft</b>,
+            <b>topcenter</b>,
+            <b>topright</b>,
+            <b>midleft</b>,
+            <b>midright</b>,
+            <b>midcenter</b>,
+            <b>bottomleft</b>,
+            <b>bottomcenter</b> and
+            <b>bottomright</b>.
+The parameter <a href="#offset">offset</a> can be used to specify the 
+offset in pixels from the edge of the base image.  
+<p>
+Here's example of Compositing the counter with a base image:
+<p align="center">
+<img src="Count2.5/images/yeehaw.gif" alt="composite.gif">
+<p>
+The HTML tag used to create the above image is as follows:
+<pre>
+<font size="2"><b>
+&lt;img src="/cgi-bin/Count.cgi?df=sample.dat&amp;dd=A&amp;image=yeehaw.gif&amp;ft=0&amp;offset=5&amp;align=topcenter"&gt;
+</b>
+</font>
+</pre>
+<p>
+<b>Note</b>: while compositing the keyword <a href="#tr">tr</a> and 
+<a href="#trgb">trgb</a> for transparency makes the color of the counter
+image transparent not that of the base image.  Also, when you're compositing,
+do NOT specify display=image.
+</blockquote>
+

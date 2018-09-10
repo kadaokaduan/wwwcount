@@ -1,0 +1,13 @@
+mkstrip - makes a image strip from individual digit images.
+extdgts - extract individual digit images from a strip made with mkstrip.
+
+You must the combine library before compiling mkstrip and extdgts.
+Please read the man page mkstrip.1 or mkstrip.txt for direction.
+
+Thanks.
+
+--
+Muhammad A Muquit
+March 24, 1996 (first cut)
+Oct 22, 1997 (updated)
+

@@ -1,0 +1,31 @@
+#--------------------------------------------
+# Makefile for MS Visual C++
+# ma_muquit@fccc.edu
+# Jan-09-1999, Saturday, for Count 2.5
+#--------------------------------------------
+
+CC= cl
+DEFS=  -DSYS_WIN32 -DSTRICT_MODE=1 -DHAVE_STRING_H=1 -DHAVE_FCNTL_H=1
+
+INCLUDES=  -I. -I..
+
+# replace -O with -g in order to debug
+
+DEFINES= $(INCLUDES) $(DEFS) 
+CFLAGS=  $(cvars) $(cdebug) -nologo -G4 $(DEFINES)
+
+SRCS = mcfg.c
+OBJS = mcfg.obj
+
+.c.obj:
+	$(CC) $(CFLAGS) -c $< -Fo$@
+
+all: mcfg.lib
+
+mcfg.lib: $(OBJS)
+	link /lib /OUT:mcfg.lib $(OBJS) 
+
+mcfg.obj: mcfg.h
+
+clean:
+	del $(OBJS) mcfg.lib *.bak

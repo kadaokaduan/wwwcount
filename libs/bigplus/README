@@ -1,0 +1,7 @@
+this is a stripped down version of GNU bc library by Philip A. Nelson
+(phil@cs.wwu.edu). I just took the portion of the library to add two big
+numbers.
+
+--
+Muhamamd A Muquit
+Oct-11-1997

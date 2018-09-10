@@ -1,0 +1,78 @@
+#######
+# configuration file for Count 2.5
+# Edit by hand, if you need to add something
+##############################################
+####
+# BLOCK 1
+# Allow automatic datafile creation or not
+# it's a required block. 1 means allow, 0 means do not allow.
+####
+{
+0
+}
+###
+# BLOCK 2
+# run the program in strict mode or not.
+# it's a required block. 1 means strict, 0 means not strict.
+###
+{
+1
+}
+####
+# BLOCK 3
+# Allow to use RGB color database. 1 means allow, 0 means don't
+# convenient to use because colorname e.g., red, gold etc can
+# be used instead of rgb components of the color, however it's
+# very inefficient to lookup.
+####
+{
+1
+}
+####
+# BLOCK 4
+# Ignore count block, you might want to ignore the local sites.
+# If you do not want to ignore any hosts from
+# counting, just put { on one line and } on the next line but make sure
+# the braces exist!
+# It's a required block.
+######
+# netmasks can be used to ignore a entire network or a specific
+# range of hosts in the network. Read the counter documentation to
+# know about netmasks.
+#192.160.166.0   255.255.255.0
+{
+131.249.*
+}
+####
+# BLOCK 5
+# Auth block
+# All possible names and IP addresses by which your host can be referred.
+# These hosts can access the counter remotely or locally. Host running
+# the http server must exist here.
+#
+# If Count.cgi was built with the USE_DNS macro defined, this block need
+# only list valid IP addresses.  In that case, it is recommended that this
+# block only contain wild-carded IP addresses.  Fewer entries in this
+# block will decrease start-up overhead.
+# one item per line.
+#
+##
+{
+test.counter.com
+www.fccc.edu*
+warm
+192.160.166.1
+www
+193*
+}
+###
+### BLOCK 6
+### Reload block
+### 1 means count reload, meaning increment if someone reloads the page
+### 0 means, ignore reload. If the site admin decides to count reload, then
+### a user can choose to count or ignore reload with parameter reload=T or F.
+### If this block contains 0, user preference is ignored.
+###
+{
+1
+}

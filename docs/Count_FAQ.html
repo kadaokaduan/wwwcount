@@ -1,0 +1,735 @@
+<html>
+<!-- Document: ../Count_FAQ.html, automatically preformated by
+     htmlpp version 3.99905: http://www.eleves.ens.fr/home/nthiery/htmlpp/
+     from count_faq.prehtml on Wed Jan 12 14:39:03 2000.
+     Do not edit ! -->
+<head>
+</head>
+<body bgcolor="#ffffff">
+<p>
+<A NAME="freqa">
+<font size="+1"><b>WWW Count Frequently Asked Questions</b></font></a>
+<ol>
+    <li><a href="#q1">Is there a support group or mailing list?</a>
+    <br>
+    <li><a href="#q2">My CGI scripts don't work. What's wrong?</a>
+    <br>
+    <li><a href="#q3">I get errors while compiling on SGI, what's the
+    problem?</a>
+    <br>
+    <li><a href="#q4">Why does the counter show "888888" all the time? </a>
+    <br>
+    <li><a href="#q5">The counter does not compile on UnixWare with cc,
+    why?</a>
+    <br>
+    <li><a href="#q6">The counter does not compile on Solaris with cc,
+    why?</a>
+    <br>
+    <li><a href="#q7">I get an error message "Could not write to counter 
+    file: x/y/sample.dat".  What's the problem? </a>
+    <br>
+
+    <li><a href="#q8">What does it mean when you say "user running the web
+    server"? </a>
+    <br>
+
+    <li><a href="#q9">The counter seems to display random number. What's the
+    problem? </a>
+    <br>
+
+    <li><a href="#q10"> I get an error message "Host foo.com is not 
+    authorized". What's the problem? </a>
+    <br>
+
+    <li><a href="#q11">What's the format of the data file?</a>
+    <br>
+
+    <li><a href="#q12">How can I reset the counter?</a>
+    <br>
+
+    <li><a href="#q13">How does this program handle remote execution?</a>
+    <br>
+
+    <li><a href="#q14">What's the maximum number of hits the counter can
+    handle?</a>
+    <br>
+
+    <li><a href="#q15">I sent you so many mails, how come you never
+    respond?</a>
+    <br>
+
+    <lI><a href="#q16">How can I turn off "Reload Ignore" feature?</a>
+    <br>
+
+    <li><a href="#q17">Is there any way to compile the counter without running
+    the configuration scripts?</a>
+    <br>
+
+    <li><a href="#q18">Why do I have to add a line to the config file 
+    every time I add a new virtual host?</a>
+    <br>
+
+    <li><a href="#q19">The counter does not seem to increment, what's going
+    on?</a>
+    <br>
+
+    <li><a href="#q20">How do I configure the counter on virtual servers?</a>
+    <br>
+
+    <li><a href="#q21">The counter seems to reset to zero occasionally,
+    what's going on?</a>
+    <br>
+
+    <li><a href="#q22"> While compiling, I get a message
+    <code> sh: ar: not found</code>, what's the problem?</a>
+    <br>
+
+    <li><a href="#q23">How to stop the browsers to cache the counter image?</a>
+    <br>
+
+    <li><a href="#q24">Is there any way to stop showing error messages to the
+    browsers?</a>
+    <br>
+
+    <li><a href="#q25">How to make a counter hidden?</a>
+    <br>
+
+    <li><a href="#q26">Can this program act as a text counter?</a>
+    <br>
+
+    <li><a href="#q27">How does this program display time of various time
+    zones?</a>
+    <br>
+
+    <li><a href="#q28">How to display countdown?</a>
+    <br>
+    
+    <li><a href="#q29">I get a error message "Counter datafile "x/y/foo.dat
+    must be created first!", how to create the file?</a>
+
+</ol>
+<!-- June-14-1998 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q1">
+    <font color="#a52b2b">
+    <b>1: Is there a support group or mailing list?
+    </b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+There is a mailing list setup for those who couldn't get their question 
+answered on this page.  To subscribe to the mailing list for WWWCount, please
+send a message to 
+<a href="mailto:wwwcount-request@pcraft.com">wwwcount-request@pcraft.com</a>
+with <b>subscribe your-email@domain.com</b> in 
+the BODY of the message (no subject is needed). You also can browse
+the mailing list archive at:
+<a href="http://wwwcount.yeehaw.net/">http://wwwcount.yeehaw.net</a>.
+<p>
+<b>NOTE:</b> 
+People will ask questions which might seem simple and annoying to you.
+Therefore, subscribe to the mailing list only if you like to help others.
+<p>
+ Thanks to Ashley M. Kirchner,
+    <i>ashley@photocraftlab.com</i> for creating and maintaining the list.
+<p>
+Also, sometimes After 11 PM US EST, I stay on-line for a little while in 
+<a href="http://www.irchelp.org/">IRC</a> channel #wwwcount on 
+<a href="http://www.efnet.org">EFnet</a>. 
+<hr>
+<p>
+<img src="blues.gif" alt="">
+    <a name="q2">
+    <font color="#a52b2b"><B>2. My CGI scripts don't work. What's
+    wrong?</B></font>
+    </a>
+    <br>
+    <b>Answer: </b>
+    Simply linking from your page to an executable program or script won't
+    cause it to be run by the server. There are two common arrangements: either
+    files in directories specially designated by the server administrator are
+    executed as CGI scripts, or files with a special extension (such as .cgi)
+    are executed as CGI scripts. 
+<p>
+    These are just two possible ways your server might be configured. Many
+    sites don't allow users to run CGI scripts at all. Consult your web
+    server's administrator.
+<p>
+    <b>Taken from </b><A HREF="http://www.boutell.com/faq/cgiprob.htm">WWW FAQ</a>
+<p>
+<hr>
+<img src="blues.gif" alt="">
+    <a name="q3">
+    <font color="#a52b2b"><b>3.I get errors while compiling on SGI, what's the
+    problem? </b></font>
+    </a>
+    <br>
+    <b>Answer:</b> In SGI you might get errors like:
+<pre>
+       : libCombine.a
+       : - Too many arguments
+       *** Error code 1 (bu21)
+       *** Error code 1 (bu21)
+</pre>
+     To make it work, in <i>libs/combine/Makefile</i>, remove the line
+<pre>
+    $(RANLIB) $@ 
+</pre>
+Or, try setting SHELL to sh, for example: <code>setenv SHELL "/bin/sh"
+</code>
+Thanks to <i>avarro@CENTRCN.UMontreal.CA</i> (12/07/95)
+<hr>
+<p>
+<img src="blues.gif" alt="">
+    <a name="q4">
+    <font color="#a52b2b">
+    <b>4. Why does the counter show "888888" all the time?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> The counter is running in strict mode
+    (look at <i>count.cfg</i> file).  When the counter runs in strict mode, if
+    the browser does not return the environment variable <b>HTTP_REFERER</b>,
+    the counter will display the image <b>888888</b> instead of serving the
+    counter.  The environment variable HTTP_REFERER should contain the web page running
+    the counter. Some browsers do not return this variable in &lt;img GET
+    method.  
+<br>
+<u>Technical notes</u>: The way HTTP_REFERER environment variable gets available to a
+CGI program is as follows: The browser sends a header like Referer:
+http://foo.com/page.html, then according to the 
+<a href="http://hoohoo.ncsa.uiuc.edu/cgi/interface.html">
+CGI 1.1 specification</a> the server can add HTTP_ followed by the header name
+and make it available to CGI program as environment variable. But according to 
+CGI spec, the server can decide not to make these variables available to the 
+CGI program. In this case, the counter will show 888888. Also, if the browser
+decides not the send the Referer header to the server, there will not be
+any environment variable called HTTP_REFERER, and the counter will show
+888888.  Good news is, netscape and MS IE both send Referer when &lt;img src
+is is used to set an inline image, and apache and all good web servers also 
+make this variable available to the CGI programs.
+<hr>
+<p>
+
+<img src="blues.gif" alt="">
+    <a name="q5">
+    <font color="#a52b2b">
+    <b>5. The counter does not compile on UnixWare with cc, why?</b>
+    </font>
+    </a>
+    <br><b>Answer:</b>
+    Note for UnixWare 2: Before running the configure
+    script, set and export the environment variable CC to the string
+<pre>
+    cc -Xc
+</pre>
+<hr>
+<p>
+<img src="blues.gif" alt="">
+    <a name="q6">
+    <font color="#a52b2b">
+    <b>6. The counter does not compile on Solaris with cc, why?</b>
+    </font>
+    </a>
+    <br><b>Answer:</b> 
+        If you are using Sun's stock cc on Solaris, you may get errors about
+        identifier redeclaration.  Try defining <code><b>-D__STDC__=1</b>
+        </code> in Makefile, it might work. You should not have any problem if
+        you compile with gcc or ucb cc on Solaris.
+<hr>
+<p>
+<img src="blues.gif" alt="">
+    <a name="q7">
+    <font color="#a52b2b">
+    <b>7. I get an error message "Could not write to counter file:
+    x/y/sample.dat". What's the problem?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> That means the user running the web server can not write 
+    to the datafile. The correct way to make it work is to change the owner
+    of the datafile to the user running the web server and give read/write
+    permission to that user only. You can only do that if you're the super user.
+    If you are not the super user, you have to give read/write permission to 
+    world. In Unix, "chmod 666 file" will do that. But this will allow anyone to
+    edit or delete your datafile.
+<hr>
+<p>
+<img src="blues.gif" alt="">
+    <a name="q8">
+    <font color="#a52b2b">
+    <b>8. What does it mean when you say "user running the web server"?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> Web servers can be configured to run the CGI program as a 
+    unique user and a group.   In <a href="http://www.apache.org">apache</a> web 
+    server, the user and the group is specified with the directive User and
+    Group in httpd.conf file respectively.  I suggest you create a unique user 
+    and group first.  For the user, put a * in the password field in 
+    passwd file and use /bin/true as its shell. This way this user will 
+    never be able to login to the system. And all CGI programs should be
+    owned by the user and read/write/execute permission to be given to that
+    user only. Most of all, make sure you look at all the CGI programs in your
+    system. CGI programs are always a security risk. But if you configured
+    your server to execute CGI programs as a unique non-privileged user, the
+    damage to your system will be minimal, in case security is compromised
+    due to CGI programs.
+<hr>
+
+<p>
+<img src="blues.gif" alt="">
+    <a name="q9">
+    <font color="#a52b2b">
+    <b>9. The counter seems to display random number. What's the problem?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>  If you do not specify a datafile with df= parameter, the
+    counter will display a random number.
+<hr>
+
+<!-- oct-19-1997 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q10">
+    <font color="#a52b2b">
+    <b>10. I get an error message "Host foo.com is not authorized". What's the
+    problem?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> Find the file 
+    <a href="Count.html#conf">count.cfg</a>. Edit it with your favorite text
+    editor. Add the hostname in the error message in the section [authorized].
+    If you do not have access to the file, you have to ask the person who
+    installed the counter.
+    <p>
+    If you are running a system with many virtual domains, you will probably
+    want to list your IP addresses with wildcards.  This prevents you from
+    having to add an entry every time a new virtual domain is added.  As of
+    version 2.4, the referer host will be looked
+    up in DNS if the USE_DNS directive is defined during compilation.
+    Look at the comments in file <code>src/Makefile.in</code> for
+    instructions.
+    <p>
+    For example, if you have the class C IP address of 192.160.166.[1-254], 
+    instead of listing every virtual host in this domain you could add:
+<pre>
+192.160.166.*
+</pre>
+    to your config file in the [authorized] section.  Note that this 
+    feature will NOT work 
+    with versions prior to Count 2.4. <b>Warning:</b> If you compile with
+    <code> -DUSE_DNS=1</code>, then hostname is resolved with each CGI
+    request. This can be slow if your DNS server is busy or serving lots of
+    requests. If DNS server does not respond, the counter will hang until 
+    resolving request times out.
+<hr>
+
+<!-- oct-2601997 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q11">
+    <font color="#a52b2b">
+    <b>11. What's the format of the data file? </b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> The counter data file is a text file. The format of this
+    file is:  <code> <b>digits:IP$</b></code>
+     <br>
+     The line does not end with new line.<br>
+     Example:
+        <b>56787654567237875:131.349.3.10$</b>
+    <br>
+    The digits are the numeric ASCII characters and IP is the IP number of
+    the last host visited the page. The $ at the end indicates the end of
+    data.
+    If you configured the counter to count reload, the datafile might contain
+    something like:
+    <b>3432432434$</b><br>
+    Here the $ indicates the end of data as well.<br>
+    <u>Technical note</u>: Before the release of Count 2.5 there was no $
+    to indicate the end of data. So ftruncate() was used to truncate the
+    datafile before writing. It was kind of risky, because if the system was out
+    of disk space, the data file was truncated to zero without any indication. 
+    It will also help data integrity for the  systems where ftruncate() is not 
+    available.  
+<hr>
+
+<!-- oct-19-1997 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q12">
+    <font color="#a52b2b">
+    <b>12. How can I reset the counter?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> To reset the counter, find the file specified with df=
+    parameter, edit it with your favorite text editor. If you do not have
+    access to the datafile, your sysadmin has to do it for you.
+<hr>
+
+<p>
+<img src="blues.gif" alt="">
+    <a name="q13">
+    <font color="#a52b2b">
+    <b>13. How does this program handle remote execution?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> If you do not know, in most cases any CGI program can 
+    be executed remotely without visiting the page with a browser.  For 
+    example, a CGI program x.cgi (say it returns an in-lined image) in
+    foo.com can be called from foobar.com as follows:
+<PRE>
+    &lt;img src="http://foo.com/cgi-bin/x.cgi"&gt;
+</PRE>
+    That is, someone somewhere on the  Internet can refer to your counter
+    and increase the hits and you will not have a clue. You will get the false
+    impression of many people visiting your page. 
+<P>
+    So how does this program handle this? The counter program tries to
+    get a environment variable called HTTP_REFERER for remote
+    referrer.  It is necessary to check this variable because when someone 
+    remotely refers to a CGI program on your machine, the variable 
+    REMOTE_ADDR will be the address of your machine. So checking 
+    REMOTE_ADDR will not work. Most of the modern browsers returns the env 
+    variable HTTP_REFERER.  If the browser does not return the variable, 
+    counter will be served anyway.  But you are not lost totally here.  If 
+    you decided to ignore count for your host running httpd, the counter 
+    will be served but it will not be increased.  So, I suggest ignore 
+    count for your own host. Gen-conf program is used for generating the 
+    configuration file. 
+    Due to the architecture of the web itself, there is not good solution of
+    this problem, a determined evil hacker can always circumvent it.  
+<hr>
+
+<!-- oct-26-1997 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q14">
+    <font color="#a52b2b">
+    <b>14. What's the maximum number of hits the counter can handle?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    By default compile time option, it can handle digits up to 80 character
+    long which a very large number
+(99999999999999999999999999999999999999999999999999999999999999999999999999999999).
+It will not overflow in the life time of the Universe.
+However, this can be easily increased by editing the MAX_DIGITS
+    directive in count.h :). <b>Now a pop quiz</b>,
+    if a site gets one million hits/day, in which year will the counter 
+    overflow?
+<hr>
+
+
+<!-- oct-26-1997 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q15">
+    <font color="#a52b2b">
+    <b>15.  I sent you so many mails, how come you never respond?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> I receive enormous number of mails. Please understand 
+     that no way I can answer all of the mails I receive.  If the problem 
+     can be solved by reading the documentation, you won't hear from me, 
+     otherwise I try my best to respond. But often I just have too much
+     to do and mails pile up.  Instead of sending me mails, please 
+     <a href="#q1"> subscribe to the mailing list</a> and send mail there.
+<hr>
+<!-- Nov-01-1997 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q16">
+    <font color="#a52b2b">
+    <b>16. How can I turn off "Reload Ignore" feature?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> This used to be a compile time option, but it is a
+    run time option from Count 2.5+. 
+    In the options section of the <a href="Count.html#conf">configuration 
+    file</a> specify <b>count_reload=Yes</b> if you want to count reload.
+    
+    Also if you do so, your counter users will have an option to ignore or 
+    count reload with the parameter 
+    <a href="Count.html#reload">reload</a>=T or F.
+<hr>
+
+<p>
+<img src="blues.gif" alt="">
+    <a name="q17">
+    <font color="#a52b2b">
+    <b>17. Is there any way to compile the counter without running
+    the configuration scripts?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> 
+    It's simple in Count 2.5+.
+    Just compile with defaults settings as described in the section
+    <a href="Count.html#steps">Steps to compile and install</a> of the 
+    counter main page.
+<hr>
+
+<p>
+<img src="blues.gif" alt="">
+    <a name="q18">
+    <font color="#a52b2b">
+    <b>18. Why do I have to add a line to the config file every time I add 
+    a new virtual host?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> It's a security feature, to prevent users on other systems
+    from using your host as a "counter server".  For information on 
+    automatically recognizing new virtual hosts as they're added, see the 
+    answer to <a href="#q9">question 9.</a>
+    <font size="-1">(Contributed by: Sean Reifschneider
+            <i>jafo@gateway.tummy.com</i>)</font>
+<hr>
+
+<!-- dec-01-1997 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q19">
+    <font color="#a52b2b">
+    <b>19. The counter does not seem to increment, what's going on?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    It's a feature in the new release. It will only increment, if the visitor's
+    IP and the one in the datafile (last visitor) differs. It's there to handle
+    people pressing the "Reload" button continuously.
+    If you do not like it, you can turn it off at compile time. Please read
+    the answer to <a href="#q16">Question 15</a>.
+<hr>
+
+<!-- Jan-03-1997 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q20">
+    <font color="#a52b2b">
+    <b>20. How do I configure the counter on virtual servers?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    After running <code>Count-config</code> normally, edit
+    <code>src/config.h</code> and change any references to directory paths in
+    line 13,15, 16 and 17 to include the part of the path your virtual server
+    can see. For example, if the real path is
+    <code>/user/mysite/local/etc/httpd/cgi-bin</code>, while the virtual
+    server might only access <code>/usr/local/etc/httpd/cgi-bin</code>.
+    <p>
+    (Contributed by: Jim Morrissey <i>j.morrissey@videowaves.com</i>.)
+<hr>
+
+<!-- March-02-1998 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q21">
+    <font color="#a52b2b">
+    <b>21. The counter seems to reset to zero occasionally, what's going on?
+    </b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    If you are using Count 2.5+, it should not happen. Only make sure that 
+    the disk partition where the datafile is located is not a NFS mounted 
+    partition. <u>If it is NFS mounted</u>, you might find counter process is 
+    hanging and consuming CPU and the data files are getting clobbered.
+    The reason for this is, file locking is not reliable on all Unix over NFS.
+<!--
+    ** obsolete, Jan-02-1999 **
+    The counter program does NOT check for disk capacity. If you are out of
+    disk space, and if a page is accessed at this time, the data file 
+    associated with this page will be reset to zero. It is a bug/feature which
+    exists in all versions of the counter. So watch the disk capacity once in 
+    a while. There will be a fix in the next release.
+    Also make sure that the disk partition where the datafile is located is not
+    a NFS mounted partition. If it is NFS mounted, you might find counter
+    process is hanging and consuming CPU.
+-->
+<hr>
+
+<!-- March-10-1998 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q22">
+    <font color="#a52b2b">
+    <b>22: While compiling, I get a message <code> sh: ar: not found</code>, 
+           what's the problem?
+    </b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+     You see this message, because the location of the program ar is not in
+your PATH. You need to find out the location of ar first. To do this at the
+shell prompt type:
+<pre>
+       find / -name ar -print
+</pre>
+If you are on a Solaris box, the output might look like: 
+<code>/usr/ccs/bin/ar </code>.
+Here <code>/usr/ccs/bin</code> is the directory where <b>ar</b> is located.
+You need to add this location to  your path. To do this, if your shell is csh
+or its variant, edit the file <code>.cshrc</code> and put a like like:
+<pre>
+       set path = ( $path /usr/ccs/bin )
+</pre>
+Then source the file by typing: <code> source .cshrc</code><br>
+If your shell is sh, bash or a variant of sh, edit the file .profile or
+.bashrc and put a line like:
+<pre>
+    PATH=$PATH:/usr/ccs/bin
+    export PATH
+</pre>
+Then source the file by typing: <code>. .bashrc</code><br>
+<hr>
+
+
+
+<!-- Dec-05-1998 -->
+<p>
+<img src="blues.gif" alt="">
+    <a name="q23">
+    <font color="#a52b2b">
+    <b>23. How to stop the browsers to cache the counter image?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    If you want the browser to request the server for counter image each time
+    you visit the page, use the parameters <b>cache=F&amp;expires=0</b>.
+    If the browser respects HTTP specification, it will not cache the image.
+    You might want to do this if you're using the counter as clock to make sure
+    the time is shown correctly each time someone visits the page.
+    The downside to that is that the counter program gets executed each 
+    time as browser does not cache the image. Another tick is to change 
+    something in the parameter, like change ft or dd, so that the browser 
+    will notice the tag is changed and ask the server for the image.
+<hr>
+
+<p>
+<!-- Dec-06-1998 -->
+<img src="blues.gif" alt="">
+    <a name="q24">
+    <font color="#a52b2b">
+    <b>24. Is there any way to stop showing error messages to the browsers?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    Yes it's possible in Count 2.5+. It is specified in the
+    <a href="Count.html#conf">configuration file</a> with the keyword
+    show_error_messages_to_browsers=Yes or No in the options section.
+<hr>
+<p>
+
+<!-- Dec-13-1998 -->
+<img src="blues.gif" alt="">
+    <a name="q25">
+    <font color="#a52b2b">
+    <b>25. How to make a counter hidden?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    Use the parameter <a href="Count.html#sh">sh</a>=F</b>. If you use the 
+    option sh=F, the counter
+    program sends a 1 pixel by 1 pixel  transparent GIF image to the 
+    browser, which gives an illusion of hidden counter. If you want to monitor
+    the hits from another page, use the option incr=F and df=the_data_file.
+<hr>
+<p> 
+<img src="blues.gif" alt="">
+    <a name="q26">
+    <font color="#a52b2b">
+    <b>26. Can this program act as a text counter?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    No. When you use the tag &lt;img src= tag, the browser expects an image.
+    However you can use digits which look like text.
+<hr>
+
+<p>
+<img src="blues.gif" alt="">
+    <a name="q27">
+    <font color="#a52b2b">
+    <b> 27. How does this program display time of various time zones?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b>
+    This program uses offset from Greenwich Mean Time (GMT) to show
+    time of various time zones. For example, to display US Eastern Standard
+    Time using offset from GMT, use the parameter timezone like
+    <a href="Count.html#timezone">timezone</a>=GMT-0500</b>. Note, you 
+    must use 4 digit offset.
+<p>
+<img src="blues.gif" alt="">
+    <a name="q28">
+    <font color="#a52b2b">
+    <b> 28. How to display countdown?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> If you want to display countdown to year 2000 (a popular
+     demand) just specify 
+    <a href="Count.html#display">display</a>=countdown&amp;
+    <a href="Count.html#dd">dd</a>=cd
+    <b>Note</b>: we specified dd=cd, as the default digit styles cd has all
+    the necessary image segments to display countdown.
+    To display countdown to a specific date (past or future) use the
+    parameter <a href="Count.html#cdt">cdt</a> to specify the target date. 
+    If you like to show the current date with the countdown, use the parameter
+    <a href="Count.html#sfd">sfd</a>. If you want to change the color of the
+    from date, use the parameter <a href="Count.html#srgb">prgb</a> parameter.
+    By default the countdown is calculated in reference to server time (
+    where the Count.cgi program is running). If you want display in 
+    reference to other timezonze (e.g. GMT) use the <a href="Count.html#
+    timezone">timezone</a> parameter.
+    Note: do not forget to use the
+    parameters <a href="Count.html#cache">cache</a>=F&amp;<a
+    href="Count.html#cache">expires</a> =0 to force the browser to load a 
+    fresh countdown image instead of loading it from cache. 
+<p>
+<img src="blues.gif" alt="">
+    <a name="q29">
+    <font color="#a52b2b">
+    <b> 29. I get a error message "Counter datafile "x/y/foo.dat
+    must be created first!", how to create the file?</b>
+    </font>
+    </a>
+    <br>
+    <b>Answer:</b> In Unix, at the shell prompt type:
+<pre>
+    touch /x/y/foo.dat
+</pre>
+    Give read/write permission (600) to 
+    <a href="#q8">the user running the web server</a>.<br>
+    In NT, go to Command Prompt from Start menu, at the prompt type:
+<pre>
+    echo "1" &gt; X:\x\y\foo.dat
+</pre>
+Replace X: with the appropriate drive letter. If you see forward and back
+slash combination in the error message, do not worry, it's OK.
+<hr noshade size="1">
+<a href="Count.html"><i>Back to Counter page</i></a>
+</body>
+</html>

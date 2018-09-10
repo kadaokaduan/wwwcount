@@ -1,0 +1,91 @@
+<font size="+1"><a name="what"><b>News</b></a></font>
+<blockquote>
+The WWW Counter program is continually being enhanced.
+Please check this section periodically to see the latest enhancements 
+and bug fixes.
+Please look at the
+section <A HREF="Count_Changelog.html">ChangeLog</a> for the list of past
+enhancements and bug fixes.
+Please look at the Section
+<A HREF="#feat"><b>Features</b></A> for all the features. 
+<p>
+<li>
+<font size="+1">
+<b>
+LZW compression in GIF is <font color="#ff0000">OFF</font> by default. If you want to make the counter with
+LZW compression, edit the file libs/combine/Makefile.in and uncomment the
+line ##HAS_LZW= -DHAS_LZW=1.  Please do so at your own risk as Unisys has the
+right to charge you $5000.00 for using compressed GIF files.
+Without the LZW compression, the GIF image the counter generates will be bigger.
+</b>
+</font>
+<br>
+Read more about it:<br>
+&nbsp;&nbsp;
+    <a href="http://corp2.unisys.com/LeadStory/lzw-license.html">http://corp2.unisys.com/LeadStory/lzw-license.html</a>
+<br>
+&nbsp;&nbsp;
+    <a href="http://burnallgifs.org/">http://burnallgifs.org/</a>
+<p>
+Note NT binary still has LZW support, I'll remove it as soon as possible.
+I'm in the process of adding PNG support.<br>
+(Nov-11-1999)
+<p>
+<#lisq> A new parameter <a href="#cdf">cdf</a> is added, to specify
+countdown <b>from</b> date so that the difference between two dates
+can be shown if you specify the target date witht he parameter
+<a href="#cdt">cdt</a>.<br>
+(Jul-17-1999)
+
+<p>
+<#lisq> Fixed some memory related bugs. Modified the Commaize() funtion, it had
+a memory free related bug.  remote_ip var had dangling memory read problem. 
+All memory related bugs were fund by Parasoft's insure++.<br>
+(May-26-1999)
+
+<p>
+<#lisq>
+The binary version of the current release for NT is available. Please
+visit the <a href="CountNT.html">NT binary page</a>.<br>
+(May-25-1999)
+<p>
+<li type="square">
+<a href="#compo">Compositing</a> the counter on a base image had many bugs. 
+All are fixed I think.
+Now you can composite
+counter, clock or countdown image on a base image (previously only counter
+image could be composited).  Left padding the counter while compositing 
+was not working either.  The <a href="#align">align</a> keyword had 
+more values now, namely topleft, topcenter, topright, midleft, midcenter, midright,
+bottomleft, bottomcenter and bottomright. A new keyword 
+<a href="#offset">offset</a> can be used with <a href="#align">align</a>
+to specify the offset (in pixels) of the counter image from the edge
+of the base image.
+<br>
+(May-16-1999)
+<p>
+<li type="square">
+The meaning of <a href="#image">image</a> parameter is changed. Now this
+parameter is used for compositing the counter, clock, date or countdown image.
+If no <a href="#display">display</a> paramter is used, the default is to
+composite the counter image.
+<br>
+(May-16-1999)
+<p>
+<li type="square">
+A new boolean keyword <a href="#sdhms">sdhms</a> (show day hr 
+min sec) is added, so that only days in countdown can be displayed.
+<br>
+(May-16-1999)
+<p>
+<li type="square">
+A new parameter <a href="#display">display</a>=version is introduced to 
+show the version of the counter. A command line flag -version also can be
+used to find out the version of the counter.
+<br>
+(May-16-1999)
+<p>
+<li type="square"> Yes it includes the Buffer Overflow security fix (Fixed on: 
+Oct-17-1997 in Count 2.3).
+
+</blockquote>
